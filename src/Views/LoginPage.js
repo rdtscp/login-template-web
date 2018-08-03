@@ -3,6 +3,7 @@ import { Button, InputField } from '../Components';
 
 import axios from 'axios';
 import network from '../Resources/networkHelper';
+import utilities from '../Resources/utilitiesHelper';
 
 class Login extends Component {
 
@@ -46,7 +47,7 @@ class Login extends Component {
             window.location.reload();
           }
           else {
-            this.handleResponse(res);
+            utilities.handleNetworkResponse(res);
           }
         }
       });
@@ -74,21 +75,11 @@ class Login extends Component {
             alert("Account Created");
           }
           else {
-            this.handleResponse(res);
+            utilities.handleNetworkResponse(res);
           }
         }
       });
     });
-  }
-
-  /* @TODO: Make Nicer Popup */
-  handleResponse = (res) => {
-    if (res.error) {
-      alert('Error: ' + res.mesasge);
-    }
-    else {
-      alert('Warning: ' + res.message);
-    }
   }
 
   render = () => {
@@ -100,9 +91,11 @@ class Login extends Component {
             <br />
             <InputField title="Password" onEnter={this.login} onChange={this.passwordChange} type="password" />
             <br />
-            <Button title="Login" onClick={this.login} />
-            &nbsp;&nbsp;
-            <Button title="Register" onClick={this.register} />
+            <br />
+            <div className="login-register-container">
+              <Button title="Login" onClick={this.login} />
+              <Button title="Register" onClick={this.register} />
+            </div>
           </form>
         </div>
       </div>
