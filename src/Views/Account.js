@@ -10,13 +10,14 @@ class Account extends Component {
     this.state = {
       activeListEntry: 'Devices',
       listEntryMap: {
-        'Devices': <Panes.Devices />,
+        'Devices':        <Panes.Devices />,
         'Delete Account': <Panes.DeleteAccount />
       }
     };
   }
 
-  activeListEntry = (entryName) => {
+
+  clickListEntry = (entryName) => {
     this.setState({
       activeListEntry: entryName
     });
@@ -26,7 +27,7 @@ class Account extends Component {
     return (
       <div className="account-container">
         <div className="left-pane">
-          <List activateListEntry={this.activeListEntry} listEntryMap={this.state.listEntryMap} activeListEntry={this.state.activeListEntry} />
+          <List activateListEntry={this.clickListEntry} listEntryMap={this.state.listEntryMap} activeListEntry={this.state.activeListEntry} />
         </div>
         <div className="right-pane">
           {this.state.listEntryMap[this.state.activeListEntry]}
