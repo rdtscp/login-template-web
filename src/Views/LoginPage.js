@@ -10,11 +10,9 @@ class Login extends Component {
     super(props);
     this.state = {
       username: null,
-      password: null,
-      csrfToken: null
+      password: null
     };
   }
-
 
   usernameChange = (newUsername) => {
     this.setState({username: newUsername.target.value});
@@ -24,36 +22,73 @@ class Login extends Component {
     this.setState({password: newPassword.target.value});
   }
 
-  /* @TODO
-   *  Submit POST Request to backend to verify credentials.
-   *  Backend returns authToken if credentials match, otherwise returns error.
-   */
   login = () => {
-    axios({
-      method: 'POST',
-      url: 'http://localhost:1337/device/create',
-      data: {
-          _csrf: this.state.csrfToken,
-          username: this.state.username,
-          password: this.state.password,
-      },
-      withCredentials: true,
-      contentType: 'json',
-    })
-    .then((response) => {
-      if (response.data.content && response.data.content.authToken) {
-        let newAuthToken = response.data.content.authToken;
-        localStorage.setItem('authToken', newAuthToken);
-      }
+    network.getCSRF((csrfToken) => {
+      axios({
+        method: 'POST',
+        url: 'http://localhost:1337/device/create',
+        data: {
+            _csrf: csrfToken,
+            username: this.state.username,
+            password: this.state.password,
+        },
+        withCredentials: true,
+        contentType: 'json',
+      })
+      .then((response) => {
+        // If this responded properly.
+        if (response.data) {
+          let res = response.data;
+          // If there were no errors or warning.
+          if (res.error === false && res.warning === false) {
+            let newAuthToken = response.data.content.authToken;
+            localStorage.setItem('authToken', newAuthToken);
+            window.location.reload();
+          }
+          else {
+            this.handleResponse(res);
+          }
+        }
+      });
     });
   }
 
-  componentDidMount = () => {
+  register = () => {
     network.getCSRF((csrfToken) => {
-      this.setState({
-        csrfToken: csrfToken
+      axios({
+        method: 'POST',
+        url: 'http://localhost:1337/user/create',
+        data: {
+            _csrf: csrfToken,
+            username: this.state.username,
+            password: this.state.password,
+        },
+        withCredentials: true,
+        contentType: 'json',
+      })
+      .then((response) => {
+        // If this responded properly.
+        if (response.data) {
+          let res = response.data;
+          if (res.error === false && res.warning === false) {
+            alert("Account Created");
+          }
+          else {
+            this.handleResponse(res);
+          }
+        }
       });
     });
+  }
+
+  /* @TODO: Make Nicer Popup */
+  handleResponse = (res) => {
+    if (res.error) {
+      alert('Error: ' + res.mesasge);
+    }
+    else {
+      alert('Warning: ' + res.message);
+    }
   }
 
   render = () => {
@@ -66,6 +101,8 @@ class Login extends Component {
             <InputField title="Password" onEnter={this.login} onChange={this.passwordChange} type="password" />
             <br />
             <Button title="Login" onClick={this.login} />
+            &nbsp;&nbsp;
+            <Button title="Register" onClick={this.register} />
           </form>
         </div>
       </div>
