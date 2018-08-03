@@ -10,14 +10,14 @@ class ListEntry extends Component {
     // Create a list of SettingsPanes.
     if (this.props.entryActive) {
       return (
-        <div className="settings-list-entry">
+        <div className="list-entry">
           <a onClick={this.handleClick}><b>{this.props.name}</b></a>
         </div>
       );
     }
     else {
       return (
-        <div className="settings-list-entry">
+        <div className="list-entry">
           <a onClick={this.handleClick}>{this.props.name} </a>
         </div>
       );

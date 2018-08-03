@@ -58,7 +58,7 @@ body {
   }
 }
 
-.settings-left-pane {
+.left-pane {
   width: 400px;
   height: 100%;
   float: left;
@@ -67,7 +67,7 @@ body {
   border: 1px solid blue;
 }
 
-.settings-right-pane {
+.right-pane {
   height: 100%;
   /* For testing */
   border: 1px solid red;
@@ -75,7 +75,7 @@ body {
   flex-flow: column;
 }
 
-.settings-list-entry {
+.list-entry {
   height: 50px;
   border: 1px solid blue;
 }

@@ -25,10 +25,10 @@ class AccountPage extends Component {
   render = () => {
     return (
       <div className="account-container">
-        <div className="settings-left-pane">
+        <div className="left-pane">
           <List activateListEntry={this.activeListEntry} listEntryMap={this.state.listEntryMap} activeListEntry={this.state.activeListEntry} />
         </div>
-        <div className="settings-right-pane">
+        <div className="right-pane">
           {this.state.listEntryMap[this.state.activeListEntry]}
         </div>
       </div>
