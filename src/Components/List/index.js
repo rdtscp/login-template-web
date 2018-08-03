@@ -5,7 +5,7 @@ import { ListEntry } from '../';
 class List extends Component {
 
   handleListEntryClick = (listEntryName) => {
-    this.props.activateListEntry(listEntryName);
+    this.props.clickListEntry(listEntryName);
   }
     
   render = () => {
