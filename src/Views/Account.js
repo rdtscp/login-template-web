@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import * as Panes from '../Components/Panes';
 import { List } from '../Components';
 
-class AccountPage extends Component {
+class Account extends Component {
 
   constructor(props) {
     super(props);
@@ -36,4 +36,4 @@ class AccountPage extends Component {
   }
 }
 
-export default AccountPage;
+export default Account;
