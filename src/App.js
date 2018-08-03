@@ -28,11 +28,9 @@ class App extends Component {
     /* On Component Mount, set state according to authToken status. */
     componentDidMount = () => {
       let localAuthToken = localStorage.getItem('authToken');
-      console.log("localAuthToken: " + localAuthToken);
 
       /* Check with backend if the token provides authentication. */
       network.isAuthorised(localAuthToken, (authStatus) => {
-        console.log("Auth Status: " + authStatus);
         // Set state appropriately.
         this.setState({
           loading: false,
