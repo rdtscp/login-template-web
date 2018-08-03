@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import LandingPage from './Views/LoadingPage';
 import LoginPage from './Views/LoginPage';
-import HomePage from './Views/HomePage';
+import AccountPage from './Views/AccountPage';
 import network from './Resources/networkHelper';
 
 class App extends Component {
@@ -45,7 +45,7 @@ class App extends Component {
         return(<LandingPage/>);
       }
       else if (this.state.authenticated) {
-        return (<HomePage/>);
+        return (<AccountPage/>);
       }
       else {
         return (<LoginPage backdoor={this.backdoor} />);
