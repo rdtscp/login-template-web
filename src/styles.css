@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  /* background-color: #F4F9FC; */
 }
 
 .landing-page {
@@ -26,4 +27,55 @@ body {
 
 .login-container {
   width: 300px;
+}
+
+.login-register-container {
+  display: flex;
+  justify-content: space-around;
+  width: 300px;
+}
+
+.account-container {
+  position: absolute;
+  top: 2%;
+  bottom: 2%;
+  left: 3%;
+  right: 3%;
+  overflow: hidden;
+  margin: 50px;
+  border: 1px solid black;
+}
+
+@media all and (max-width: 1500px) {
+  .account-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    border-radius: 0px;
+  }
+}
+
+.settings-left-pane {
+  width: 400px;
+  height: 100%;
+  float: left;
+  display: block;
+  /* For testing */
+  border: 1px solid blue;
+}
+
+.settings-right-pane {
+  height: 100%;
+  /* For testing */
+  border: 1px solid red;
+  display: flex;
+  flex-flow: column;
+}
+
+.settings-list-entry {
+  height: 50px;
+  border: 1px solid blue;
 }
