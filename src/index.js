@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import './styles.css';
 import 'materialize-css/dist/css/materialize.min.css'
 
-document.title = "Flat Rota";
+document.title = "Login Template App";
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
