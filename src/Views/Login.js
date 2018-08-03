@@ -87,11 +87,8 @@ class Login extends Component {
       <div className="login-page">
         <div className="login-container">
           <form>
-            <InputField title="Username" onEnter={this.login} onChange={this.usernameChange} />
-            <br />
-            <InputField title="Password" onEnter={this.login} onChange={this.passwordChange} type="password" />
-            <br />
-            <br />
+            <InputField title="Username" onEnter={this.login} onChange={this.usernameChange} />                 <br/>
+            <InputField title="Password" onEnter={this.login} onChange={this.passwordChange} type="password" /> <br/>
             <div className="login-register-container">
               <Button title="Login" onClick={this.login} />
               <Button title="Register" onClick={this.register} />
