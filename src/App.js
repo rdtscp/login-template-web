@@ -15,13 +15,12 @@ class App extends Component {
     };
   }
 
-  /* On Component Mount, set state according to authToken status. */
+  /* Checks if this device is authenticated for any particular user. */
   componentDidMount = () => {
     let localAuthToken = localStorage.getItem('authToken');
 
     /* Check with backend if the token provides authentication. */
     network.isAuthorised(localAuthToken, (authStatus) => {
-      // Set state appropriately.
       this.setState({
         loading: false,
         authenticated: authStatus,
