@@ -9,7 +9,7 @@ class Account extends Component {
     super(props);
     this.state = {
       activeListEntry: 'Devices',
-      listEntryMap: {
+      settingsMap: {
         'Devices':        <Panes.Devices />,
         'Delete Account': <Panes.DeleteAccount />
       }
@@ -27,10 +27,10 @@ class Account extends Component {
     return (
       <div className="account-container">
         <div className="left-pane">
-          <List activateListEntry={this.clickListEntry} listEntryMap={this.state.listEntryMap} activeListEntry={this.state.activeListEntry} />
+          <List clickListEntry={this.clickListEntry} listEntryMap={this.state.settingsMap} activeListEntry={this.state.activeListEntry} />
         </div>
         <div className="right-pane">
-          {this.state.listEntryMap[this.state.activeListEntry]}
+          {this.state.settingsMap[this.state.activeListEntry]}
         </div>
       </div>
     );
