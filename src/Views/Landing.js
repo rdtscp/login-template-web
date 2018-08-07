@@ -7,7 +7,7 @@ class Landing extends Component {
   render() {
     return (
       <div className="landing-page">
-        <LoadingBar />
+        <LoadingBar message={this.props.message} />
       </div>
     );
   }

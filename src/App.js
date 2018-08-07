@@ -10,6 +10,7 @@ class App extends Component {
     super(props);
     this.state = {
       loading: true,
+      loadingMessage: null,
       authenticated: false,
       token: null
     };
@@ -18,6 +19,12 @@ class App extends Component {
   /* Checks if this device is authenticated for any particular user. */
   componentDidMount = () => {
     let localAuthToken = localStorage.getItem('authToken');
+
+    setTimeout(() => {
+      this.setState({
+      loadingMessage: "Its taking a long time to connect to server, please refresh and check your internet connection.",
+      })
+    }, 5000);
 
     /* Check with backend if the token provides authentication. */
     network.isAuthorised(localAuthToken, (authStatus) => {
@@ -31,7 +38,7 @@ class App extends Component {
 
   render = () => {
     if (this.state.loading) {
-      return(<Views.Landing/>);
+      return(<Views.Landing message={this.state.loadingMessage}/>);
     }
     else if (this.state.authenticated) {
       return (<Views.Account/>);
