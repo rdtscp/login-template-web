@@ -22,8 +22,12 @@ const utilities = {
       let minutes = "0" + date.getMinutes();
       var seconds = "0" + date.getSeconds();
 
-      let formattedTime = day + " " + month + " " + year + " at " + hours.substr(-2) + ":" + minutes.substr(-2) + ':' + seconds.substr(-2);
-      return formattedTime;
+      if (new Date().getFullYear() === year) {
+        return day + " " + month + ", " + hours.substr(-2) + ":" + minutes.substr(-2) + ':' + seconds.substr(-2);
+      }
+      else {
+        return day + " " + month + " " + year + ", " + hours.substr(-2) + ":" + minutes.substr(-2) + ':' + seconds.substr(-2);
+      }
     }
 
 }
