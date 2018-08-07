@@ -13,6 +13,7 @@ class Device extends Component {
     super(props);
     this.state = {
       createdAt:  this.props.createdAt,
+      lastUsed:   this.props.lastUsed,
       id:         this.props.id,
       authToken:  this.props.authToken,
       ip:         this.props.ip,
@@ -53,11 +54,9 @@ class Device extends Component {
     if (localAuthToken === this.state.authToken) {
       return (
         <div className="device-entry">
-          <div>
-            <b> This Device </b> <br/>
+          <div style={{paddingRight: 50}}>
             {this.parseUserAgent(this.state.userAgent)} <br/>
-            Authorised On {utilities.unixToDateTime(this.state.createdAt)} <br/>
-            Location: {this.state.location}
+            <b> This Device </b> <br/>
           </div>
           <Button title="Logout" onClick={this.logoutDevice} />
         </div>
@@ -66,10 +65,9 @@ class Device extends Component {
     else {
       return (
         <div className="device-entry">
-          <div>
+          <div style={{paddingRight: 50}}>
             {this.parseUserAgent(this.state.userAgent)} <br/>
-            Authorised On {utilities.unixToDateTime(this.state.createdAt)} <br/>
-            Location: {this.state.location}
+            {utilities.unixToDateTime(this.state.lastUsed)} <br/>
           </div>
           <Button title="Logout" onClick={this.logoutDevice} />
         </div>
