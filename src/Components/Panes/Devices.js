@@ -21,8 +21,53 @@ class Devices extends Component {
     if(window.confirm("Are you sure you wish to log out all devices(including this one)?")) {
       this.state.devicesList.forEach((device) => {
         console.log("Logging Out Device: " + device.id);
-      })
+        this.logoutDevice(device);
+      });
     }
+  }
+
+  logoutDevice = (logoutDevice) => {
+    let authToken = localStorage.getItem('authToken');
+    network.getCSRF((csrfToken) => {
+      axios({
+        method: 'POST',
+        url: 'http://localhost:1337/device/destroy',
+        data: {
+            _csrf: csrfToken,
+            authToken: authToken,
+            logoutAuthToken: logoutDevice.authToken,
+            logoutId: logoutDevice.id
+        },
+        withCredentials: true,
+        contentType: 'json',
+      })
+      .then((response) => {
+        // If this responded properly.
+        if (response.data) {
+          let res = response.data;
+          // If there were no errors or warning.
+          if (res.error === false && res.warning === false) {
+            // Handle if we are logging this device out.
+            if (logoutDevice.authToken === authToken) {
+              alert("Logged Out of this Device");
+              window.location.reload();
+            }
+            else {
+              alert("Device Logged Out");
+              let updatedDevices = this.state.devicesList.filter((device) => {
+                return device.id !== logoutDevice.id;
+              });
+              this.setState({
+                devicesList: updatedDevices
+              });
+            }
+          }
+          else {
+            this.handleResponse(res);
+          }
+        }
+      });
+    });
   }
  
   componentDidMount = () => {
@@ -58,7 +103,7 @@ class Devices extends Component {
   
   render = () => {
     const devices = this.state.devicesList.map((deviceData) =>
-      <Device createdAt={deviceData.createdAt} id={deviceData.id} authToken={deviceData.authToken} ip={deviceData.ip} userAgent={deviceData.userAgent} key={deviceData.id} />
+      <Device logout={this.logoutDevice} createdAt={deviceData.createdAt} id={deviceData.id} authToken={deviceData.authToken} ip={deviceData.ip} userAgent={deviceData.userAgent} key={deviceData.id} />
     );
     return (
       <div>
