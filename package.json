@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "ip-location": "^1.0.1",
     "materialize-css": "^1.0.0-rc.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "ua-parser-js": "^0.7.18"
   },
   "scripts": {
     "start": "react-scripts start",
