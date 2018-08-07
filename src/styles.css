@@ -80,3 +80,7 @@ body {
   height: 50px;
   border: 1px solid blue;
 }
+
+.device-entry {
+  border: 1px solid red;
+}
