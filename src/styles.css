@@ -82,5 +82,16 @@ body {
 }
 
 .device-entry {
-  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  padding: 10px;
+  border-top: 1px solid grey;
+}
+
+.spinner-container {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-top: 20%;
 }
