@@ -51,28 +51,20 @@ class Device extends Component {
   render = () => {
     let localAuthToken = localStorage.getItem('authToken');
 
+    let lastUsed = utilities.unixToDateTime(this.state.lastUsed);
+
     if (localAuthToken === this.state.authToken) {
-      return (
-        <div className="device-entry">
-          <div style={{paddingRight: 50}}>
-            {this.parseUserAgent(this.state.userAgent)} <br/>
-            <b> This Device </b> <br/>
-          </div>
-          <Button title="Logout" onClick={this.logoutDevice} />
-        </div>
-      );
+      lastUsed = <b> This Device </b>;
     }
-    else {
-      return (
-        <div className="device-entry">
-          <div style={{paddingRight: 50}}>
-            {this.parseUserAgent(this.state.userAgent)} <br/>
-            {utilities.unixToDateTime(this.state.lastUsed)} <br/>
-          </div>
-          <Button title="Logout" onClick={this.logoutDevice} />
+    return (
+      <div className="device-entry">
+        <div style={{paddingRight: 50}}>
+          {this.parseUserAgent(this.state.userAgent)} <br/>
+          {lastUsed}
         </div>
-      );
-    }
+        <Button title="Logout" onClick={this.logoutDevice} />
+     </div>
+    );
   }
 
 }
