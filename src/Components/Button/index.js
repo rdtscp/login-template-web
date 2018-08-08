@@ -11,8 +11,18 @@ class Button extends Component {
   }
     
   render = () => {
+    let buttonClassName = "waves-effect waves-light btn";
+    if (this.props.danger) {
+      buttonClassName += " red darken-2";
+    }
+    else if (this.props.warning) {
+      buttonClassName += " yellow darken-2";
+    }
+    else {
+      buttonClassName += " blue";
+    }
     return (
-        <a onClick={this.props.onClick} className="waves-effect waves-light btn">{this.state.title}</a>
+        <a className={buttonClassName} onClick={this.props.onClick}>{this.state.title}</a>
     );
   }
 
