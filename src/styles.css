@@ -44,7 +44,6 @@ body {
   right: 3%;
   overflow: hidden;
   margin: 50px;
-  border: 1px solid black;
 }
 
 @media all and (max-width: 1500px) {
@@ -64,21 +63,16 @@ body {
   height: 100%;
   float: left;
   display: block;
-  /* For testing */
-  border: 1px solid blue;
 }
 
 .right-pane {
   height: 100%;
-  /* For testing */
-  border: 1px solid red;
   display: flex;
   flex-flow: column;
 }
 
 .list-entry {
   height: 50px;
-  border: 1px solid blue;
 }
 
 .device-entry {
