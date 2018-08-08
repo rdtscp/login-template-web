@@ -40,10 +40,13 @@ class DeleteAccount extends Component {
 
   render = () => {
     return (
-      <div>
-        Delete Account Pane
-        <br />
-        <Button title="Delete Account" onClick={this.deleteAccount} />
+      <div style={{margin: 200, padding: 10, fontSize: 18}}>
+        <div style={{display: 'flex', justifyContent: 'center', padding: 10}}>
+          Deleting your Account is irreversible and permanent.
+        </div>
+        <div style={{display: 'flex', justifyContent: 'center', padding: 10}}>
+          <Button title="Delete Account" danger onClick={this.deleteAccount} />
+        </div>
       </div>
     );
   }
