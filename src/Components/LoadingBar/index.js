@@ -10,25 +10,16 @@ class LoadingBar extends Component {
   }
     
   render = () => {
-    if (this.props.message === null) {
-      return (
-        <div style={{width: this.state.width}}>
-          <div className="progress">
-            <div className="indeterminate"></div>
-          </div>
+    let message = this.props.message;
+    if (message !== null) message += <br/>
+    return (
+      <div style={{width: this.state.width}}>
+        {this.props.message}
+        <div className="progress blue">
+          <div className="indeterminate blue"></div>
         </div>
-      );
-    }
-    else {
-      return (
-        <div style={{width: this.state.width}}>
-          {this.props.message} <br />
-          <div className="progress">
-            <div className="indeterminate"></div>
-          </div>
-        </div>
-      );
-    }
+      </div>
+    );
   }
 
 }
