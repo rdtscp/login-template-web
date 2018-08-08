@@ -124,12 +124,12 @@ class Devices extends Component {
     }
     else {
       return (
-        <div style={{margin: 10, padding: 10,}}>
+        <div style={{margin: 200, padding: 10}}>
           <div style={{float: 'left', fontSize: 25, paddingLeft: 10}}>
             {this.state.username}
           </div>
           <div style={{float: 'right'}}>
-            <Button title="Logout All" onClick={this.logoutAll} />
+            <Button warning title="Logout All" onClick={this.logoutAll} />
           </div>
           <div style={{ marginTop: 50}}>
           {devices}
