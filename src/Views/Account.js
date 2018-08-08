@@ -26,7 +26,7 @@ class Account extends Component {
   render = () => {
     return (
       <div className="account-container" style={{borderRadius: 20}}>
-        <div className="left-pane" style={{borderRight: '2px solid white', backgroundColor: '#26a69a', padding: 40, fontSize: 23, textAlign: 'left'}}>
+        <div className="left-pane" style={{borderRight: '2px solid white', backgroundColor: '#4285f4', padding: 40, fontSize: 23, textAlign: 'left'}}>
           <List clickListEntry={this.clickListEntry} listEntryMap={this.state.settingsMap} activeListEntry={this.state.activeListEntry} />
         </div>
         <div className="right-pane" style={{backgroundColor: '#F1F2EE'}}>
