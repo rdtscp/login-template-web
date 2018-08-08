@@ -8,20 +8,16 @@ class ListEntry extends Component {
 
   render = () => {
     // Create a list of SettingsPanes.
-    if (this.props.entryActive) {
-      return (
-        <div className="list-entry">
-          <a onClick={this.handleClick}><b>{this.props.name}</b></a>
-        </div>
-      );
-    }
-    else {
-      return (
-        <div className="list-entry">
-          <a onClick={this.handleClick}>{this.props.name} </a>
-        </div>
-      );
-    }
+    let listEntryStyle={
+      cursor:'pointer',
+      color: '#D2D6D8'
+    };
+    if (this.props.entryActive) listEntryStyle.color = 'white';
+    return (
+      <div className="list-entry" onClick={this.handleClick} style={{cursor:'pointer'}}>
+        <a style={listEntryStyle}>{this.props.name}</a>
+      </div>
+    );
   }
 
 }
