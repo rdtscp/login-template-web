@@ -112,9 +112,11 @@ class Devices extends Component {
   }
   
   render = () => {
+    /* Create array of Devices to Render */
     const devices = this.state.devicesList.map((deviceData) =>
       <Device logout={this.logoutDevice} lastUsed={deviceData.lastUsed} createdAt={deviceData.createdAt} id={deviceData.id} authToken={deviceData.authToken} ip={deviceData.ip} userAgent={deviceData.userAgent} key={deviceData.id} />
     );
+
     if (this.state.loading) {
       return (
         <div className="devices-loading-container">
@@ -124,15 +126,13 @@ class Devices extends Component {
     }
     else {
       return (
-        <div style={{margin: 200, padding: 10}}>
-          <div style={{float: 'left', fontSize: 25, paddingLeft: 10}}>
-            {this.state.username}
-          </div>
-          <div style={{float: 'right'}}>
-            <Button warning title="Logout All" onClick={this.logoutAll} />
-          </div>
-          <div style={{ marginTop: 50}}>
-          {devices}
+        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+          <div style={{width: 400, padding: 34, height: '100vh'}}>
+            {/* <Device  logout={this.logoutDevice} lastUsed={this.state.devicesList[0].lastUsed} createdAt={this.state.devicesList[0].createdAt} id={this.state.devicesList[0].id} authToken={this.state.devicesList[0].authToken} ip={this.state.devicesList[0].ip} userAgent={this.state.devicesList[0].userAgent} key={this.state.devicesList[0].id}  /> */}
+            {devices}
+            <div style={{float: 'right', padding: 15}}>
+              <Button warning title="Logout All" onClick={this.logoutAll} />
+            </div>
           </div>
         </div>
       );
