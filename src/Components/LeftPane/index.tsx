@@ -1,16 +1,12 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 import { LeftPaneEntry } from '../';
 
-class LeftPane extends Component {
+class LeftPane extends React.Component<ILeftPaneProps, any>{
 
-  handleListEntryClick = (listEntryName) => {
-    this.props.clickOption(listEntryName);
-  }
-    
-  render = () => {
+  public render = () => {
     // Create a list of SettingsPanes.
-    const listEntries = this.props.options.map((optionName, index) =>
+    const listEntries = this.props.options.map((optionName: string, index: number) =>
       <LeftPaneEntry clickOption={this.handleListEntryClick} key={index} name={optionName} />
     );
     return (
@@ -19,7 +15,16 @@ class LeftPane extends Component {
       </div>
     );
   }
+  
+  private handleListEntryClick = (listEntryName: string) => {
+    this.props.clickOption(listEntryName);
+  }
 
+}
+
+interface ILeftPaneProps {
+  clickOption:  (paneName: string) => void;
+  options:      any;
 }
 
 export default LeftPane;

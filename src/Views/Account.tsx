@@ -1,44 +1,34 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 import * as Panes from '../Components/Panes';
+
 import { Header, LeftPane } from '../Components';
 
-class Account extends Component {
+class Account extends React.Component<any, IAccountState>{
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = {
-      activePane: 'Devices',
+      activePane:   'Devices',
       settingsMap: {
-        'Devices':        <Panes.Devices />,
+        'Devices': <Panes.Devices />,
         'Delete Account': <Panes.DeleteAccount />
       },
       width: 0
     };
   }
 
-
-  selectSettingPane = (paneName) => {
-    this.setState({
-      activePane: paneName
-    });
-  }
-
-  componentDidMount = () => {
+  public componentDidMount = () => {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
   }
   
-  componentWillUnmount = () => {
+  public componentWillUnmount = () => {
     window.removeEventListener('resize', this.updateWindowDimensions);
   }
-  
-  updateWindowDimensions = () => {
-    this.setState({ width: window.innerWidth });
-  }
 
-  render = () => {
-    let paneOptions = Object.keys(this.state.settingsMap);
+  public render = () => {
+    const paneOptions = Object.keys(this.state.settingsMap);
     
     let settingsListPresentation = <Header clickOption={this.selectSettingPane} options={paneOptions} />;
     if (this.state.width >= 680) {
@@ -48,11 +38,27 @@ class Account extends Component {
       <div>
         {settingsListPresentation}
         <div className="right-pane" style={{backgroundColor: '#FAFAFA'}}>
-            {this.state.settingsMap[this.state.activePane]}
-          </div>
+          {this.state.settingsMap[this.state.activePane]}
+        </div>
       </div>
     );
   }
+
+  private updateWindowDimensions = () => {
+    this.setState({ width: window.innerWidth });
+  }
+
+  private selectSettingPane = (paneName: string) => {
+    this.setState({
+      activePane: paneName
+    });
+  }
+}
+
+interface IAccountState {
+  activePane:   string;
+  settingsMap:  any;
+  width:        number;
 }
 
 export default Account;

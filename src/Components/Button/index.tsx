@@ -1,16 +1,8 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
-class Button extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: this.props.title,
-      content: ""
-    };
-  }
+class Button extends React.Component<IButtonProps, any>{
     
-  render = () => {
+  public render = () => {
     let buttonClassName = "waves-effect waves-light btn";
     if (this.props.danger) {
       buttonClassName += " red darken-2";
@@ -22,10 +14,17 @@ class Button extends Component {
       buttonClassName += " blue";
     }
     return (
-        <a className={buttonClassName} onClick={this.props.onClick}>{this.state.title}</a>
+        <a className={buttonClassName} onClick={this.props.onClick}>{this.props.title}</a>
     );
   }
 
+}
+
+interface IButtonProps {
+  title:    string;
+  onClick:  () => void;
+  danger?:  boolean;
+  warning?: boolean;
 }
 
 export default Button;

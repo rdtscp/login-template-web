@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 import { LoadingBar } from '../Components';
 
-class Landing extends Component {
+class Landing extends React.Component<{ message: string; }, any> {
 
-  render() {
+  public render = () => {
     return (
       <div className="landing-page">
         <LoadingBar message={this.props.message} />

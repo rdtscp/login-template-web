@@ -1,12 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import './styles.css';
 import 'materialize-css/dist/css/materialize.min.css'
+import './styles.css';
 
 document.title = "Login Template App";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <App />,
+  document.getElementById('root') as HTMLElement
+);
 registerServiceWorker();
