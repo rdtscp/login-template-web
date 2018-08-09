@@ -21,7 +21,7 @@ class Device extends React.Component<IDeviceProps, IDevice>{
     };
   }
 
-  public render = () => {
+  public render() {
     const localAuthToken = localStorage.getItem('authToken');
 
     let lastUsed: any = utilities.unixToDateTime(this.state.lastUsed);

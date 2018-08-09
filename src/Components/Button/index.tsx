@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 class Button extends React.Component<IButtonProps, any>{
-    
-  public render = () => {
+
+  public render() {
     let buttonClassName = "waves-effect waves-light btn";
     if (this.props.danger) {
       buttonClassName += " red darken-2";

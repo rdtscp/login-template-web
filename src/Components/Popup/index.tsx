@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { Button } from '../';
 
-class Popup extends React.Component {
+class Popup extends React.Component<any, any> {
     
-  render = () => {
+  public render() {
     return (
       <div>
         Modal/Popup        

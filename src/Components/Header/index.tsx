@@ -4,7 +4,7 @@ class Header extends React.Component<IHeaderProps, any> {
 
   /* @TODO Create Slide-Out Menu that can take an Array of 'Keys' as options. */
 
-  public render = () => {
+  public render() {
     return (
       <div style={{height: 64, width: '100%', backgroundColor: '#4285F4', padding: 11}}>
         <a onClick={this.clickMenu} className="material-icons" style={{color: 'white', fontSize: '3rem', cursor:'pointer'}}>menu</a>

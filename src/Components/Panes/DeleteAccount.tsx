@@ -8,7 +8,7 @@ import utilities from '../../Resources/utilitiesHelper';
 
 class DeleteAccount extends React.Component<any, any> {
 
-  public render = () => {
+  public render() {
     return (
       <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
         <div style={{width: 340, paddingTop: 50, textAlign: 'center', height: '100vh'}}>

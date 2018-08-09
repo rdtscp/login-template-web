@@ -20,7 +20,7 @@ class Devices extends React.Component<any, IDevicesState>{
   }
   
   /* On Component Mounting, Get the Devices this User is Authorised on. */
-  public componentDidMount = () => {
+  public componentDidMount() {
     const authToken = localStorage.getItem('authToken');
     network.getCSRF((csrfToken) => {
       axios.request<IBackendResponse>({
@@ -52,7 +52,7 @@ class Devices extends React.Component<any, IDevicesState>{
     });
   }
   
-  public render = () => {
+  public render() {
     /* Create array of Devices to Render */
     const devices = this.state.devicesList.map((deviceData) =>
       <Device logout={this.logoutDevice} lastUsed={deviceData.lastUsed} createdAt={deviceData.createdAt} id={deviceData.id} authToken={deviceData.authToken} ip={deviceData.ip} userAgent={deviceData.userAgent} key={deviceData.id} />

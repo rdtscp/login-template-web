@@ -9,7 +9,7 @@ class InputField extends React.Component<IInputFieldProps, IInputFieldState>{
     };
   }
     
-  public render = () => {
+  public render() {
     return (
         <input onKeyDown={this.handleKeyPress} onChange={this.handleContentChange} type={this.state.type} placeholder={this.props.title}/>
     );

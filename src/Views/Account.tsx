@@ -18,16 +18,16 @@ class Account extends React.Component<any, IAccountState>{
     };
   }
 
-  public componentDidMount = () => {
+  public componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
   }
   
-  public componentWillUnmount = () => {
+  public componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions);
   }
 
-  public render = () => {
+  public render() {
     const paneOptions = Object.keys(this.state.settingsMap);
     
     let settingsListPresentation = <Header clickOption={this.selectSettingPane} options={paneOptions} />;

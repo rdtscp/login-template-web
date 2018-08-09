@@ -15,9 +15,10 @@ class Login extends React.Component<any, ILoginState> {
       password: '',
       username: ''
     };
+    this.render.bind(this);
   }
 
-  public render = () => {
+  public render() {
     return (
       <div className="login-page">
         <div className="login-container">

@@ -4,7 +4,7 @@ import { LeftPaneEntry } from '../';
 
 class LeftPane extends React.Component<ILeftPaneProps, any>{
 
-  public render = () => {
+  public render() {
     // Create a list of SettingsPanes.
     const listEntries = this.props.options.map((optionName: string, index: number) =>
       <LeftPaneEntry clickOption={this.handleListEntryClick} key={index} name={optionName} />

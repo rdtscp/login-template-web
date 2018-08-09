@@ -9,7 +9,7 @@ class LoadingBar extends React.Component<ILoadingBarProps, ILoadingBarState> {
     };
   }
     
-  public render = () => {
+  public render() {
     let message = this.props.message;
     if (message !== null) { message += <br/> }
     return (
