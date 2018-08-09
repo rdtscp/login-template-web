@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 import { Button } from '../';
 
-import UAParser from 'ua-parser-js';
-import ipLocation from 'ip-location';
+import UAParser from   'ua-parser-js';
 
 import utilities from '../../Resources/utilitiesHelper';
 
@@ -33,20 +32,6 @@ class Device extends Component {
     let output = userAgent.browser.name + " on " + userAgent.os.name;
     return output;
   }
-
-  componentDidMount = () => {
-    ipLocation(this.state.ip)
-    .then((data) => {
-      this.setState({
-        location: data.region_name + " in " + data.country_code
-      });
-    })
-    .catch((err) => {
-      this.setState({
-        location: "Unknown Location. IP: " + this.state.ip
-      });
-    })
-  }
   
   render = () => {
     let localAuthToken = localStorage.getItem('authToken');
@@ -57,13 +42,15 @@ class Device extends Component {
       lastUsed = <b> This Device </b>;
     }
     return (
-      <div className="device-entry">
-        <div style={{paddingRight: 50}}>
+      <div className="shadowed" style={{display: 'flex', width: 332, height: 73, padding: 15, backgroundColor: 'white'}}>
+        <div style={{flexGrow: 1, fontSize: 14}}>
           {this.parseUserAgent(this.state.userAgent)} <br/>
           {lastUsed}
         </div>
-        <Button title="Logout" onClick={this.logoutDevice} />
-     </div>
+        <div style={{}}>
+          <Button title="Logout" onClick={this.logoutDevice} />
+        </div>
+      </div>
     );
   }
 
