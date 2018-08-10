@@ -1,5 +1,5 @@
 /* Import Types */
-import { IStateType } from './Store/types';
+import { IStateType } from './Store/Types';
 
 /* Import Actions */
 

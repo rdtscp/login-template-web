@@ -2,7 +2,7 @@ import { LOGIN_REQUEST, REGISTER_REQUEST, TOKEN_CHECK } from '../Actions/actionT
 
 import { Reducer  } from 'redux';
 
-import { IAuthStateType } from '../Store/types';
+import { IAuthStateType } from '../Store/Types';
 
 const initialState = {
     authStatus: false,
