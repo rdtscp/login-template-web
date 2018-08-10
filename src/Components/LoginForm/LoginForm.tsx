@@ -11,10 +11,10 @@ import Visibility                                     from '@material-ui/icons/V
 import VisibilityOff                                  from '@material-ui/icons/VisibilityOff';
 
 /* Signatures for Props and State */
-import { ILoginFormProps, ILoginFormState }           from './types';
+import { ILoginFormProps, ILoginFormState }           from './Types';
 
 /* Style Imports */
-import { ILoginFormStyle }                            from './styles';
+import { ILoginFormStyle }                            from './Styles';
 
 export default class LoginForm extends React.Component<ILoginFormProps & ILoginFormStyle, ILoginFormState> {
 

@@ -1,11 +1,13 @@
+import { Dispatch }                                   from 'redux';
+
 import axios                                          from 'axios';
-import network                                        from '../Resources/networkHelper';
+import network                                        from '../../Resources/networkHelper';
 
+/* Types */
 import { LOGIN_REQUEST, TOKEN_CHECK }                 from './actionTypes';
+import { ILoginRegisterInput }                        from './Types';
 
-const checkAuthTokenAction = (authToken: string) => ((dispatch: any ) => {
-  // tslint:disable-next-line:no-console
-  console.log('Checking Auth Token');
+const checkAuthTokenAction = (authToken: string) => ((dispatch: Dispatch ) => {
   network.isAuthorised(authToken, (authStatus: boolean) => {
     dispatch({
       payload: {
@@ -17,7 +19,9 @@ const checkAuthTokenAction = (authToken: string) => ((dispatch: any ) => {
   });
 });
 
-const loginAction = (loginData: any) => ((dispatch: any) => {
+
+
+const loginAction = (loginData: ILoginRegisterInput) => ((dispatch: Dispatch) => {
   network.getCSRF((csrfToken) => {
     axios.request({
       data: {
@@ -62,5 +66,9 @@ const loginAction = (loginData: any) => ((dispatch: any) => {
     });
   });
 });
+
+// const registerAction = (registerData: ILoginRegisterInput) => ((dispatch: any) => {
+
+// });
 
 export { loginAction, checkAuthTokenAction };

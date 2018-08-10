@@ -24,7 +24,7 @@ const loginFormClasses = (theme: Theme) => createStyles({
     alignItems:       'center',
     display:          'flex',
     justifyContent:   'center',
-    paddingTop:       100,
+    paddingTop:        100,
   },
   textField: {
     flexBasis:        200,

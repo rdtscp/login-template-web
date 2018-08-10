@@ -1,6 +1,6 @@
 import withStyles                                     from '@material-ui/core/styles/withStyles';
 
 import Device                                         from './Device';
-import { deviceClasses }                              from './styles';
+import { deviceClasses }                              from './Styles';
 
 export default withStyles(deviceClasses)(Device);

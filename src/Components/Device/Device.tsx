@@ -8,10 +8,10 @@ import CardContent                                    from '@material-ui/core/Ca
 import Typography                                     from '@material-ui/core/Typography';
 
 /* Type Imports */
-import IDeviceType                                    from './types';
+import IDeviceType                                    from './Types';
 
 /* Style Imports */
-import { IDeviceStyle }                               from './styles';
+import { IDeviceStyle }                               from './Styles';
 
 export default class Device extends React.Component<IDeviceType & IDeviceStyle> {
 

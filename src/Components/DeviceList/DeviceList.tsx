@@ -5,10 +5,10 @@ import Device                                         from '../Device';
 
 /* Type Imports */
 import IDeviceType                                    from '../Device/types';
-import IDeviceListType                                from './types';
+import IDeviceListType                                from './Types';
 
 /* Style Imports */
-import { IDeviceListStyles }                          from './styles';
+import { IDeviceListStyles }                          from './Styles';
 
 
 export default class DeviceList extends React.Component<IDeviceListType & IDeviceListStyles> {
