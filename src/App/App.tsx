@@ -7,12 +7,12 @@ import {  MuiThemeProvider }                          from '@material-ui/core/st
 import LoginForm                                      from '../Components/LoginForm';
 
 /* Types */
-import { AppProps }                                   from './Types';
+import { AppProps, AppState }                         from './Types';
 
 /* Theme/Styles */
 import appTheme                                       from './Theme';
 
-export default class App extends React.Component<AppProps> {
+class App extends React.Component<AppProps, AppState> {
 
   public constructor(props: AppProps) {
     super(props);
@@ -34,6 +34,12 @@ export default class App extends React.Component<AppProps> {
   }
 
   public render() {
+    if (this.state.loading === true) {
+      // TODO: Loading Bar
+      return (
+        <p style={{fontSize: 50}}> Loading... </p>
+      );
+    }
     if (this.props.authStatus) {
       return (
         <MuiThemeProvider theme={appTheme}>
@@ -54,3 +60,5 @@ export default class App extends React.Component<AppProps> {
   }
 
 }
+
+export default App;
