@@ -16,7 +16,7 @@ const network = {
             withCredentials: true,
           })
           .then((response) => {
-            cb(response.data.content.tokenValid);
+            return cb(response.data.content.tokenValid);
           })
         );
       });
