@@ -5,4 +5,11 @@ interface IAppProps {
   checkAuthTokenAction:   (authToken: string)=> ((dispatch: any) => void);    // Foo
 }
 
-export type AppProps = IAppProps & IAppStyle;
+interface IAppState {
+  loading: boolean;
+}
+
+type AppProps = IAppProps & IAppStyle;
+type AppState = IAppState;
+
+export { AppProps, AppState };
