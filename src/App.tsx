@@ -35,7 +35,6 @@ class App extends React.Component<{ authStatus: boolean, checkAuthTokenAction: (
         <MuiThemeProvider theme={appTheme}>
           <CssBaseline />
             <a onClick={this.crudeLogout}> Logout </a>
-            {this.props.authStatus}
         </MuiThemeProvider>
       );
     }
@@ -43,7 +42,6 @@ class App extends React.Component<{ authStatus: boolean, checkAuthTokenAction: (
       return (
         <MuiThemeProvider theme={appTheme}>
           <CssBaseline />
-            {this.props.authStatus};
             <LoginForm />
         </MuiThemeProvider>
       );
