@@ -3,57 +3,39 @@ import * as React from 'react';
 import CssBaseline                                    from '@material-ui/core/CssBaseline';
 import {  MuiThemeProvider }                          from '@material-ui/core/styles';
 
-import DeviceList                                     from './Components/DeviceList';
+/* Redux */
+import { connect }                                    from 'react-redux';
 
+import { checkAuthTokenAction}                from './Actions/authActions';
+
+/* Components */
 import LoginForm                                      from './Components/LoginForm';
 
-import IDeviceType                                    from './Components/Device/types';
-
-
+/* Theme/Styles */
 import appTheme                                       from './theme';
 
-class App extends React.Component<{}, { dummyDeviceList: IDeviceType[], test: boolean }> {
+  
+class App extends React.Component<{ authStatus: boolean, checkAuthTokenAction: (authToken: string) => ((dispatch: any) => void) }> {
 
-  constructor(props: any) {
+  public constructor(props: any) {
     super(props);
-    this.state = {
-      dummyDeviceList: [
-        {
-          lastUsed:       '7 Aug, 02:12:34',
-          logout:         this.testFunc,
-          thisDevice:     false,
-          userAgentStr:   'Firefox on Windows'
-        },
-        {
-          lastUsed:       '9 Aug, 02:12:34',
-          logout:         this.testFunc,
-          thisDevice:     true,
-          userAgentStr:   'Chrome on Mac OS'
-        },
-        {
-          lastUsed:       '7 Aug, 02:12:34',
-          logout:         this.testFunc,
-          thisDevice:     false,
-          userAgentStr:   'Safari on iOS'
-        },
-        {
-          lastUsed:       '7 Aug, 02:12:34',
-          logout:         this.testFunc,
-          thisDevice:     false,
-          userAgentStr:   'Chromium on Windows'
-        },
-      ] as IDeviceType[],
-      test: false,
-    }
+    this.componentWillMount.bind(this);
     this.render.bind(this);
   }
 
+  public componentWillMount() {
+    // Check if this Device is already Authorised.
+    const localAuthToken: any = (localStorage.getItem('authToken')) ? localStorage.getItem('authToken') : '' ;
+    this.props.checkAuthTokenAction(localAuthToken);
+  }
+
   public render() {
-    if(this.state.test) {
+    if (this.props.authStatus) {
       return (
         <MuiThemeProvider theme={appTheme}>
           <CssBaseline />
-          <DeviceList devices={this.state.dummyDeviceList as IDeviceType[]} onDeviceClick={this.testFunc} />
+            <a onClick={this.crudeLogout}> Logout </a>
+            {this.props.authStatus}
         </MuiThemeProvider>
       );
     }
@@ -61,16 +43,26 @@ class App extends React.Component<{}, { dummyDeviceList: IDeviceType[], test: bo
       return (
         <MuiThemeProvider theme={appTheme}>
           <CssBaseline />
-          <LoginForm />
+            {this.props.authStatus};
+            <LoginForm />
         </MuiThemeProvider>
       );
     }
+    
   }
 
-  private testFunc = (arg1: any) => {
-    alert('Test');
+  private crudeLogout = () => {
+    localStorage.removeItem('authToken');
+    window.location.reload();
   }
 
 }
 
-export default App;
+const mapStateToProps = (state: any) => {
+  return {
+    authStatus: state.authState.authStatus,
+  }
+}
+
+
+export default connect(mapStateToProps, { checkAuthTokenAction })(App);
