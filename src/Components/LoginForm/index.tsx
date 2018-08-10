@@ -1,6 +1,12 @@
-import withStyles   from '@material-ui/core/styles/withStyles';
+/* Redux */
+import { connect }                                    from 'react-redux';
+import { loginAction }                                from '../../Actions/authActions';
 
-import LoginForm    from './LoginForm';
-import styles       from './styles';
+/* Material-UI Styling */
+import withStyles                                     from '@material-ui/core/styles/withStyles';
 
-export default withStyles(styles)(LoginForm);
+/* Component View */
+import LoginForm                                      from './LoginForm';
+import { loginFormClasses }                           from './styles';
+
+export default connect(null, { loginAction })(withStyles(loginFormClasses)(LoginForm));

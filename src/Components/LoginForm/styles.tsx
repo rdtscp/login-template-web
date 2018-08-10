@@ -1,8 +1,9 @@
-import { Theme } from '@material-ui/core/styles';
+import { Theme }                from '@material-ui/core/styles';
 
-import { createStyles } from '@material-ui/core';
+import { createStyles }         from '@material-ui/core';
+import { WithStyles }           from '@material-ui/core/styles/withStyles';
 
-const styles = (theme: Theme) => createStyles({
+const loginFormClasses = (theme: Theme) => createStyles({
   buttonsContainer: {
     paddingTop:       15,
     width:            231.5,
@@ -30,5 +31,6 @@ const styles = (theme: Theme) => createStyles({
   },
 });
 
+interface ILoginFormStyle extends WithStyles<typeof loginFormClasses> {};
 
-export default styles;
+export { ILoginFormStyle, loginFormClasses };

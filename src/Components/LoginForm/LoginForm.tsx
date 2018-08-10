@@ -13,9 +13,12 @@ import VisibilityOff                                  from '@material-ui/icons/V
 /* Signatures for Props and State */
 import { ILoginFormProps, ILoginFormState }           from './types';
 
-export default class LoginForm extends React.Component<ILoginFormProps, ILoginFormState> {
+/* Style Imports */
+import { ILoginFormStyle }                            from './styles';
 
-  constructor(props: any) {
+export default class LoginForm extends React.Component<ILoginFormProps & ILoginFormStyle, ILoginFormState> {
+
+  constructor(props: ILoginFormProps & ILoginFormStyle) {
     super(props);
     this.state = {
       password:       '', 
@@ -83,8 +86,10 @@ export default class LoginForm extends React.Component<ILoginFormProps, ILoginFo
   }
 
   private login = () => {
-    // tslint:disable-next-line:no-console
-    console.log('Logging In');
+    this.props.loginAction({
+      password: this.state.password,
+      username: this.state.username,
+    });
   }
 
   private register = () => {
