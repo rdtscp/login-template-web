@@ -3,10 +3,7 @@ import * as ReactDOM from 'react-dom';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import 'materialize-css/dist/css/materialize.min.css'
 import './styles.css';
-
-document.title = "Login Template App";
 
 ReactDOM.render(
   <App />,

@@ -1,66 +1,74 @@
 import * as React from 'react';
 
-import * as Views from './Views';
+import CssBaseline                                    from '@material-ui/core/CssBaseline';
+import {  MuiThemeProvider }                          from '@material-ui/core/styles';
 
-import network from './Resources/networkHelper';
+import DeviceList                                     from './Components/DeviceList';
 
-interface IAppState {
-  authenticated:    boolean
-  loading:          boolean
-  loadingMessage:   string
-  token?:           string
-}
+import LoginForm                                      from './Components/LoginForm';
 
-class App extends React.Component<any, IAppState> {
-  
+import IDeviceType                                    from './Components/Device/types';
+
+
+import appTheme                                       from './theme';
+
+class App extends React.Component<{}, { dummyDeviceList: IDeviceType[], test: boolean }> {
+
   constructor(props: any) {
     super(props);
     this.state = {
-      authenticated:  false,
-      loading:        true,
-      loadingMessage: '',
-      token:          undefined
-    };
+      dummyDeviceList: [
+        {
+          lastUsed:       '7 Aug, 02:12:34',
+          logout:         this.testFunc,
+          thisDevice:     false,
+          userAgentStr:   'Firefox on Windows'
+        },
+        {
+          lastUsed:       '9 Aug, 02:12:34',
+          logout:         this.testFunc,
+          thisDevice:     true,
+          userAgentStr:   'Chrome on Mac OS'
+        },
+        {
+          lastUsed:       '7 Aug, 02:12:34',
+          logout:         this.testFunc,
+          thisDevice:     false,
+          userAgentStr:   'Safari on iOS'
+        },
+        {
+          lastUsed:       '7 Aug, 02:12:34',
+          logout:         this.testFunc,
+          thisDevice:     false,
+          userAgentStr:   'Chromium on Windows'
+        },
+      ] as IDeviceType[],
+      test: false,
+    }
+    this.render.bind(this);
   }
 
-  public componentDidMount = () => {
-    const localAuthToken = localStorage.getItem('authToken');
-
-    /* Inform User of Possible Connection Issues */
-    setTimeout(() => {
-      this.setState({
-        loadingMessage: "Its taking a long time to connect to server, please refresh and check your internet connection.",
-      });
-    }, 5000);
-
-    /* Check if we are still Authenticated with the Server */
-    if (localAuthToken !== null) {
-      network.isAuthorised(localAuthToken, (authStatus) => {
-        this.setState({
-          authenticated: authStatus,
-          loading: false,
-          token: localAuthToken
-        });
-      });
+  public render() {
+    if(this.state.test) {
+      return (
+        <MuiThemeProvider theme={appTheme}>
+          <CssBaseline />
+          <DeviceList devices={this.state.dummyDeviceList as IDeviceType[]} onDeviceClick={this.testFunc} />
+        </MuiThemeProvider>
+      );
     }
     else {
-      this.setState({
-        authenticated: false,
-        loading: false,
-      });
+      return (
+        <MuiThemeProvider theme={appTheme}>
+          <CssBaseline />
+          <LoginForm />
+        </MuiThemeProvider>
+      );
     }
   }
 
-  public render = () => {
-    if (this.state.loading) {
-      return(<Views.Landing message={this.state.loadingMessage}/>);
-    }
-    else if (this.state.authenticated) {
-      return (<Views.Account/>);
-    }
-    else {
-      return (<Views.Login />);
-    }
+  private testFunc = (arg1: any) => {
+    alert('Test');
   }
 
 }
