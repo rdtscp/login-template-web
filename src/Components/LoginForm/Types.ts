@@ -1,6 +1,7 @@
+import { ILoginFormStyle }      from './Styles';
+
 interface ILoginFormProps {
-  loginAction:              (loginData: any) => ((dispatch: any) => void);
-  // registerAction:     (registerData: any) => ((dispatch: any) => void);
+  setAuthState:           (authStatus: boolean, authToken: string)=> ((dispatch: any) => void);
 }
 
 interface ILoginFormState {
@@ -9,4 +10,7 @@ interface ILoginFormState {
   username:                 string;
 }
 
-export { ILoginFormProps, ILoginFormState }
+type LoginFormProps = ILoginFormProps & ILoginFormStyle;
+type LoginFormState = ILoginFormState;
+
+export { LoginFormProps, LoginFormState }
