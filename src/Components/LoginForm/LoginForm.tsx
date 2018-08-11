@@ -11,14 +11,11 @@ import Visibility                                     from '@material-ui/icons/V
 import VisibilityOff                                  from '@material-ui/icons/VisibilityOff';
 
 /* Type Imports */
-import { IBackendData, ILoginContent }                from './Container';
 import { LoginFormProps, LoginFormState }             from './Types';
 
+import * as Models                                    from '../../Models';
+
 /* Import Functionality */
-import {
-  sendLoginRequest,
-  sendRegisterRequest
-}                                                     from './Container';
 
 class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
 
@@ -90,50 +87,46 @@ class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
   }
 
   private login = () => {
-    sendLoginRequest({
-      password: this.state.password,
-      username: this.state.username,
-    }, (result: IBackendData) => {
-      const { error, warning, message } = result;
-      const content: ILoginContent      = result.content;
-      // tslint:disable-next-line:no-console
-      console.log(result);
-      if (error) {
-        alert('Error: ' + message);
+    const { authToken } = this.props.authState;
+    Models.DeviceAPI.create(authToken, this.state.username, this.state.password)
+    .then(({ error, warning, message, content}: Models.DeviceResponseData) => {
+      // Check that the Device was created successfully.
+      if (content !== null && content !== undefined && 'authToken' in content) {
+        // Update local storage and state with the new authToken.
+        localStorage.setItem('authToken', content.authToken);
+        this.props.setAuthStateAction(content.authToken);
+      } else {
+        if (error) {
+          alert('Error: ' + message);
+        }
+        else if (warning) {
+          alert('Warning: ' + message);
+        }
       }
-      else if (warning) {
-        alert('Warning: ' + message);
-      }
-      else if (message !== null) {
-        alert('Info: ' + message);
-      } 
-
-      if (content !== null) {
-        // tslint:disable-next-line:no-console
-        console.log('setAuthState');
-        // tslint:disable-next-line:no-console
-        console.log(content);
-        this.props.setAuthState(content.authStatus, content.authToken);
-      }
-      
+    })
+    .catch((err: any) => {
+      alert('Unexpected Error. Please try again.');
+      window.location.reload();
     });
   }
 
   private register = () => {
-    sendRegisterRequest({
-      password: this.state.password,
-      username: this.state.username,
-    }, (result: IBackendData) => {
-      const { error, warning, message } = result;
+    const { authToken } = this.props.authState;
+    Models.UserAPI.create(authToken, this.state.username, this.state.password)
+    .then(({ error, warning, message, content}: Models.UserReponseData) => {
       if (error) {
         alert('Error: ' + message);
       }
       else if (warning) {
         alert('Warning: ' + message);
       }
-      else if (message !== null) {
-        alert(message);
+      else {
+        alert('Info: ' + message);
       }
+    })
+    .catch((err: any) => {
+      alert('Unexpected Error. Please try again.');
+      window.location.reload();
     });
   }
 
