@@ -11,7 +11,6 @@ const appClasses = (theme: Theme) => createStyles({
     justifyContent: 'center',
     position: 'absolute',
     width: '100%',
-
   }
 });
 

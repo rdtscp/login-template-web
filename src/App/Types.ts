@@ -1,15 +1,17 @@
+import { Dispatch }                         from 'redux';
+import * as Models                          from '../Models';
 import { IAppStyle }                        from './Styles';
 
-interface IAppProps {
-  authStatus:             boolean;                                            // Indicates if this app is Authorised to an account.
-  setAuthState:           (authStatus: boolean, authToken: string)=> ((dispatch: any) => void);    // Foo
-}
+import { AuthStateType }                    from '../State/Store/Types'
 
-interface IAppState {
-  loading: boolean;
+interface IAppProps {
+  authState:            AuthStateType;
+  currentUser:          Models.User;
+  setCurrentUserAction: (authToken: string) => ((dispatch: Dispatch) => void);
+  setAuthStateAction:   (authToken: string) => ((dispatch: Dispatch) => void);
 }
 
 type AppProps = IAppProps & IAppStyle;
-type AppState = IAppState;
 
-export { AppProps, AppState };
+
+export { AppProps };

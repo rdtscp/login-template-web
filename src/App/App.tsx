@@ -1,57 +1,72 @@
 import * as React from 'react';
 
 /* Theme */
+import CircularProgress                               from '@material-ui/core/CircularProgress';
 import CssBaseline                                    from '@material-ui/core/CssBaseline';
 import LinearProgress                                 from '@material-ui/core/LinearProgress';
 import { MuiThemeProvider }                           from '@material-ui/core/styles';
 import { appTheme }                                   from './Theme';
 
 /* Components */
+import DeviceList                                     from '../Components/DeviceList';
 import LoginForm                                      from '../Components/LoginForm';
 
 /* Types */
-import { AppProps, AppState }                         from './Types';
+import { AppProps }                                   from './Types';
 
 /* Logic */
-import { checkAuthToken }                             from './Container';
 
-class App extends React.Component<AppProps, AppState> {
-
-  public constructor(props: AppProps) {
-    super(props);
-    this.state = {
-      loading: true
-    };
-  }
-
-  public componentWillMount() {
-    // Check if this Device is already Authorised.
-    checkAuthToken((authStatus, authToken) => {
-      this.props.setAuthState(authStatus, authToken);
-      this.setState({
-        loading: false
-      });
-    });
-  }
+class App extends React.Component<AppProps> {
 
   public render() {
-    const { classes } = this.props;
-    if (this.state.loading === true) {
-      return (
-        <div className={classes.loadingContainer}>
-          <div style={{width: 300}}>
-            <LinearProgress />
-          </div>
-        </div>
-      );
+    const { authState, classes, currentUser }   = this.props;
+
+    if (authState.authStatus === true) {
+      // this.props.setCurrentUserAction(authState.authToken);
     }
-    if (this.props.authStatus) {
+
+    const localAuthToken: string | null         = localStorage.getItem('authToken');
+
+    if (localAuthToken !== null && authState.authToken === '') {
+      this.props.setAuthStateAction(localAuthToken);
       return (
         <MuiThemeProvider theme={appTheme}>
           <CssBaseline />
           <div className={classes.loadingContainer}>
             <div style={{width: 300}}>
-              <a onClick={this.crudeLogout}>Logout</a>
+              <LinearProgress color="primary"/>
+            </div>
+          </div>
+        </MuiThemeProvider>
+      );
+    } 
+    else if (localAuthToken === null) {
+      return (
+        <MuiThemeProvider theme={appTheme}>
+          <CssBaseline />
+            <LoginForm />
+        </MuiThemeProvider>
+      );
+    }
+    else if (authState.authToken !== '' && authState.authToken != null && currentUser.id !== '') {
+      const { devices } = currentUser;
+      return (
+        <MuiThemeProvider theme={appTheme}>
+          <CssBaseline />
+          <div className={classes.loadingContainer}>
+            <DeviceList devices={devices} />
+          </div>
+        </MuiThemeProvider>
+      );
+    }
+    else if (authState.authToken !== null && authState.authToken !== '') {
+      this.props.setCurrentUserAction(authState.authToken);
+      return (
+        <MuiThemeProvider theme={appTheme}>
+          <CssBaseline />
+          <div className={classes.loadingContainer}>
+            <div style={{width: 300}}>
+              <LinearProgress color="primary"/>
             </div>
           </div>
         </MuiThemeProvider>
@@ -61,15 +76,14 @@ class App extends React.Component<AppProps, AppState> {
       return (
         <MuiThemeProvider theme={appTheme}>
           <CssBaseline />
-            <LoginForm />
+          <div className={classes.loadingContainer}>
+            <div style={{width: 56.56}}>
+              <CircularProgress color="primary"/>
+            </div>
+          </div>
         </MuiThemeProvider>
       );
     }
-  }
-
-  private crudeLogout = () => {
-    localStorage.removeItem('authToken');
-    this.props.setAuthState(false, '');
   }
 
 }
