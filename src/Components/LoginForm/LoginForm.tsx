@@ -10,15 +10,19 @@ import InputLabel                                     from '@material-ui/core/In
 import Visibility                                     from '@material-ui/icons/Visibility';
 import VisibilityOff                                  from '@material-ui/icons/VisibilityOff';
 
-/* Signatures for Props and State */
-import { ILoginFormProps, ILoginFormState }           from './Types';
+/* Type Imports */
+import { IBackendData, ILoginContent }                from './Container';
+import { LoginFormProps, LoginFormState }             from './Types';
 
-/* Style Imports */
-import { ILoginFormStyle }                            from './Styles';
+/* Import Functionality */
+import {
+  sendLoginRequest,
+  sendRegisterRequest
+}                                                     from './Container';
 
-export default class LoginForm extends React.Component<ILoginFormProps & ILoginFormStyle, ILoginFormState> {
+class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
 
-  constructor(props: ILoginFormProps & ILoginFormStyle) {
+  constructor(props: LoginFormProps) {
     super(props);
     this.state = {
       password:       '', 
@@ -86,15 +90,51 @@ export default class LoginForm extends React.Component<ILoginFormProps & ILoginF
   }
 
   private login = () => {
-    this.props.loginAction({
+    sendLoginRequest({
       password: this.state.password,
       username: this.state.username,
+    }, (result: IBackendData) => {
+      const { error, warning, message } = result;
+      const content: ILoginContent      = result.content;
+      // tslint:disable-next-line:no-console
+      console.log(result);
+      if (error) {
+        alert('Error: ' + message);
+      }
+      else if (warning) {
+        alert('Warning: ' + message);
+      }
+      else if (message !== null) {
+        alert('Info: ' + message);
+      } 
+
+      if (content !== null) {
+        // tslint:disable-next-line:no-console
+        console.log('setAuthState');
+        // tslint:disable-next-line:no-console
+        console.log(content);
+        this.props.setAuthState(content.authStatus, content.authToken);
+      }
+      
     });
   }
 
   private register = () => {
-    // tslint:disable-next-line:no-console
-    console.log('Registering');
+    sendRegisterRequest({
+      password: this.state.password,
+      username: this.state.username,
+    }, (result: IBackendData) => {
+      const { error, warning, message } = result;
+      if (error) {
+        alert('Error: ' + message);
+      }
+      else if (warning) {
+        alert('Warning: ' + message);
+      }
+      else if (message !== null) {
+        alert(message);
+      }
+    });
   }
 
   private handleKeyDown = (event: any) => {
@@ -119,3 +159,5 @@ export default class LoginForm extends React.Component<ILoginFormProps & ILoginF
   };
 
 }
+
+export default LoginForm;
