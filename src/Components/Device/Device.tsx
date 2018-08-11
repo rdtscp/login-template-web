@@ -8,17 +8,9 @@ import CardContent                                    from '@material-ui/core/Ca
 import Typography                                     from '@material-ui/core/Typography';
 
 /* Type Imports */
-import IDeviceType                                    from './Types';
+import { DeviceProps }                                from './Types';
 
-/* Style Imports */
-import { IDeviceStyle }                               from './Styles';
-
-export default class Device extends React.Component<IDeviceType & IDeviceStyle> {
-
-  constructor(props: IDeviceType & IDeviceStyle) {
-    super(props);
-    this.render.bind(this);
-  }
+class Device extends React.Component<DeviceProps> {
 
   public render() {
     const { classes } = this.props;
@@ -55,3 +47,5 @@ export default class Device extends React.Component<IDeviceType & IDeviceStyle> 
   }
 
 }
+
+export default Device;
