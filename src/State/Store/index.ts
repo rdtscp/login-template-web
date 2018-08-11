@@ -7,7 +7,7 @@ import { Store } from 'redux';
 const intitialStore: IStateType = {
   authState: {
     authStatus: false,
-    authToken: '',
+    authToken:  '',
   }
 };
 
