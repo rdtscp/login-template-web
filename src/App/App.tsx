@@ -21,13 +21,10 @@ class App extends React.Component<AppProps> {
   public render() {
     const { authState, classes, currentUser }   = this.props;
 
-    if (authState.authStatus === true) {
-      // this.props.setCurrentUserAction(authState.authToken);
-    }
-
     const localAuthToken: string | null         = localStorage.getItem('authToken');
 
-    if (localAuthToken !== null && authState.authToken === '') {
+    /* Device thinks its Authenticated, but the State AuthToken not set. */
+    if (localAuthToken !== null && authState.authStatus === false) {
       this.props.setAuthStateAction(localAuthToken);
       return (
         <MuiThemeProvider theme={appTheme}>
@@ -39,8 +36,8 @@ class App extends React.Component<AppProps> {
           </div>
         </MuiThemeProvider>
       );
-    } 
-    else if (localAuthToken === null) {
+    }
+    else if (authState.authStatus === false) {
       return (
         <MuiThemeProvider theme={appTheme}>
           <CssBaseline />
@@ -48,31 +45,8 @@ class App extends React.Component<AppProps> {
         </MuiThemeProvider>
       );
     }
-    else if (authState.authToken !== '' && authState.authToken != null && currentUser.id !== '') {
-      const { devices } = currentUser;
-      return (
-        <MuiThemeProvider theme={appTheme}>
-          <CssBaseline />
-          <div className={classes.loadingContainer}>
-            <DeviceList devices={devices} />
-          </div>
-        </MuiThemeProvider>
-      );
-    }
-    else if (authState.authToken !== null && authState.authToken !== '') {
-      this.props.setCurrentUserAction(authState.authToken);
-      return (
-        <MuiThemeProvider theme={appTheme}>
-          <CssBaseline />
-          <div className={classes.loadingContainer}>
-            <div style={{width: 300}}>
-              <LinearProgress color="primary"/>
-            </div>
-          </div>
-        </MuiThemeProvider>
-      );
-    }
-    else {
+    else if (authState.authStatus === true && currentUser.id === '') {
+      // this.props.setCurrentUserAction(authState.authToken);
       return (
         <MuiThemeProvider theme={appTheme}>
           <CssBaseline />
@@ -84,6 +58,66 @@ class App extends React.Component<AppProps> {
         </MuiThemeProvider>
       );
     }
+    else {
+      const { devices } = currentUser;
+      return (
+        <MuiThemeProvider theme={appTheme}>
+          <CssBaseline />
+          <div className={classes.loadingContainer}>
+            <DeviceList devices={devices} />
+          </div>
+        </MuiThemeProvider>
+      );
+    }
+
+    
+    // /* Device doesn't think it is Authenticated. */
+    // else if (localAuthToken === null) {
+    //   return (
+    //     <MuiThemeProvider theme={appTheme}>
+    //       <CssBaseline />
+    //         <LoginForm />
+    //     </MuiThemeProvider>
+    //   );
+    // }
+    // /* State says we are authenticated and have our data. */
+    // else if (authState.authToken !== '' && authState.authToken != null && currentUser.id !== '') {
+    //   const { devices } = currentUser;
+    //   return (
+    //     <MuiThemeProvider theme={appTheme}>
+    //       <CssBaseline />
+    //       <div className={classes.loadingContainer}>
+    //         <DeviceList devices={devices} />
+    //       </div>
+    //     </MuiThemeProvider>
+    //   );
+    // }
+    // /* State says we are authenticated but don't have our user data. */
+    // else if (authState.authToken !== null && authState.authToken !== '') {
+    //   this.props.setCurrentUserAction(authState.authToken);
+    //   return (
+    //     <MuiThemeProvider theme={appTheme}>
+    //       <CssBaseline />
+    //       <div className={classes.loadingContainer}>
+    //         <div style={{width: 56.56}}>
+    //           <CircularProgress color="primary"/>
+    //         </div>
+    //       </div>
+    //     </MuiThemeProvider>
+    //   );
+    // }
+    // else {
+    //   return (
+    //     <MuiThemeProvider theme={appTheme}>
+    //       <CssBaseline />
+    //       <div className={classes.loadingContainer}>
+    //         <div style={{width: 56.56}}>
+    //           <CircularProgress color="primary"/>
+    //         </div>
+    //       </div>
+    //     </MuiThemeProvider>
+    //   );
+    // }
   }
 
 }
