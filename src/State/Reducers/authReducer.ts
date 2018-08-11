@@ -2,14 +2,14 @@ import { SET_AUTH } from '../Actions/actionTypes';
 
 import { Reducer  } from 'redux';
 
-import { IAuthStateType } from '../Store/Types';
+import { AuthStateType } from '../Store/Types';
 
 const initialState = {
     authStatus: false,
     authToken: '',
-} as IAuthStateType;
+} as AuthStateType;
 
-const authReducer: Reducer<IAuthStateType> = (state: IAuthStateType = initialState, action: any) => {
+const authReducer: Reducer<AuthStateType> = (state: AuthStateType = initialState, action: any) => {
   switch (action.type) {
     case SET_AUTH:
       return {
