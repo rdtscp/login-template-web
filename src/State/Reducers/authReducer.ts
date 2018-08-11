@@ -1,4 +1,4 @@
-import { LOGIN_REQUEST, REGISTER_REQUEST, TOKEN_CHECK } from '../Actions/actionTypes';
+import { SET_AUTH } from '../Actions/actionTypes';
 
 import { Reducer  } from 'redux';
 
@@ -11,18 +11,11 @@ const initialState = {
 
 const authReducer: Reducer<IAuthStateType> = (state: IAuthStateType = initialState, action: any) => {
   switch (action.type) {
-    case TOKEN_CHECK:
-      return {
-        ...state,
-        ...action.payload
-      }
-    case LOGIN_REQUEST:
+    case SET_AUTH:
       return {
         ...state,
         ...action.payload
       };
-    case REGISTER_REQUEST:
-      return state;
     default:
       return state;
   }
