@@ -43,7 +43,7 @@ class Device extends React.Component<DeviceProps> {
   }
 
   private handleLogoutClick = () => {
-    this.props.logout(this.props.key);
+    this.props.logout(this.props.id, this.props.authToken);
   }
 
 }
