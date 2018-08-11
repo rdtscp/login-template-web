@@ -1,4 +1,6 @@
-interface IDeviceType {
+import { IDeviceStyle }       from './Styles';
+
+interface IDeviceProps {
   key:          number;                                           // Index number of the rendered Device.
   lastUsed:     string;                                           // Pre-Formatted Last Used String.
   logout:       (deviceIndex: number) => void;                    // Function to Call to Logout the Device.
@@ -6,5 +8,6 @@ interface IDeviceType {
   userAgentStr: string;                                           // Pre-Formatted User-Agent String.
 }
 
+type DeviceProps = IDeviceProps & IDeviceStyle;
 
-export default IDeviceType;
+export { DeviceProps };
