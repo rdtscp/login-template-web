@@ -2,7 +2,7 @@ import { IAppStyle }                        from './Styles';
 
 interface IAppProps {
   authStatus:             boolean;                                            // Indicates if this app is Authorised to an account.
-  checkAuthTokenAction:   (authToken: string)=> ((dispatch: any) => void);    // Foo
+  setAuthState:           (authStatus: boolean, authToken: string)=> ((dispatch: any) => void);    // Foo
 }
 
 interface IAppState {

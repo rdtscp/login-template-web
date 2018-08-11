@@ -1,7 +1,7 @@
 /* Redux */
 import { connect }                                    from 'react-redux';
 import { IStateType }                                 from '../State';
-import { checkAuthTokenAction }                       from '../State/Actions/authActions';
+import { setAuthState }                               from '../State/Actions/authActions';
 
 /* Material-UI Styling */
 import withStyles                                     from '@material-ui/core/styles/withStyles';
@@ -16,4 +16,4 @@ const mapStateToProps = (state: IStateType) => {
   }
 }
 
-export default connect(mapStateToProps, { checkAuthTokenAction })(withStyles(appClasses)(App));
+export default connect(mapStateToProps, { setAuthState })(withStyles(appClasses)(App));
