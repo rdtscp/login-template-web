@@ -10,4 +10,4 @@ const appTheme = createMuiTheme({
   },
 });
 
-export default appTheme;
+export { appTheme };
