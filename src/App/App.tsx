@@ -1,7 +1,9 @@
 import * as React from 'react';
 
+/* Theme */
 import CssBaseline                                    from '@material-ui/core/CssBaseline';
-import {  MuiThemeProvider }                          from '@material-ui/core/styles';
+import { MuiThemeProvider }                           from '@material-ui/core/styles';
+import { appTheme }                                   from './Theme';
 
 /* Components */
 import LoginForm                                      from '../Components/LoginForm';
@@ -9,8 +11,8 @@ import LoginForm                                      from '../Components/LoginF
 /* Types */
 import { AppProps, AppState }                         from './Types';
 
-/* Theme/Styles */
-import appTheme                                       from './Theme';
+/* Logic */
+import { checkAuthToken }                             from './Container';
 
 class App extends React.Component<AppProps, AppState> {
 
@@ -21,30 +23,27 @@ class App extends React.Component<AppProps, AppState> {
     };
   }
 
-  public componentWillReceiveProps() {
-    this.setState({
-      loading: this.props.authStatus
-    });
-  }
-
   public componentWillMount() {
     // Check if this Device is already Authorised.
-    const localAuthToken: any = (localStorage.getItem('authToken')) ? localStorage.getItem('authToken') : '' ;
-    this.props.checkAuthTokenAction(localAuthToken);
+    checkAuthToken((authStatus, authToken) => {
+      this.props.setAuthState(authStatus, authToken);
+      this.setState({
+        loading: false
+      });
+    });
   }
 
   public render() {
     if (this.state.loading === true) {
-      // TODO: Loading Bar
       return (
-        <p style={{fontSize: 50}}> Loading... </p>
+        <p> Loading... </p>
       );
     }
     if (this.props.authStatus) {
       return (
         <MuiThemeProvider theme={appTheme}>
           <CssBaseline />
-            Logout
+            <a onClick={this.crudeLogout}>Logout</a>
         </MuiThemeProvider>
       );
     }
@@ -56,7 +55,11 @@ class App extends React.Component<AppProps, AppState> {
         </MuiThemeProvider>
       );
     }
-    
+  }
+
+  private crudeLogout = () => {
+    localStorage.removeItem('authToken');
+    this.props.setAuthState(false, '');
   }
 
 }
