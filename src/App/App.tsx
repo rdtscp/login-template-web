@@ -2,6 +2,7 @@ import * as React from 'react';
 
 /* Theme */
 import CssBaseline                                    from '@material-ui/core/CssBaseline';
+import LinearProgress                                 from '@material-ui/core/LinearProgress';
 import { MuiThemeProvider }                           from '@material-ui/core/styles';
 import { appTheme }                                   from './Theme';
 
@@ -34,16 +35,25 @@ class App extends React.Component<AppProps, AppState> {
   }
 
   public render() {
+    const { classes } = this.props;
     if (this.state.loading === true) {
       return (
-        <p> Loading... </p>
+        <div className={classes.loadingContainer}>
+          <div style={{width: 300}}>
+            <LinearProgress />
+          </div>
+        </div>
       );
     }
     if (this.props.authStatus) {
       return (
         <MuiThemeProvider theme={appTheme}>
           <CssBaseline />
-            <a onClick={this.crudeLogout}>Logout</a>
+          <div className={classes.loadingContainer}>
+            <div style={{width: 300}}>
+              <a onClick={this.crudeLogout}>Logout</a>
+            </div>
+          </div>
         </MuiThemeProvider>
       );
     }
