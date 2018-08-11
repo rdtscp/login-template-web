@@ -1,17 +1,17 @@
 /* Import Redux Libraries */
-import { applyMiddleware, compose, createStore }              from 'redux';
+import { applyMiddleware, createStore }                       from 'redux';
+import { composeWithDevTools }                                from 'redux-devtools-extension/developmentOnly';
 import thunk                                                  from 'redux-thunk';
 import { rootReducer }                                        from '../Reducers';
+
 
 /* Import Types */
 import { IStateType }                                         from './Types';
 
 export const initStore = (initialState: IStateType) => {
   const middlewares = [thunk];
-  const enhancer    = compose(
+  const enhancer    = composeWithDevTools(
     applyMiddleware(...middlewares),
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__   &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__()
   );
   return createStore(rootReducer, initialState, enhancer);
 }
