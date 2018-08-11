@@ -6,6 +6,6 @@ import { WithStyles }           from '@material-ui/core/styles/withStyles';
 const deviceListClasses = (theme: Theme) => createStyles({
 });
 
-interface IDeviceListStyles extends WithStyles<typeof deviceListClasses> {};
+interface IDeviceListStyle extends WithStyles<typeof deviceListClasses> {};
 
-export { deviceListClasses, IDeviceListStyles };
+export { deviceListClasses, IDeviceListStyle };

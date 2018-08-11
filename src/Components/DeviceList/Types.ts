@@ -1,8 +1,17 @@
-import IDeviceType from '../Device/types';
+import { Dispatch }                         from 'redux';
+import * as Models                          from '../../Models';
+import { IDeviceListStyle }                 from './Styles';
 
-interface IDeviceListType {
-  devices:        IDeviceType[];
-  onDeviceClick:  (deviceIndex: number) => void;
+import { AuthStateType }                    from '../../State/Store/Types'
+
+
+interface IDeviceListProps {
+  authState:            AuthStateType;
+  devices:              Models.Device[];
+  setAuthStateAction:   (authToken: string) => ((dispatch: Dispatch) => void);
+  setCurrentUserAction: (authToken: string) => ((dispatch: Dispatch) => void);
 }
 
-export default IDeviceListType
+type DeviceListProps = IDeviceListProps & IDeviceListStyle;
+
+export { DeviceListProps };
