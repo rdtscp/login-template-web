@@ -13,9 +13,10 @@ const deviceClasses = (theme: Theme) => createStyles({
   root: {
     ...theme.mixins.gutters(),
     borderRadius: 0,
+    maxWidth: 355,
+    minWidth: 327,
     paddingBottom: theme.spacing.unit * 2,
     paddingTop: theme.spacing.unit * 2,
-    width: 355,
   },
 });
 
