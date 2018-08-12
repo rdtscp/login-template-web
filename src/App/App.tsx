@@ -1,14 +1,20 @@
 import * as React from 'react';
 
 /* Theme */
+// import AppBar                                         from '@material-ui/core/AppBar';
 import CircularProgress                               from '@material-ui/core/CircularProgress';
 import CssBaseline                                    from '@material-ui/core/CssBaseline';
+// import IconButton                                     from '@material-ui/core/IconButton';
 import LinearProgress                                 from '@material-ui/core/LinearProgress';
 import { MuiThemeProvider }                           from '@material-ui/core/styles';
+// import Toolbar                                        from '@material-ui/core/Toolbar';
+// import Typography                                     from '@material-ui/core/Typography';
+// import MenuIcon                                       from '@material-ui/icons/Menu';
 import { appTheme }                                   from './Theme';
 
 /* Components */
-import DeviceList                                     from '../Components/DeviceList';
+import AppNavigator                                   from '../Components/AppNavigator';
+// import DeviceList                                     from '../Components/DeviceList';
 import LoginForm                                      from '../Components/LoginForm';
 
 /* Types */
@@ -59,61 +65,33 @@ class App extends React.Component<AppProps> {
       );
     }
     else {
-      const { devices } = currentUser;
+      // const { devices } = currentUser;
       return (
         <MuiThemeProvider theme={appTheme}>
           <CssBaseline />
-          <div className={classes.loadingContainer}>
-            <DeviceList devices={devices} />
-          </div>
+          <AppNavigator />
         </MuiThemeProvider>
       );
     }
-
-    
-    // /* Device doesn't think it is Authenticated. */
-    // else if (localAuthToken === null) {
-    //   return (
-    //     <MuiThemeProvider theme={appTheme}>
-    //       <CssBaseline />
-    //         <LoginForm />
-    //     </MuiThemeProvider>
-    //   );
-    // }
-    // /* State says we are authenticated and have our data. */
-    // else if (authState.authToken !== '' && authState.authToken != null && currentUser.id !== '') {
+    // else {
     //   const { devices } = currentUser;
     //   return (
     //     <MuiThemeProvider theme={appTheme}>
     //       <CssBaseline />
+    //       <div className={classes.root}>
+    //         <AppBar position="static">
+    //           <Toolbar>
+    //             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+    //               <MenuIcon />
+    //             </IconButton>
+    //             <Typography variant="title" color="inherit">
+    //               Devices
+    //             </Typography>
+    //           </Toolbar>
+    //         </AppBar>
+    //       </div>
     //       <div className={classes.loadingContainer}>
     //         <DeviceList devices={devices} />
-    //       </div>
-    //     </MuiThemeProvider>
-    //   );
-    // }
-    // /* State says we are authenticated but don't have our user data. */
-    // else if (authState.authToken !== null && authState.authToken !== '') {
-    //   this.props.setCurrentUserAction(authState.authToken);
-    //   return (
-    //     <MuiThemeProvider theme={appTheme}>
-    //       <CssBaseline />
-    //       <div className={classes.loadingContainer}>
-    //         <div style={{width: 56.56}}>
-    //           <CircularProgress color="primary"/>
-    //         </div>
-    //       </div>
-    //     </MuiThemeProvider>
-    //   );
-    // }
-    // else {
-    //   return (
-    //     <MuiThemeProvider theme={appTheme}>
-    //       <CssBaseline />
-    //       <div className={classes.loadingContainer}>
-    //         <div style={{width: 56.56}}>
-    //           <CircularProgress color="primary"/>
-    //         </div>
     //       </div>
     //     </MuiThemeProvider>
     //   );
