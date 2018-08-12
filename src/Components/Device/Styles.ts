@@ -9,8 +9,14 @@ const deviceClasses = (theme: Theme) => createStyles({
     color:  'green',
   },
   deviceContainer: {
-    width: 267,
-  }
+  },
+  root: {
+    ...theme.mixins.gutters(),
+    borderRadius: 0,
+    paddingBottom: theme.spacing.unit * 2,
+    paddingTop: theme.spacing.unit * 2,
+    width: 355,
+  },
 });
 
 interface IDeviceStyle extends WithStyles<typeof deviceClasses> {};
