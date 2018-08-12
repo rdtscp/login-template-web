@@ -5,6 +5,7 @@ import { WithStyles }                                 from '@material-ui/core/st
 
 const appClasses = (theme: Theme) => createStyles({
   loadingContainer: {
+    alignItems: 'center',
     display: 'flex',
     height: '100%',
     justifyContent: 'center',
