@@ -16,7 +16,7 @@ class DeviceList extends React.Component<DeviceListProps> {
 
   public render() {
     return (
-      <div style={{marginTop: 10}}>
+      <div className={this.props.classes.devicesContainer}>
         {this.props.devices.map((device: Models.Device, index: number) => {
           const lastUsedStr: string  = utilities.unixToDateTime(device.lastUsed);
           const thisDevice:  boolean = (device.authToken === this.props.authState.authToken) ? true : false;
