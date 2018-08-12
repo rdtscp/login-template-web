@@ -15,9 +15,8 @@ import utilities                                      from '../../Resources/util
 class DeviceList extends React.Component<DeviceListProps> {
 
   public render() {
-    // const { devices } = this.props;
     return (
-      <div>
+      <div style={{marginTop: 10}}>
         {this.props.devices.map((device: Models.Device, index: number) => {
           const lastUsedStr: string  = utilities.unixToDateTime(device.lastUsed);
           const thisDevice:  boolean = (device.authToken === this.props.authState.authToken) ? true : false;
@@ -53,9 +52,8 @@ class DeviceList extends React.Component<DeviceListProps> {
       }
       else {
         alert('Info: ' + message);
-      }
-      
-      // this.props.setCurrentUserAction(this.props.authState.authToken);
+        this.props.setCurrentUserAction(this.props.authState.authToken);
+      }      
     })
     .catch((err: any) => {
       alert('Unexpected Error, Please Refresh & Try Again');
