@@ -13,6 +13,11 @@ interface ISettingsMenuProps {
   setCurrentUserAction: (authToken: string) => ((dispatch: Dispatch) => void);
 }
 
-type SettingsMenuProps = ISettingsMenuProps & ISettingsMenuStyle;
+interface ISettingsMenuState {
+  confirmationLogoutAlertOpen: boolean;
+}
 
-export { SettingsMenuProps };
+type SettingsMenuProps = ISettingsMenuProps & ISettingsMenuStyle;
+type SettingsMenuState = ISettingsMenuState;
+
+export { SettingsMenuProps, SettingsMenuState };
