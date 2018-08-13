@@ -1,20 +1,15 @@
-/* AppNavigator/index.ts */
+/* Components/AppNavigator/index.ts */
 
-/* Redux */
+/* Redux Components */
 import { connect }                                    from 'react-redux';
-import { IStateType }                                 from '../../State';
 
-/* Material-UI Styling */
+/* Material-UI Components */
 import withStyles                                     from '@material-ui/core/styles/withStyles';
 
-/* Component View */
+/* Project Components */
 import AppNavigator                                   from './AppNavigator';
-import { appNavigatorClasses }                                 from './Styles';
 
-const mapStateToProps = (state: IStateType) => {
-  return {
-    devices:    state.currentUser.devices
-  }
-}
+/* Project Types */
+import { appNavigatorClasses }                        from './Styles';
 
-export default connect(mapStateToProps, {})(withStyles(appNavigatorClasses, {withTheme: true})(AppNavigator));
+export default connect(null, {})(withStyles(appNavigatorClasses, {withTheme: true})(AppNavigator));

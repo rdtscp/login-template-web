@@ -1,7 +1,7 @@
-import { Device }  from './Device';
+import axios                                          from 'axios';
 
-import axios from 'axios';
-import network from '../Resources/networkHelper';
+import network                                        from '../Resources/networkHelper';
+import { Device }                                     from './Device';
 
 interface IUserType {
   readonly devices:   Device[];
@@ -41,7 +41,7 @@ export const UserAPI = {
             authToken
           },
           method: 'POST',
-          url: 'http://localhost:1337/user/get',
+          url: 'http://192.168.0.11:1337/user/get',
           withCredentials: true,
         })
         .then((response: IBackendResponse) => {
@@ -66,7 +66,7 @@ export const UserAPI = {
             username,
           },
           method: 'POST',
-          url: 'http://localhost:1337/user/create',
+          url: 'http://192.168.0.11:1337/user/create',
           withCredentials: true,
         })
         .then((response: IBackendResponse) => {
@@ -93,7 +93,7 @@ export const UserAPI = {
             authToken
           },
           method: 'POST',
-          url: 'http://localhost:1337/user/destroy',
+          url: 'http://192.168.0.11:1337/user/destroy',
           withCredentials: true,
         })
         .then((response: IBackendResponse) => {

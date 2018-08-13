@@ -1,26 +1,20 @@
-import * as React from 'react';
+/* App/App.tsx */
 
-/* Theme */
-// import AppBar                                         from '@material-ui/core/AppBar';
+import * as React                                     from 'react';
+
+/* Material-UI Components */
 import CircularProgress                               from '@material-ui/core/CircularProgress';
 import CssBaseline                                    from '@material-ui/core/CssBaseline';
-// import IconButton                                     from '@material-ui/core/IconButton';
 import LinearProgress                                 from '@material-ui/core/LinearProgress';
 import { MuiThemeProvider }                           from '@material-ui/core/styles';
-// import Toolbar                                        from '@material-ui/core/Toolbar';
-// import Typography                                     from '@material-ui/core/Typography';
-// import MenuIcon                                       from '@material-ui/icons/Menu';
+
+/* Project Components */
+import AppNavigator                                   from '../Components/AppNavigator';
+import LoginForm                                      from '../Components/LoginForm';
 import { appTheme }                                   from './Theme';
 
-/* Components */
-import AppNavigator                                   from '../Components/AppNavigator';
-// import DeviceList                                     from '../Components/DeviceList';
-import LoginForm                                      from '../Components/LoginForm';
-
-/* Types */
+/* Project Types */
 import { AppProps }                                   from './Types';
-
-/* Logic */
 
 class App extends React.Component<AppProps> {
 
@@ -65,7 +59,6 @@ class App extends React.Component<AppProps> {
       );
     }
     else {
-      // const { devices } = currentUser;
       return (
         <MuiThemeProvider theme={appTheme}>
           <CssBaseline />
@@ -73,29 +66,6 @@ class App extends React.Component<AppProps> {
         </MuiThemeProvider>
       );
     }
-    // else {
-    //   const { devices } = currentUser;
-    //   return (
-    //     <MuiThemeProvider theme={appTheme}>
-    //       <CssBaseline />
-    //       <div className={classes.root}>
-    //         <AppBar position="static">
-    //           <Toolbar>
-    //             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-    //               <MenuIcon />
-    //             </IconButton>
-    //             <Typography variant="title" color="inherit">
-    //               Devices
-    //             </Typography>
-    //           </Toolbar>
-    //         </AppBar>
-    //       </div>
-    //       <div className={classes.loadingContainer}>
-    //         <DeviceList devices={devices} />
-    //       </div>
-    //     </MuiThemeProvider>
-    //   );
-    // }
   }
 
 }

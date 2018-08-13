@@ -1,12 +1,17 @@
-import blue  from '@material-ui/core/colors/blue';
-import green from '@material-ui/core/colors/green';
+/* App/Theme.ts */
 
-import { createMuiTheme } from '@material-ui/core/styles';
+/* Material-UI Components */
+import blue                                           from '@material-ui/core/colors/blue';
+import red                                            from '@material-ui/core/colors/red';
+
+/* Material-UI Methods */
+import { createMuiTheme }                             from '@material-ui/core/styles';
 
 const appTheme = createMuiTheme({
   palette: {
     primary:    blue,
-    secondary:  green,
+    secondary:  red,
+    
   },
 });
 

@@ -1,9 +1,13 @@
-import { Theme } from '@material-ui/core/styles';
+/* Components/AppNavigator/Styles.ts */
 
-import { createStyles }         from '@material-ui/core';
-import { WithStyles }           from '@material-ui/core/styles/withStyles';
+/* Material-UI Types */
+import { Theme }                                      from '@material-ui/core/styles';
 
-const drawerWidth = 240;
+/* Material-UI Methods */
+import { createStyles }                               from '@material-ui/core';
+import { WithStyles }                                 from '@material-ui/core/styles/withStyles';
+
+const drawerWidth = 310;
 
 const appNavigatorClasses = (theme: Theme) => createStyles({
   appBar: {
@@ -18,11 +22,6 @@ const appNavigatorClasses = (theme: Theme) => createStyles({
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
   },
-  devicesContainer: {
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    width: 355,
-  },
   drawerHeader: {
     ...theme.mixins.toolbar,
     backgroundColor: theme.palette.primary.main,
@@ -33,6 +32,9 @@ const appNavigatorClasses = (theme: Theme) => createStyles({
     },
     width: drawerWidth,
   },
+  drawerTitle: {
+    marginLeft: 24,
+  },
   navIconHide: {
     [theme.breakpoints.up('md')]: {
       display: 'none',
@@ -41,11 +43,15 @@ const appNavigatorClasses = (theme: Theme) => createStyles({
   root: {
     display: 'flex',
     flexGrow: 1,
-    // height: 430,
-    // overflow: 'hidden',
     position: 'relative',
-    // width: '100%',
     zIndex:1,
+  },
+  settingsPopup: {
+    backgroundColor: theme.palette.background.default,
+    height: '100%',
+    position: 'absolute',
+    width: '100%',
+    zIndex: 1201,
   },
   toolbar: theme.mixins.toolbar,
 });

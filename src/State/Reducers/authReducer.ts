@@ -1,8 +1,7 @@
-import { SET_AUTH } from '../Actions/actionTypes';
+import { Reducer }                                    from 'redux';
 
-import { Reducer  } from 'redux';
-
-import { AuthStateType } from '../Store/Types';
+import { SET_AUTH }                                   from '../Actions/actionTypes';
+import { AuthStateType }                              from '../Store/Types';
 
 const initialState = {
     authStatus: false,

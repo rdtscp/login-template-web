@@ -1,17 +1,21 @@
-/* App/index.ts */
+/* App/index.ts */                                 // from
 
-/* Redux */
+/* Redux Methods */
 import { connect }                                    from 'react-redux';
-import { IStateType }                                 from '../State';
-import { setAuthStateAction }                         from '../State/Actions/authActions';
-import { setCurrentUserAction }                       from '../State/Actions/userActions';
 
-/* Material-UI Styling */
+/* Material-UI Components */
 import withStyles                                     from '@material-ui/core/styles/withStyles';
 
-/* Component View */
+/* Project Components */
 import App                                            from './App';
+
+/* Project Types */
+import { IStateType }                                 from '../State';
 import { appClasses }                                 from './Styles';
+
+/* Project Methods */
+import { setAuthStateAction }                         from '../State/Actions/authActions';
+import { setCurrentUserAction }                       from '../State/Actions/userActions';
 
 const mapStateToProps = (state: IStateType) => {
   return {

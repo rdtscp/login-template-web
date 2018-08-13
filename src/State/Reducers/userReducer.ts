@@ -1,8 +1,7 @@
-import { SET_CURR_USER } from '../Actions/actionTypes';
+import { Reducer }                                    from 'redux';
 
-import { Reducer  } from 'redux';
-
-import * as Models from '../../Models';
+import * as Models                                    from '../../Models';
+import { SET_CURR_USER }                              from '../Actions/actionTypes';
 
 const initialState = {
 } as Models.User;

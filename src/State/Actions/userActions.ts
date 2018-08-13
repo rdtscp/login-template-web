@@ -1,8 +1,7 @@
 /* Types */
 import { Dispatch }                                   from 'redux';
+import { UserAPI, UserReponseData }                   from '../../Models';
 import { SET_CURR_USER }                              from './actionTypes';
-
-import { UserAPI, UserReponseData }                   from '../../Models/';
 
 const setCurrentUserAction = (authToken: string) => ((dispatch: Dispatch) => {
     UserAPI.get(authToken)

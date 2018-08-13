@@ -1,8 +1,7 @@
 /* Types */
 import { Dispatch }                                   from 'redux';
+import * as Models                                    from '../../Models';
 import { SET_AUTH, SET_CURR_USER }                    from './actionTypes';
-
-import * as Models                                    from '../../Models/';
 
 const setAuthStateAction = (localAuthToken: string) => ((dispatch: Dispatch) => {
   Models.DeviceAPI.get(localAuthToken)

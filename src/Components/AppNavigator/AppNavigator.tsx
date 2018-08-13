@@ -1,115 +1,113 @@
-import * as React                                       from 'react';
+/* Components/AppNavigator/AppNavigator.tsx */
 
-/* Component Imports */
-import AppBar                                           from '@material-ui/core/AppBar';
-import Divider                                          from '@material-ui/core/Divider';
-import Drawer                                           from '@material-ui/core/Drawer';
-import Hidden                                           from '@material-ui/core/Hidden';
-import IconButton                                       from '@material-ui/core/IconButton';
-import List                                             from '@material-ui/core/List';
-import ListItem                                         from '@material-ui/core/ListItem';
-import ListItemIcon                                     from '@material-ui/core/ListItemIcon';
-import ListItemText                                     from '@material-ui/core/ListItemText';
-import Toolbar                                          from '@material-ui/core/Toolbar';
-import Typography                                       from '@material-ui/core/Typography';
-import DeleteIcon                                       from '@material-ui/icons/Delete';
-import DraftsIcon                                       from '@material-ui/icons/Drafts';
-import MailIcon                                         from '@material-ui/icons/Mail';
-import MenuIcon                                         from '@material-ui/icons/Menu';
-import InboxIcon                                        from '@material-ui/icons/MoveToInbox';
-import ReportIcon                                       from '@material-ui/icons/Report';
-import SendIcon                                         from '@material-ui/icons/Send';
-import StarIcon                                         from '@material-ui/icons/Star';
+import * as React                                     from 'react';
 
-import DeviceList                                       from '../DeviceList';
+/* Material-UI Comonents */
+import AppBar                                         from '@material-ui/core/AppBar';
+import Divider                                        from '@material-ui/core/Divider';
+import Drawer                                         from '@material-ui/core/Drawer';
+import Hidden                                         from '@material-ui/core/Hidden';
+import IconButton                                     from '@material-ui/core/IconButton';
+import List                                           from '@material-ui/core/List';
+import Slide                                          from '@material-ui/core/Slide';
+import Toolbar                                        from '@material-ui/core/Toolbar';
+import Typography                                     from '@material-ui/core/Typography';
+import MenuIcon                                       from '@material-ui/icons/Menu';
+import SettingsRoundedIcon                            from '@material-ui/icons/SettingsRounded';
 
-/* Type Imports */
-import { AppNavigatorProps, AppNavigatorState }         from './Types';
+/* Project Components */
+import SettingsMenu                                   from '../SettingsMenu';
 
-/* Import Functionality */
-const otherMailFolderListItems = (
-  <div>
-    <ListItem button={true}>
-      <ListItemIcon>
-        <MailIcon />
-      </ListItemIcon>
-      <ListItemText primary="All mail" />
-    </ListItem>
-    <ListItem button={true}>
-      <ListItemIcon>
-        <DeleteIcon />
-      </ListItemIcon>
-      <ListItemText primary="Trash" />
-    </ListItem>
-    <ListItem button={true}>
-      <ListItemIcon>
-        <ReportIcon />
-      </ListItemIcon>
-      <ListItemText primary="Spam" />
-    </ListItem>
-  </div>
-);
-const mailFolderListItems = (
-  <div>
-    <ListItem button={true}>
-      <ListItemIcon>
-        <InboxIcon />
-      </ListItemIcon>
-      <ListItemText primary="Inbox" />
-    </ListItem>
-    <ListItem button={true}>
-      <ListItemIcon>
-        <StarIcon />
-      </ListItemIcon>
-      <ListItemText primary="Starred" />
-    </ListItem>
-    <ListItem button={true}>
-      <ListItemIcon>
-        <SendIcon />
-      </ListItemIcon>
-      <ListItemText primary="Send mail" />
-    </ListItem>
-    <ListItem button={true}>
-      <ListItemIcon>
-        <DraftsIcon />
-      </ListItemIcon>
-      <ListItemText primary="Drafts" />
-    </ListItem>
-  </div>
-);
+/* Projeject Typess */
+import { AppNavigatorProps, AppNavigatorState }       from './Types';
 
 class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState> {
 
   constructor(props: AppNavigatorProps) {
     super(props);
     this.state = {
-      mobileOpen: false,
+      activePane:     'Devices',
+      mobileOpen:     true,
+      mobileWasOpen:  true,
+      settingsOpen:   false,
     };
   }
   
   public handleDrawerToggle = () => {
-    this.setState(state => ({ mobileOpen: !state.mobileOpen }));
+    this.setState(state => ({
+      mobileOpen:     !state.mobileOpen,
+      mobileWasOpen:  !state.mobileOpen,
+    }));
   };
+
+  public toggleSettings = () => {
+    if (this.state.settingsOpen === true) {
+      this.setState({
+        mobileOpen:   this.state.mobileWasOpen,
+        settingsOpen: false,
+      })
+    }
+    else if (this.state.mobileOpen) {
+      setTimeout(()=>{
+        this.setState({
+          settingsOpen: true
+        });
+      }, 200);
+      this.setState({
+        mobileOpen:     false,
+        mobileWasOpen:  true,
+      });
+    }
+    else {
+      this.setState({
+        mobileOpen:     false,
+        mobileWasOpen:  false,
+        settingsOpen:   true,  
+      })
+    }
+  };
+
+  public changeDrawer(event: React.MouseEvent<HTMLElement>) {
+    alert('Clicked Drawer: ' + event.currentTarget.id);
+  }
 
   public render() {
     const { classes } = this.props;
 
+    /* Calculate State */
     const drawer = (
       <div>
         <div className={(this.state.mobileOpen) ? classes.drawerHeader : classes.toolbar}>
           <Typography variant="title" color="inherit" noWrap={true}>
-            <p style={{marginLeft: 24, color: (this.state.mobileOpen)?'white':'black'}}> Settings </p>
+            <div style={{display: 'flex', flexDirection: 'row'}}>
+              <p className={classes.drawerTitle} style={{flexGrow: 1, color: (this.state.mobileOpen)?'white':'black'}}>
+                App Title
+              </p>
+              <IconButton
+                color="inherit"
+                aria-label="Open drawer"
+                style={{margin: 9, color: 'white'}}
+                onClick={this.toggleSettings}
+              >
+                <SettingsRoundedIcon />
+              </IconButton>
+            </div>
           </Typography>
         </div>
         <Divider />
-        <List>{mailFolderListItems}</List>
-        <Divider />
-        <List>{otherMailFolderListItems}</List>
+        <List>
+          {/*  */}
+        </List>
       </div>
     );
 
     return (
       <div className={classes.root}>
+        <Slide direction="up" in={this.state.settingsOpen} mountOnEnter={true} unmountOnExit={true}>
+          <div className={classes.settingsPopup}>
+            <SettingsMenu closeSettings={this.toggleSettings} />
+          </div>
+        </Slide>
         <AppBar className={classes.appBar}>
           <Toolbar>
             <IconButton
@@ -121,7 +119,7 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
               <MenuIcon />
             </IconButton>
             <Typography variant="title" color="inherit" noWrap={true}>
-              Responsive drawer
+              Your App Here
             </Typography>
           </Toolbar>
         </AppBar>
@@ -154,11 +152,9 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
         </Hidden>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          {/* <div className={classes.rightPaneContainer}> */}
-            <div className={classes.devicesContainer}>
-              <DeviceList devices={this.props.devices} />
-            </div>
-          {/* </div> */}
+            <Typography variant="title" gutterBottom={true}>
+              Your App Here
+            </Typography>
         </main>
       </div>
     );

@@ -1,8 +1,7 @@
-import { IStateType }                                         from './Types';
+import { Store }                                      from 'redux';
 
-import { initStore } from './Store';
-
-import { Store } from 'redux';
+import { initStore }                                  from './Store';
+import { IStateType }                                 from './Types';
 
 const intitialStore: IStateType = {
   authState: {

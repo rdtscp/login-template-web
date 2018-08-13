@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios                                          from 'axios';
 
 const network = {
 
@@ -12,7 +12,7 @@ const network = {
               authToken
             },
             method: 'POST',
-            url: 'http://localhost:1337/device/get',
+            url: 'http://192.168.0.11:1337/device/get',
             withCredentials: true,
           })
           .then((response) => {
@@ -27,7 +27,7 @@ const network = {
       return (
         axios.request({
           method:'GET',
-          url:'http://localhost:1337/csrfToken',
+          url:'http://192.168.0.11:1337/csrfToken',
           withCredentials: true,
         })
         .then((response) => {

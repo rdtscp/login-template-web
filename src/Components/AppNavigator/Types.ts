@@ -1,19 +1,16 @@
-// import { Dispatch }                         from 'redux';
-// import * as Models                          from '../../Models';
-import { IAppNavigatorStyle }                  from './Styles';
+/* Components/AppNavigator/Types.ts */
 
-import * as Models                          from '../../Models';
-
-
-interface IAppNavigatorProps {
-  devices: Models.Device[];
-}
+/* Project Types */
+import { IAppNavigatorStyle }                         from './Styles';
 
 interface IAppNavigatorState {
-  mobileOpen: boolean;
+  activePane:     string;
+  mobileOpen:     boolean;
+  mobileWasOpen:  boolean;
+  settingsOpen:   boolean;
 }
 
-type AppNavigatorProps = IAppNavigatorProps & IAppNavigatorStyle;
+type AppNavigatorProps = {} & IAppNavigatorStyle;
 type AppNavigatorState = IAppNavigatorState;
 
 export { AppNavigatorProps, AppNavigatorState };

@@ -1,8 +1,12 @@
-import { Dispatch }                         from 'redux';
-import * as Models                          from '../Models';
-import { IAppStyle }                        from './Styles';
+/* App/Types.ts */
 
-import { AuthStateType }                    from '../State/Store/Types'
+/* Redux Types */
+import { Dispatch }                                   from 'redux';
+
+/* Project Types */
+import * as Models                                    from '../Models';
+import { AuthStateType }                              from '../State/Store/Types'
+import { IAppStyle }                                  from './Styles';
 
 interface IAppProps {
   authState:            AuthStateType;
@@ -12,6 +16,5 @@ interface IAppProps {
 }
 
 type AppProps = IAppProps & IAppStyle;
-
 
 export { AppProps };
