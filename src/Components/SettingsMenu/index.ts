@@ -15,8 +15,8 @@ import { settingsMenuClasses }                        from './Styles';
 
 const mapStateToProps = (state: IStateType) => {
   return {
-    authState:    state.authState,
-    currentUser:  state.currentUser,
+    authState:  state.authState,
+    devices:    state.currentUser.devices,
   }
 }
 

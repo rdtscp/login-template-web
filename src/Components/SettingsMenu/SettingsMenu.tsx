@@ -19,6 +19,9 @@ import SmartphoneIcon                                 from '@material-ui/icons/S
 /* Project Components */
 import ConfirmDelete                                  from './ConfirmDelete';
 import DeviceList                                     from './DeviceList';
+
+/* Project Types */
+import * as Models                                    from '../../Models';
 import { SettingsMenuProps }                          from './Types';
 
 class SettingsMenu extends React.Component<SettingsMenuProps> {
@@ -35,7 +38,7 @@ class SettingsMenu extends React.Component<SettingsMenuProps> {
             <Typography variant="title" color="inherit" className={classes.flex}>
               Settings
             </Typography>
-            <Button variant="outlined" color="secondary">
+            <Button onClick={this.logout} variant="outlined" color="secondary">
               Log Out
             </Button>
           </Toolbar>
@@ -65,6 +68,37 @@ class SettingsMenu extends React.Component<SettingsMenuProps> {
         </ExpansionPanel>
       </div>
     );
+  }
+
+  private logout = () => {
+    const authToken = this.props.authState.authToken;
+    const thisDevice: Models.Device = this.props.devices.filter(device => device.authToken === authToken)[0];
+    this.logoutDevice(thisDevice.id, authToken)
+  }
+
+  private logoutDevice = (deviceID: string, deviceAuthToken: string) => {
+    Models.DeviceAPI.destroy(this.props.authState.authToken, deviceID, deviceAuthToken)
+    .then(({ error, warning, message, content }: Models.DeviceResponseData) => {
+      if (error) {
+        alert('Error: ' + message);
+        this.props.setAuthStateAction('');
+      }
+      else if (warning) {
+        alert('Warning: ' + message);
+      }
+      else if (this.props.authState.authToken === deviceAuthToken) {
+        alert('Logging Out...');
+        this.props.setAuthStateAction('');
+      }
+      else {
+        alert('Info: ' + message);
+        this.props.setCurrentUserAction(this.props.authState.authToken);
+      }
+    })
+    .catch((err: any) => {
+      alert('Unexpected Error, Please Refresh & Try Again');
+      window.location.reload();
+    });
   }
 
 }
