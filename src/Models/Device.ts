@@ -44,7 +44,7 @@ export const DeviceAPI = {
             authToken
           },
           method: 'POST',
-          url: 'http://192.168.0.11:1337/device/get',
+          url: 'http://localhost:1337/device/get',
           withCredentials: true,
         })
         .then((response: IBackendResponse) => {
@@ -69,7 +69,7 @@ export const DeviceAPI = {
             username,
           },
           method: 'POST',
-          url: 'http://192.168.0.11:1337/device/create',
+          url: 'http://localhost:1337/device/create',
           withCredentials: true,
         })
         .then((response: IBackendResponse) => {
@@ -94,7 +94,7 @@ export const DeviceAPI = {
             deviceID,
           },
           method: 'POST',
-          url: 'http://192.168.0.11:1337/device/destroy',
+          url: 'http://localhost:1337/device/destroy',
           withCredentials: true,
         })
         .then((response: IBackendResponse) => {
