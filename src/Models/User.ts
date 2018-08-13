@@ -41,7 +41,7 @@ export const UserAPI = {
             authToken
           },
           method: 'POST',
-          url: 'http://localhost:1337/user/get',
+          url: process.env.REACT_APP_API_URL + '/user/get',
           withCredentials: true,
         })
         .then((response: IBackendResponse) => {
@@ -66,7 +66,7 @@ export const UserAPI = {
             username,
           },
           method: 'POST',
-          url: 'http://localhost:1337/user/create',
+          url: process.env.REACT_APP_API_URL + '/user/create',
           withCredentials: true,
         })
         .then((response: IBackendResponse) => {
@@ -93,7 +93,7 @@ export const UserAPI = {
             authToken
           },
           method: 'POST',
-          url: 'http://localhost:1337/user/destroy',
+          url: process.env.REACT_APP_API_URL + '/user/destroy',
           withCredentials: true,
         })
         .then((response: IBackendResponse) => {

@@ -12,7 +12,7 @@ const network = {
               authToken
             },
             method: 'POST',
-            url: 'http://localhost:1337/device/get',
+            url: process.env.REACT_APP_API_URL + '/device/get',
             withCredentials: true,
           })
           .then((response) => {
@@ -27,7 +27,7 @@ const network = {
       return (
         axios.request({
           method:'GET',
-          url:'http://localhost:1337/csrfToken',
+          url:process.env.REACT_APP_API_URL + '/csrfToken',
           withCredentials: true,
         })
         .then((response) => {

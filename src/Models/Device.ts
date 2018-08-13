@@ -44,7 +44,7 @@ export const DeviceAPI = {
             authToken
           },
           method: 'POST',
-          url: 'http://localhost:1337/device/get',
+          url: process.env.REACT_APP_API_URL + '/device/get',
           withCredentials: true,
         })
         .then((response: IBackendResponse) => {
@@ -69,7 +69,7 @@ export const DeviceAPI = {
             username,
           },
           method: 'POST',
-          url: 'http://localhost:1337/device/create',
+          url: process.env.REACT_APP_API_URL + '/device/create',
           withCredentials: true,
         })
         .then((response: IBackendResponse) => {
@@ -94,7 +94,7 @@ export const DeviceAPI = {
             deviceID,
           },
           method: 'POST',
-          url: 'http://localhost:1337/device/destroy',
+          url: process.env.REACT_APP_API_URL + '/device/destroy',
           withCredentials: true,
         })
         .then((response: IBackendResponse) => {
