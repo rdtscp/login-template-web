@@ -5,39 +5,57 @@ Project Source Directory is as such:
 src
 ├── App
 │   ├── App.tsx
-│   ├── Container.ts
 │   ├── Styles.ts
 │   ├── Theme.ts
 │   ├── Types.ts
 │   └── index.ts
 ├── Components
-│   ├── Device
-│   │   ├── Device.tsx
+│   ├── AppNavigator
+│   │   ├── AppNavigator.tsx
 │   │   ├── Styles.ts
 │   │   ├── Types.ts
 │   │   └── index.ts
-│   ├── DeviceList
-│   │   ├── DeviceList.tsx
+│   ├── LoginForm
+│   │   ├── LoginForm.tsx
 │   │   ├── Styles.ts
 │   │   ├── Types.ts
 │   │   └── index.ts
-│   └── LoginForm
-│       ├── Container.ts
-│       ├── LoginForm.tsx
+│   └── SettingsMenu
+│       ├── ConfirmDelete
+│       │   ├── ConfirmDelete.tsx
+│       │   ├── Styles.ts
+│       │   ├── Types.ts
+│       │   └── index.ts
+│       ├── Device
+│       │   ├── Device.tsx
+│       │   ├── Styles.ts
+│       │   ├── Types.ts
+│       │   └── index.ts
+│       ├── DeviceList
+│       │   ├── DeviceList.tsx
+│       │   ├── Styles.ts
+│       │   ├── Types.ts
+│       │   └── index.ts
+│       ├── SettingsMenu.tsx
 │       ├── Styles.ts
 │       ├── Types.ts
 │       └── index.ts
 ├── Models
+│   ├── Device.ts
+│   ├── User.ts
+│   └── index.ts
 ├── Resources
-│   └── networkHelper.ts
+│   ├── networkHelper.ts
+│   └── utilitiesHelper.ts
 ├── State
 │   ├── Actions
-│   │   ├── Types.ts
 │   │   ├── actionTypes.ts
-│   │   └── authActions.ts
+│   │   ├── authActions.ts
+│   │   └── userActions.ts
 │   ├── Reducers
 │   │   ├── authReducer.ts
-│   │   └── index.ts
+│   │   ├── index.ts
+│   │   └── userReducer.ts
 │   ├── Store
 │   │   ├── Store.ts
 │   │   ├── Types.ts
