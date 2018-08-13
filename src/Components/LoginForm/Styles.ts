@@ -1,7 +1,8 @@
-import { Theme }                from '@material-ui/core/styles';
+/* Components/LoginForm/Styles.ts */
 
-import { createStyles }         from '@material-ui/core';
-import { WithStyles }           from '@material-ui/core/styles/withStyles';
+import { createStyles }                               from '@material-ui/core';
+import { Theme }                                      from '@material-ui/core/styles';
+import { WithStyles }                                 from '@material-ui/core/styles/withStyles';
 
 const loginFormClasses = (theme: Theme) => createStyles({
   buttonsContainer: {
@@ -12,10 +13,6 @@ const loginFormClasses = (theme: Theme) => createStyles({
     marginLeft:       13,
     marginRight:      13,
   },
-  form: {
-    display:          'flex',
-    flexWrap:         'wrap',
-  },
   formContainer: {
     height:           '100vh',
     width:            227,
@@ -25,9 +22,6 @@ const loginFormClasses = (theme: Theme) => createStyles({
     display:          'flex',
     justifyContent:   'center',
     paddingTop:        100,
-  },
-  textField: {
-    flexBasis:        200,
   },
 });
 

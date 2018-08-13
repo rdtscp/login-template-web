@@ -1,8 +1,8 @@
-import { Dispatch }                         from 'redux';
-import * as Models                          from '../../Models';
-import { IDeviceListStyle }                 from './Styles';
-
-import { AuthStateType }                    from '../../State/Store/Types'
+/* Components/SettingsMenu/DeviceList/Types.ts */  //
+import { Dispatch }                                   from 'redux';
+import * as Models                                    from '../../../Models';
+import { AuthStateType }                              from '../../../State/Store/Types'
+import { IDeviceListStyle }                           from './Styles';
 
 
 interface IDeviceListProps {

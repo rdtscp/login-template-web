@@ -1,11 +1,13 @@
+/* Components/SettingsMenu/Device/Device.tsx */
+
 import * as React from 'react';
 
-/* Component Imports */
+/* Material-UI Components */
 import Button                                         from '@material-ui/core/Button';
 import Paper                                          from '@material-ui/core/Paper';
 import Typography                                     from '@material-ui/core/Typography';
 
-/* Type Imports */
+/* Project Components */
 import { DeviceProps }                                from './Types';
 
 class Device extends React.Component<DeviceProps> {
@@ -22,17 +24,15 @@ class Device extends React.Component<DeviceProps> {
     }
 
     return (
-      <div className={classes.deviceContainer}>
-        <Paper className={classes.root} elevation={5}>
-          <Typography variant="title" >
-            {this.props.userAgentStr}
-          </Typography>
-          <Typography className={lastActiveClass} variant="subheading">
-            <Button onClick={this.handleLogoutClick} variant="contained" color="primary" >Logout</Button>  &nbsp;&nbsp;        
-            {lastActiveContent} 
-          </Typography>
-        </Paper>
-      </div>
+      <Paper className={classes.root} elevation={5}>
+        <Typography variant="title" >
+          {this.props.userAgentStr}
+        </Typography>
+        <Typography className={lastActiveClass} variant="subheading">
+          <Button onClick={this.handleLogoutClick} variant="contained" color="primary" >Logout</Button>  &nbsp;&nbsp;        
+          {lastActiveContent} 
+        </Typography>
+      </Paper>
     );
   }
 

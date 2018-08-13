@@ -1,16 +1,13 @@
+/* Components/SettingsMenu/DeviceList/DeviceList.tsx */
+
 import * as React                                     from 'react';
 import { UAParser }                                   from 'ua-parser-js';
 
-/* Component Imports */
+/* Project Components */
+import * as Models                                    from '../../../Models';
+import utilities                                      from '../../../Resources/utilitiesHelper';
 import Device                                         from '../Device';
-
-/* Type Imports */
-import * as Models                                    from '../../Models';
 import { DeviceListProps }                            from './Types';
-
-/* Import Functionality */
-
-import utilities                                      from '../../Resources/utilitiesHelper';
 
 class DeviceList extends React.Component<DeviceListProps> {
 

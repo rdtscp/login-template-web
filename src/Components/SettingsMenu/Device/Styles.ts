@@ -1,14 +1,13 @@
-import { Theme } from '@material-ui/core/styles';
+/* Components/SettingsMenu/ConfirmDelete/index.ts */  //
 
-import { createStyles }         from '@material-ui/core';
-import { WithStyles }           from '@material-ui/core/styles/withStyles';
+import { createStyles }                               from '@material-ui/core';
+import { Theme }                                      from '@material-ui/core/styles';
+import { WithStyles }                                 from '@material-ui/core/styles/withStyles';
 
 const deviceClasses = (theme: Theme) => createStyles({
   activeDevice: {
     ...theme.typography.button,
     color:  'green',
-  },
-  deviceContainer: {
   },
   root: {
     ...theme.mixins.gutters(),

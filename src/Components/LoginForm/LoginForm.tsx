@@ -1,6 +1,8 @@
+/* Components/LoginForm/LoginForm.tsx */
+
 import * as React from 'react';
 
-/* Component Imports */
+/* Material-UI Components */
 import Button                                         from '@material-ui/core/Button';
 import FormControl                                    from '@material-ui/core/FormControl';
 import IconButton                                     from '@material-ui/core/IconButton';
@@ -10,12 +12,9 @@ import InputLabel                                     from '@material-ui/core/In
 import Visibility                                     from '@material-ui/icons/Visibility';
 import VisibilityOff                                  from '@material-ui/icons/VisibilityOff';
 
-/* Type Imports */
-import { LoginFormProps, LoginFormState }             from './Types';
-
+/* Project Types */
 import * as Models                                    from '../../Models';
-
-/* Import Functionality */
+import { LoginFormProps, LoginFormState }             from './Types';
 
 class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
 
@@ -105,6 +104,8 @@ class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
       }
     })
     .catch((err: any) => {
+      // tslint:disable-next-line:no-console
+      console.log(err);
       alert('Unexpected Error. Please try again.');
       window.location.reload();
     });

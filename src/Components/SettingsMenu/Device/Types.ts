@@ -1,4 +1,6 @@
-import { IDeviceStyle }       from './Styles';
+/* Components/SettingsMenu/Device/Types.ts */
+
+import { IDeviceStyle }                               from './Styles';
 
 interface IDeviceProps {
   authToken:    string;

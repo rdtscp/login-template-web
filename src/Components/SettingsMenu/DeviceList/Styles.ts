@@ -1,7 +1,8 @@
-import { Theme } from '@material-ui/core/styles';
+/* Components/SettingsMenu/DeviceList/Styles.ts */
 
-import { createStyles }         from '@material-ui/core';
-import { WithStyles }           from '@material-ui/core/styles/withStyles';
+import { createStyles }                               from '@material-ui/core';
+import { Theme }                                      from '@material-ui/core/styles';
+import { WithStyles }                                 from '@material-ui/core/styles/withStyles';
 
 const deviceListClasses = (theme: Theme) => createStyles({
   devicesContainer: {

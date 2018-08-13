@@ -1,7 +1,9 @@
-import { Dispatch }             from 'redux';
-import { ILoginFormStyle }      from './Styles';
+/* Components/LoginForm/Types.ts */
 
-import { AuthStateType }                    from '../../State/Store/Types'
+import { Dispatch }                                   from 'redux';
+import { ILoginFormStyle }                            from './Styles';
+
+import { AuthStateType }                              from '../../State/Store/Types'
 
 interface ILoginFormProps {
   authState:                    AuthStateType;

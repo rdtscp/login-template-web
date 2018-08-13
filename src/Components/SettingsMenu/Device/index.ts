@@ -1,9 +1,9 @@
-/* Redux */
+/* Components/SettingsMenu/Device/index.ts */
 
-/* Material-UI Styling */
+/* Material-UI Components */
 import withStyles                                     from '@material-ui/core/styles/withStyles';
 
-/* Component View */
+/* Project Components */
 import Device                                         from './Device';
 import { deviceClasses }                              from './Styles';
 

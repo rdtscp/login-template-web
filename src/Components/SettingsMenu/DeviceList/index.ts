@@ -1,15 +1,15 @@
-/* DeviceList/index.ts */
+/* Components/SettingsMenu/DeviceList/index.ts */
 
-/* Redux */
+/* Redux Components */
 import { connect }                                    from 'react-redux';
-import { IStateType }                                 from '../../State';
-import { setAuthStateAction }                         from '../../State/Actions/authActions';
-import { setCurrentUserAction }                       from '../../State/Actions/userActions';
+import { IStateType }                                 from '../../../State';
+import { setAuthStateAction }                         from '../../../State/Actions/authActions';
+import { setCurrentUserAction }                       from '../../../State/Actions/userActions';
 
-/* Material-UI Styling */
+/* Material-UI Components */
 import withStyles                                     from '@material-ui/core/styles/withStyles';
 
-/* Component View */
+/* Project Components */
 import DeviceList                                     from './DeviceList';
 import { deviceListClasses }                          from './Styles';
 
