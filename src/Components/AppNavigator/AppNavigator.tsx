@@ -32,41 +32,6 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
       settingsOpen:   false,
     };
   }
-  
-  public drawerToggle = () => {
-    this.setState(state => ({
-      mobileOpen:     !state.mobileOpen,
-      mobileWasOpen:  !state.mobileOpen,
-    }));
-  };
-
-  public toggleSettings = () => {
-    this.props.setCurrentUserAction(this.props.authState.authToken);
-    if (this.state.settingsOpen === true) {
-      this.setState({
-        mobileOpen:   this.state.mobileWasOpen,
-        settingsOpen: false,
-      })
-    }
-    else if (this.state.mobileOpen) {
-      this.setState({
-        mobileOpen:     false,
-        mobileWasOpen:  true,
-        settingsOpen: true
-      });
-    }
-    else {
-      this.setState({
-        mobileOpen:     false,
-        mobileWasOpen:  false,
-        settingsOpen:   true,  
-      })
-    }
-  };
-
-  public changeDrawer(event: React.MouseEvent<HTMLElement>) {
-    alert('Clicked Drawer: ' + event.currentTarget.id);
-  }
 
   public render() {
     const { classes, currentUser } = this.props;
@@ -158,6 +123,37 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
 
   }
 
+  private drawerToggle = () => {
+    this.setState(state => ({
+      mobileOpen:     !state.mobileOpen,
+      mobileWasOpen:  !state.mobileOpen,
+    }));
+  };
+
+  private toggleSettings = () => {
+    this.props.setCurrentUserAction(this.props.authState.authToken);
+    if (this.state.settingsOpen === true) {
+      this.setState({
+        mobileOpen:   this.state.mobileWasOpen,
+        settingsOpen: false,
+      })
+    }
+    else if (this.state.mobileOpen) {
+      this.setState({
+        mobileOpen:     false,
+        mobileWasOpen:  true,
+        settingsOpen: true
+      });
+    }
+    else {
+      this.setState({
+        mobileOpen:     false,
+        mobileWasOpen:  false,
+        settingsOpen:   true,  
+      })
+    }
+  };
+  
 }
 
 export default AppNavigator;
