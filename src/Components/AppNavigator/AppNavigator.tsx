@@ -26,7 +26,7 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
   constructor(props: AppNavigatorProps) {
     super(props);
     this.state = {
-      activePane:     'Devices',
+      activePane:     'Select A Pane',
       mobileOpen:     true,
       mobileWasOpen:  true,
       settingsOpen:   false,
@@ -72,7 +72,7 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
   }
 
   public render() {
-    const { classes } = this.props;
+    const { classes, currentUser } = this.props;
 
     /* Calculate State */
     const drawer = (
@@ -81,7 +81,7 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
           <Typography variant="title" color="inherit" noWrap={true}>
             <div style={{display: 'flex', flexDirection: 'row'}}>
               <p className={classes.drawerTitle} style={{flexGrow: 1, color: (this.state.mobileOpen)?'white':'black'}}>
-                App Title
+                {currentUser.username}
               </p>
               <IconButton
                 color="inherit"
@@ -119,7 +119,7 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
               <MenuIcon />
             </IconButton>
             <Typography variant="title" color="inherit" noWrap={true}>
-              Your App Here
+              {this.state.activePane}
             </Typography>
           </Toolbar>
         </AppBar>

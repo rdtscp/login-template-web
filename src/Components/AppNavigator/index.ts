@@ -10,6 +10,14 @@ import withStyles                                     from '@material-ui/core/st
 import AppNavigator                                   from './AppNavigator';
 
 /* Project Types */
+import { IStateType }                                 from '../../State';
 import { appNavigatorClasses }                        from './Styles';
 
-export default connect(null, {})(withStyles(appNavigatorClasses, {withTheme: true})(AppNavigator));
+const mapStateToProps = (state: IStateType) => {
+  return {
+    authState:    state.authState,
+    currentUser:  state.currentUser,
+  }
+}
+
+export default connect(mapStateToProps, {})(withStyles(appNavigatorClasses, {withTheme: true})(AppNavigator));

@@ -1,7 +1,12 @@
 /* Components/AppNavigator/Types.ts */
 
 /* Project Types */
+import * as Models                                    from '../../Models';
 import { IAppNavigatorStyle }                         from './Styles';
+
+interface IAppNavigatorProps {
+  currentUser:    Models.User;
+}
 
 interface IAppNavigatorState {
   activePane:     string;
@@ -10,7 +15,7 @@ interface IAppNavigatorState {
   settingsOpen:   boolean;
 }
 
-type AppNavigatorProps = {} & IAppNavigatorStyle;
+type AppNavigatorProps = IAppNavigatorProps & IAppNavigatorStyle;
 type AppNavigatorState = IAppNavigatorState;
 
 export { AppNavigatorProps, AppNavigatorState };
