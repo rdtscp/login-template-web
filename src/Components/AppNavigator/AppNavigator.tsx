@@ -27,7 +27,7 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
     super(props);
     this.state = {
       activePane:     'Select A Pane',
-      mobileOpen:     true,
+      mobileOpen:     false,
       mobileWasOpen:  true,
       settingsOpen:   false,
     };
@@ -48,14 +48,10 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
       })
     }
     else if (this.state.mobileOpen) {
-      setTimeout(()=>{
-        this.setState({
-          settingsOpen: true
-        });
-      }, 200);
       this.setState({
         mobileOpen:     false,
         mobileWasOpen:  true,
+        settingsOpen: true
       });
     }
     else {
@@ -86,7 +82,7 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
               <IconButton
                 color="inherit"
                 aria-label="Open drawer"
-                style={{margin: 9, color: 'white'}}
+                style={{margin: 9, color: (this.state.mobileOpen) ? 'white' : 'black'}}
                 onClick={this.toggleSettings}
               >
                 <SettingsRoundedIcon />
