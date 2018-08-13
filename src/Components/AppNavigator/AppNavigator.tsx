@@ -41,6 +41,7 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
   };
 
   public toggleSettings = () => {
+    this.props.setCurrentUserAction(this.props.authState.authToken);
     if (this.state.settingsOpen === true) {
       this.setState({
         mobileOpen:   this.state.mobileWasOpen,
