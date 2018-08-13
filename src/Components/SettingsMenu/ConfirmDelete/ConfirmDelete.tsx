@@ -24,7 +24,7 @@ function getSteps() {
 function getStepContent(step: number) {
   switch (step) {
     case 0:
-      return `Click 'Next' to beging deleting your account.`;
+      return `Click 'Next' to begin deleting your account.`;
     case 1:
       return 'Are you sure you want to delete your account. Deleting your account is permanent, it cannot be undone. All your data will be deleted and unrecoverable.';
     case 2:
