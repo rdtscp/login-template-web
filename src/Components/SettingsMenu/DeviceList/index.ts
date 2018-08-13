@@ -2,20 +2,25 @@
 
 /* Redux Components */
 import { connect }                                    from 'react-redux';
-import { IStateType }                                 from '../../../State';
-import { setAuthStateAction }                         from '../../../State/Actions/authActions';
-import { setCurrentUserAction }                       from '../../../State/Actions/userActions';
 
 /* Material-UI Components */
 import withStyles                                     from '@material-ui/core/styles/withStyles';
 
 /* Project Components */
 import DeviceList                                     from './DeviceList';
+
+/* Project Types */
+import { IStateType }                                 from '../../../State';
 import { deviceListClasses }                          from './Styles';
+
+/* Project Methods */
+import { setAuthStateAction }                         from '../../../State/Actions/authActions';
+import { setCurrentUserAction }                       from '../../../State/Actions/userActions';
 
 const mapStateToProps = (state: IStateType) => {
   return {
     authState:  state.authState,
+    devices:    state.currentUser.devices,
   }
 }
 
