@@ -33,7 +33,7 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
     };
   }
   
-  public handleDrawerToggle = () => {
+  public drawerToggle = () => {
     this.setState(state => ({
       mobileOpen:     !state.mobileOpen,
       mobileWasOpen:  !state.mobileOpen,
@@ -110,7 +110,7 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
             <IconButton
               color="inherit"
               aria-label="Open drawer"
-              onClick={this.handleDrawerToggle}
+              onClick={this.drawerToggle}
               className={classes.navIconHide}
             >
               <MenuIcon />
@@ -125,7 +125,7 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
             variant="temporary"
             anchor={'left'}
             open={this.state.mobileOpen}
-            onClose={this.handleDrawerToggle}
+            onClose={this.drawerToggle}
             classes={{
               paper: classes.drawerPaper,
             }}
