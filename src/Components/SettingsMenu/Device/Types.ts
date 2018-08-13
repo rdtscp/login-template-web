@@ -7,11 +7,16 @@ interface IDeviceProps {
   id:           string;
   key:          number;
   lastUsed:     string;
-  logout:       (deviceID: string, deviceAuthToken: string) => void;
+  logout:       (deviceID: string, deviceAuthToken: string, deviceString: string) => void;
   thisDevice:   boolean;
   userAgentStr: string;
 }
 
-type DeviceProps = IDeviceProps & IDeviceStyle;
+interface IDeviceState {
+  lastActiveContent: string;
+}
 
-export { DeviceProps };
+type DeviceProps = IDeviceProps & IDeviceStyle;
+type DeviceState = IDeviceState;
+
+export { DeviceProps, DeviceState };
