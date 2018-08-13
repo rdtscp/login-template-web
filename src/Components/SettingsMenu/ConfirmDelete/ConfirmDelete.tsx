@@ -45,9 +45,10 @@ class ConfirmDelete extends React.Component<ConfirmDeleteProps, ConfirmDeleteSta
   }
 
   public render() {
-    const { classes } = this.props;
-    const steps = getSteps();
-    const { activeStep } = this.state;
+
+    const { classes }     = this.props;
+    const steps           = getSteps();
+    const { activeStep }  = this.state;
 
     return (
       <div className={classes.root}>
@@ -94,13 +95,15 @@ class ConfirmDelete extends React.Component<ConfirmDeleteProps, ConfirmDeleteSta
   }
 
   private deleteAccount = () => {
-    const authToken: string = "foo";
-    Models.UserAPI.destroy(authToken)
+    const localAuthToken: string = this.props.authState.authToken;
+    Models.UserAPI.destroy(localAuthToken)
     .then((data: Models.UserReponseData) => {
       alert(data.message);
+      this.props.setAuthStateAction(localAuthToken);
     })
     .catch((data: Models.UserReponseData) => {
       alert(data.message);
+      this.props.setAuthStateAction(localAuthToken);
     })
   }
 

@@ -1,12 +1,22 @@
 /* Components/SettingsMenu/ConfirmDelete/Types.ts */
 
+/* Redux Types */
+import { Dispatch }                                   from 'redux';
+
+/* Project Types */
+import { AuthStateType }                              from '../../../State/Store/Types'
 import { IConfirmDeleteStyle }                        from './Styles';
+
+interface IConfirmDeleteProps {
+  authState:            AuthStateType;
+  setAuthStateAction:   (authToken: string) => ((dispatch: Dispatch) => void);
+}
 
 interface IConfirmDeleteState {
   activeStep: number;
 }
 
-type ConfirmDeleteProps = {} & IConfirmDeleteStyle;
+type ConfirmDeleteProps = IConfirmDeleteProps & IConfirmDeleteStyle;
 type ConfirmDeleteState = {} & IConfirmDeleteState;
  
 export { ConfirmDeleteProps, ConfirmDeleteState };
