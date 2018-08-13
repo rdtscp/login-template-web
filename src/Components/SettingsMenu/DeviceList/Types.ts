@@ -12,6 +12,15 @@ interface IDeviceListProps {
   setCurrentUserAction: (authToken: string) => ((dispatch: Dispatch) => void);
 }
 
-type DeviceListProps = IDeviceListProps & IDeviceListStyle;
+interface IDeviceListState {
+  confirmationAlertOpen:    boolean;
+  confirmationSnackbarOpen: boolean;
+  deviceToLogoutAuthToken:  string;
+  deviceToLogoutID:         string;
+  deviceToLogoutString:     string;
+}
 
-export { DeviceListProps };
+type DeviceListProps = IDeviceListProps & IDeviceListStyle;
+type DeviceListState = {} & IDeviceListState
+
+export { DeviceListProps, DeviceListState };
