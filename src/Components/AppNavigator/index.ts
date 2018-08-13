@@ -13,6 +13,9 @@ import AppNavigator                                   from './AppNavigator';
 import { IStateType }                                 from '../../State';
 import { appNavigatorClasses }                        from './Styles';
 
+/* Project Methods */
+import { setCurrentUserAction }                       from '../../State/Actions/userActions';
+
 const mapStateToProps = (state: IStateType) => {
   return {
     authState:    state.authState,
@@ -20,4 +23,4 @@ const mapStateToProps = (state: IStateType) => {
   }
 }
 
-export default connect(mapStateToProps, {})(withStyles(appNavigatorClasses, {withTheme: true})(AppNavigator));
+export default connect(mapStateToProps, { setCurrentUserAction })(withStyles(appNavigatorClasses, {withTheme: true})(AppNavigator));

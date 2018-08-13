@@ -1,11 +1,16 @@
 /* Components/AppNavigator/Types.ts */
 
+import { Dispatch }                                   from 'redux';
+
 /* Project Types */
 import * as Models                                    from '../../Models';
+import { AuthStateType }                              from '../../State/Store/Types';
 import { IAppNavigatorStyle }                         from './Styles';
 
 interface IAppNavigatorProps {
-  currentUser:    Models.User;
+  authState:            AuthStateType;
+  currentUser:          Models.User;
+  setCurrentUserAction: (authToken: string) => ((dispatch: Dispatch) => void);
 }
 
 interface IAppNavigatorState {
