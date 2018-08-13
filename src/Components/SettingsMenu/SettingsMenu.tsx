@@ -5,6 +5,9 @@ import * as React                                     from 'react';
 /* Component Imports */
 import AppBar                                         from '@material-ui/core/AppBar';
 import Button                                         from '@material-ui/core/Button';
+import Dialog                                         from '@material-ui/core/Dialog';
+import DialogActions                                  from '@material-ui/core/DialogActions';
+import DialogTitle                                    from '@material-ui/core/DialogTitle';
 import ExpansionPanel                                 from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails                          from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary                          from '@material-ui/core/ExpansionPanelSummary';
@@ -22,9 +25,17 @@ import DeviceList                                     from './DeviceList';
 
 /* Project Types */
 import * as Models                                    from '../../Models';
-import { SettingsMenuProps }                          from './Types';
+import { SettingsMenuProps, SettingsMenuState }       from './Types';
 
-class SettingsMenu extends React.Component<SettingsMenuProps> {
+class SettingsMenu extends React.Component<SettingsMenuProps, SettingsMenuState> {
+
+  constructor(props: SettingsMenuProps) {
+    super(props);
+    this.state = {
+      confirmationLogoutAlertOpen: false,
+
+    }
+  }
 
   public render() {
     const { classes } = this.props;
@@ -38,7 +49,7 @@ class SettingsMenu extends React.Component<SettingsMenuProps> {
             <Typography variant="title" color="inherit" className={classes.flex}>
               Settings
             </Typography>
-            <Button onClick={this.logout} variant="outlined" color="secondary">
+            <Button onClick={this.openConfirmLogoutAlert} variant="outlined" color="secondary">
               Log Out
             </Button>
           </Toolbar>
@@ -66,8 +77,38 @@ class SettingsMenu extends React.Component<SettingsMenuProps> {
             
           </ExpansionPanelDetails>
         </ExpansionPanel>
+
+        <Dialog
+          open={this.state.confirmationLogoutAlertOpen}
+          onClose={this.cancelConfirmLogoutAlert}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{"Confirm Logout"}</DialogTitle>
+          {/* <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              {this.state.deviceToLogoutString}
+            </DialogContentText>
+          </DialogContent> */}
+          <DialogActions>
+            <Button onClick={this.cancelConfirmLogoutAlert} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={this.logout} color="primary" autoFocus={true}>
+              Logout
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     );
+  }
+
+  private openConfirmLogoutAlert = () => {
+    this.setState({ confirmationLogoutAlertOpen: true, });
+  }
+
+  private cancelConfirmLogoutAlert = () => {
+    this.setState({ confirmationLogoutAlertOpen: false });
   }
 
   private logout = () => {
@@ -87,11 +128,9 @@ class SettingsMenu extends React.Component<SettingsMenuProps> {
         alert('Warning: ' + message);
       }
       else if (this.props.authState.authToken === deviceAuthToken) {
-        alert('Logging Out...');
         this.props.setAuthStateAction('');
       }
       else {
-        alert('Info: ' + message);
         this.props.setCurrentUserAction(this.props.authState.authToken);
       }
     })
