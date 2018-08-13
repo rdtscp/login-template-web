@@ -1,4 +1,4 @@
-/* App/index.ts */                                 // from
+/* App/index.ts */
 
 /* Redux Methods */
 import { connect }                                    from 'react-redux';
