@@ -4,6 +4,7 @@ import * as React                                     from 'react';
 
 /* Component Imports */
 import AppBar                                         from '@material-ui/core/AppBar';
+import Button                                         from '@material-ui/core/Button';
 import ExpansionPanel                                 from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails                          from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary                          from '@material-ui/core/ExpansionPanelSummary';
@@ -23,8 +24,7 @@ import { SettingsMenuProps }                          from './Types';
 class SettingsMenu extends React.Component<SettingsMenuProps> {
 
   public render() {
-    const { classes, currentUser } = this.props;
-    
+    const { classes } = this.props;
     return (
       <div>
         <AppBar color="default" position="static">
@@ -35,6 +35,9 @@ class SettingsMenu extends React.Component<SettingsMenuProps> {
             <Typography variant="title" color="inherit" className={classes.flex}>
               Settings
             </Typography>
+            <Button variant="outlined" color="secondary">
+              Log Out
+            </Button>
           </Toolbar>
         </AppBar>
 
@@ -44,7 +47,7 @@ class SettingsMenu extends React.Component<SettingsMenuProps> {
             <Typography className={classes.heading}> Device Settings</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <DeviceList devices={currentUser.devices} />
+            <DeviceList />
           </ExpansionPanelDetails>
         </ExpansionPanel>
 
