@@ -4,11 +4,14 @@ import * as React from 'react';
 
 /* Material-UI Components */
 import Button                                         from '@material-ui/core/Button';
+import Fade                                           from '@material-ui/core/Fade';
 import FormControl                                    from '@material-ui/core/FormControl';
 import IconButton                                     from '@material-ui/core/IconButton';
 import Input                                          from '@material-ui/core/Input';
 import InputAdornment                                 from '@material-ui/core/InputAdornment';
 import InputLabel                                     from '@material-ui/core/InputLabel';
+import Snackbar                                       from '@material-ui/core/Snackbar';
+import CloseIcon                                      from '@material-ui/icons/Close';
 import Visibility                                     from '@material-ui/icons/Visibility';
 import VisibilityOff                                  from '@material-ui/icons/VisibilityOff';
 
@@ -21,9 +24,11 @@ class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
   constructor(props: LoginFormProps) {
     super(props);
     this.state = {
-      password:       '', 
-      showPassword:   false,
-      username:       '',
+      password:         '', 
+      showPassword:     false,
+      snackbarMessage:  '',
+      snackbarOpen:     false,
+      username:         '',
     }
   }
 
@@ -81,6 +86,31 @@ class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
             
           </form>
         </div>
+        <Snackbar
+          anchorOrigin={{
+            horizontal: 'left',
+            vertical: 'bottom',
+          }}
+          open={this.state.snackbarOpen}
+          autoHideDuration={3000}
+          onClose={this.hideSnackbar}
+          ContentProps={{
+            'aria-describedby': 'message-id',
+          }}
+          message={<span id="message-id">{this.state.snackbarMessage}</span>}
+          TransitionComponent={Fade}
+          action={[
+            <IconButton
+              key="close"
+              aria-label="Close"
+              color="inherit"
+              className={classes.close}
+              onClick={this.hideSnackbar}
+            >
+              <CloseIcon />
+            </IconButton>,
+          ]}
+        />
       </div>
     );
   }
@@ -99,7 +129,8 @@ class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
           alert('Error: ' + message);
         }
         else if (warning) {
-          alert('Warning: ' + message);
+          this.showSnackbar(message);
+          // alert('Warning: ' + message);
         }
       }
     })
@@ -119,10 +150,12 @@ class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
         alert('Error: ' + message);
       }
       else if (warning) {
-        alert('Warning: ' + message);
+        this.showSnackbar(message);
+        // alert('Warning: ' + message);
       }
       else {
-        alert('Info: ' + message);
+        this.showSnackbar(message);
+        // alert('Info: ' + message);
       }
     })
     .catch((err: any) => {
@@ -151,6 +184,17 @@ class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
       [event.target.name]: event.target.value
     });
   };
+
+  private showSnackbar = (message: string) => {
+    this.setState({
+      snackbarMessage: message,
+      snackbarOpen: true,
+    });
+  }
+
+  private hideSnackbar = () => {
+    this.setState({ snackbarOpen: false });
+  }
 
 }
 

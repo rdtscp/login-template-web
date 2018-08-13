@@ -14,6 +14,8 @@ interface ILoginFormProps {
 interface ILoginFormState {
   password:                 string;
   showPassword:             boolean;
+  snackbarMessage:          string;
+  snackbarOpen:             boolean;
   username:                 string;
 }
 

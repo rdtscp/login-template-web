@@ -13,6 +13,10 @@ const loginFormClasses = (theme: Theme) => createStyles({
     marginLeft:       13,
     marginRight:      13,
   },
+  close: {
+    height: theme.spacing.unit * 4,
+    width: theme.spacing.unit * 4,
+  },
   formContainer: {
     height:           '100vh',
     width:            227,
