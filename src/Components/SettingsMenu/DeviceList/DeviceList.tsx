@@ -10,7 +10,7 @@ import DialogActions                                  from '@material-ui/core/Di
 import DialogContent                                  from '@material-ui/core/DialogContent';
 import DialogContentText                              from '@material-ui/core/DialogContentText';
 import DialogTitle                                    from '@material-ui/core/DialogTitle';
-import Fade from '@material-ui/core/Fade';
+import Fade                                           from '@material-ui/core/Fade';
 import IconButton                                     from '@material-ui/core/IconButton';
 import Snackbar                                       from '@material-ui/core/Snackbar';
 import CloseIcon                                      from '@material-ui/icons/Close';
@@ -47,7 +47,7 @@ class DeviceList extends React.Component<DeviceListProps, DeviceListState> {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{"Confrim Logout Device"}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">{"Confirm Logout Device"}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
               {this.state.deviceToLogoutString}
