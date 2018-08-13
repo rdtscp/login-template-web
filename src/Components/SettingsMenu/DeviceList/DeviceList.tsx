@@ -51,7 +51,7 @@ class DeviceList extends React.Component<DeviceListProps> {
         alert('Warning: ' + message);
       }
       else if (this.props.authState.authToken === deviceAuthToken) {
-        alert('Info: ' + message + ', which is This Device.');
+        alert('Info: ' + message + ', which is this device.');
         this.props.setAuthStateAction('');
       }
       else {
