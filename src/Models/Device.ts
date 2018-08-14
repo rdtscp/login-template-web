@@ -28,6 +28,11 @@ export type DeviceResponseData = IDeviceResponseData;
 
 /* API */
 
+const headers = {
+  'Access-Control-Allow-Credentials': 'true',
+  'Content-Type': 'application/json',
+};
+
 export const DeviceAPI = {
 
   get(authToken: string) {
@@ -39,9 +44,7 @@ export const DeviceAPI = {
             authToken,
           }),
           credentials: "include",
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          headers,
           method: 'POST',
           mode: "cors"
         })
@@ -67,9 +70,7 @@ export const DeviceAPI = {
             username,
           }),
           credentials: "include",
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          headers,
           method: 'POST',
           mode: "cors"
         })
@@ -95,9 +96,7 @@ export const DeviceAPI = {
             deviceID,
           }),
           credentials: "include",
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          headers,
           method: 'POST',
           mode: "cors"
         })

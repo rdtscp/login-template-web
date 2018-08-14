@@ -24,6 +24,11 @@ export type UserReponseData = IUserResponseData;
 
 /* API */
 
+const headers = {
+  'Access-Control-Allow-Credentials': 'true',
+  'Content-Type': 'application/json',
+};
+
 export const UserAPI = {
 
   get(authToken: string) {
@@ -35,9 +40,7 @@ export const UserAPI = {
             authToken,
           }),
           credentials: "include",
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          headers,
           method: 'POST',
           mode: "cors"
         })
@@ -63,9 +66,7 @@ export const UserAPI = {
             username,
           }),
           credentials: "include",
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          headers,
           method: 'POST',
           mode: "cors"
         })
@@ -93,9 +94,7 @@ export const UserAPI = {
             authToken,
           }),
           credentials: "include",
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          headers,
           method: 'POST',
           mode: "cors"
         })

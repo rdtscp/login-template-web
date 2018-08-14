@@ -1,6 +1,11 @@
+const headers = {
+  'Access-Control-Allow-Credentials': 'true',
+  'Content-Type': 'application/json',
+};
+
+
 const network = {
 
-    /* @TODO: Checks if the local authentication token is valid. */
     isAuthorised(authToken: string, cb: (authStatus: boolean) => void) {
       this.getCSRF((csrfToken) => {
         return (
@@ -10,9 +15,7 @@ const network = {
               authToken,
             }),
             credentials: "include",
-            headers: {
-              'Content-Type': 'application/json'
-            },
+            headers,
             method: 'POST',
             mode: "cors"
           })
@@ -32,9 +35,7 @@ const network = {
       return (
         fetch(process.env.REACT_APP_API_URL + '/csrfToken', {
           credentials: "include",
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          headers,
           method: 'GET',
           mode: "cors"
         })
