@@ -1,12 +1,8 @@
-interface INavigatorPane {
-  drawerElement:    JSX.Element;
-  paneElement:      JSX.Element;
-  paneTitle:        string;
-  selectorID:       string;
+export interface INavigatorJSXGenerator {
+  drawerElement:  (clickHandler: ClickHandlerFunc, selectorID: string, key: number) => JSX.Element;
+  paneElement:    JSX.Element;
+  paneTitle:      string;
 }
 
-type ClickHandlerFunc = (clickEvent: React.MouseEvent<HTMLElement>) => void;
-
-type NavigatorPane = INavigatorPane;
-
-export { NavigatorPane, ClickHandlerFunc };
+export type ClickHandlerFunc        = (clickEvent: React.MouseEvent<HTMLElement>) => void;
+export type NavigatorJSXGenerator   = INavigatorJSXGenerator; 
