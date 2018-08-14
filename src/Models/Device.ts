@@ -68,18 +68,24 @@ export const DeviceAPI = {
             password,
             username,
           }),
+          credentials: "include",
           headers: {
             'Content-Type': 'application/json'
           },
           method: 'POST',
+          mode: "cors"
         })
-        .then(res => (response: IBackendResponse) => {
-          const data: IDeviceResponseData = response.data;
-          return resolve(data);
+        .then((response: Response) => {
+
+//
         })
-        .catch((error) => {
-          return reject(error);
-        })
+        // .then(res => (response: IBackendResponse) => {
+        //   const data: IDeviceResponseData = response.data;
+        //   return resolve(data);
+        // })
+        // .catch((error) => {
+        //   return reject(error);
+        // })
       });
     });
   },
