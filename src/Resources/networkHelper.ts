@@ -20,6 +20,9 @@ const network = {
           .then((data) => {
             return cb(data.content.tokenValid);
           })
+          .catch((error) => {
+            return cb(false);
+          })
         );
       });
     },
@@ -38,6 +41,9 @@ const network = {
         .then((response) => response.json())
         .then((data) => {
           return cb(data._csrf);
+        })
+        .catch((error) => {
+          return cb('');
         })
       );
     },
