@@ -1,8 +1,10 @@
 import * as React                                     from 'react';
 
+/* Change the JSX that Represents your Pane here. */
+
 const paneJSX: JSX.Element = (
   <div>
-    This is the pane for Example One.
+    NavigatorPanes Structure and how to create NavigatorPanes quickly and easilly.
   </div>
 );
 
