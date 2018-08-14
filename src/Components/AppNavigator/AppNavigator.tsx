@@ -16,27 +16,30 @@ import MenuIcon                                       from '@material-ui/icons/M
 import SettingsRoundedIcon                            from '@material-ui/icons/SettingsRounded';
 
 /* Project Components */
+import navigatorPanes                                 from '../NavigatorPanes';
 import SettingsMenu                                   from '../SettingsMenu';
 
-/* Projeject Typess */
+/* Project Types */
+import { NavigatorPane }                              from '../NavigatorPanes/Types';
 import { AppNavigatorProps, AppNavigatorState }       from './Types';
 
 class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState> {
 
   constructor(props: AppNavigatorProps) {
     super(props);
+    const initNavigatorPanes = navigatorPanes(this.clickPane);
     this.state = {
-      activePane:     'Select A Pane',
-      mobileOpen:     false,
-      mobileWasOpen:  true,
-      settingsOpen:   false,
+      activePane:       initNavigatorPanes[0],
+      mobileOpen:       false,
+      mobileWasOpen:    true,
+      navigatorPanes:   initNavigatorPanes,
+      settingsOpen:     false,
     };
   }
 
   public render() {
     const { classes, currentUser } = this.props;
-
-    /* Calculate State */
+    
     const drawer = (
       <div>
         <div className={(this.state.mobileOpen) ? classes.drawerHeader : classes.toolbar}>
@@ -58,7 +61,9 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
         </div>
         <Divider />
         <List>
-          {/*  */}
+          <div>
+            {this.state.navigatorPanes.map((navigatorPane: NavigatorPane, index: number) => navigatorPane.drawerElement)}
+          </div>
         </List>
       </div>
     );
@@ -81,8 +86,7 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
               <MenuIcon />
             </IconButton>
             <Typography variant="title" color="inherit" noWrap={true}>
-              {this.state.activePane}
-            </Typography>
+              {this.state.activePane.paneTitle}</Typography>
           </Toolbar>
         </AppBar>
         <Hidden mdUp={true}>
@@ -115,7 +119,7 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
         <main className={classes.content}>
           <div className={classes.toolbar} />
             <Typography variant="title" gutterBottom={true}>
-              Your App Here
+              {this.state.activePane.paneElement}
             </Typography>
         </main>
       </div>
@@ -153,6 +157,16 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
       })
     }
   };
+
+  private clickPane = (event: React.MouseEvent<HTMLElement>) => {
+    const paneClicked = event.currentTarget.id;
+    const activePane  = this.state.navigatorPanes.filter((pane: NavigatorPane) => pane.selectorID === paneClicked)[0];
+    this.setState({
+      activePane,
+      mobileOpen:     false,
+      mobileWasOpen:  false,
+    });
+  }
   
 }
 

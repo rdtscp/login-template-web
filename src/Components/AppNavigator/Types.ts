@@ -5,7 +5,9 @@ import { Dispatch }                                   from 'redux';
 /* Project Types */
 import * as Models                                    from '../../Models';
 import { AuthStateType }                              from '../../State/Store/Types';
+import { NavigatorPane }                              from '../NavigatorPanes/Types';
 import { IAppNavigatorStyle }                         from './Styles';
+
 
 interface IAppNavigatorProps {
   authState:            AuthStateType;
@@ -14,10 +16,11 @@ interface IAppNavigatorProps {
 }
 
 interface IAppNavigatorState {
-  activePane:     string;
-  mobileOpen:     boolean;
-  mobileWasOpen:  boolean;
-  settingsOpen:   boolean;
+  activePane:       NavigatorPane;
+  mobileOpen:       boolean;
+  mobileWasOpen:    boolean;
+  navigatorPanes:   NavigatorPane[];
+  settingsOpen:     boolean;
 }
 
 type AppNavigatorProps = IAppNavigatorProps & IAppNavigatorStyle;
