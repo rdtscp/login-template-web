@@ -68,6 +68,7 @@ export const DeviceAPI = {
             password,
             username,
           },
+          headers: { 'Content-Type': 'application/json' },
           method: 'POST',
           url: process.env.REACT_APP_API_URL + '/device/create',
           withCredentials: true,
