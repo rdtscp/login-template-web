@@ -34,7 +34,7 @@ export const UserAPI = {
   get(authToken: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        fetch(process.env.REACT_APP_API_URL + '/device/destroy', {
+        fetch(process.env.REACT_APP_API_URL + '/user/get', {
           body: JSON.stringify({
             _csrf:    csrf,
             authToken,
@@ -58,7 +58,7 @@ export const UserAPI = {
   create(authToken: string, username: string, password: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        fetch(process.env.REACT_APP_API_URL + '/device/destroy', {
+        fetch(process.env.REACT_APP_API_URL + '/user/create', {
           body: JSON.stringify({
             _csrf:    csrf,
             authToken,
@@ -88,7 +88,7 @@ export const UserAPI = {
   destroy(authToken: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        fetch(process.env.REACT_APP_API_URL + '/device/destroy', {
+        fetch(process.env.REACT_APP_API_URL + '/user/destroy', {
           body: JSON.stringify({
             _csrf:    csrf,
             authToken,
