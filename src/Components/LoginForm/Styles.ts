@@ -25,7 +25,8 @@ const loginFormClasses = (theme: Theme) => createStyles({
     alignItems:       'center',
     display:          'flex',
     justifyContent:   'center',
-    paddingTop:        100,
+    overflow:         'hidden',
+    paddingTop:       100,
   },
 });
 
