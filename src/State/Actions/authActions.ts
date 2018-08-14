@@ -9,7 +9,7 @@ const setAuthStateAction = (localAuthToken: string) => ((dispatch: Dispatch) => 
     // Succesfully Retrieved AuthStatus
     if (deviceData.content !== null && 'authStatus' in deviceData.content && deviceData.content.authStatus === true) {
       Models.UserAPI.get(deviceData.content.authToken)
-      .then((userData: Models.UserReponseData) => {
+      .then((userData: Models.UserResponseData) => {
         dispatch({
           payload: deviceData.content,
           type: SET_AUTH

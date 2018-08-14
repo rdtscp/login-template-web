@@ -97,10 +97,10 @@ class ConfirmDelete extends React.Component<ConfirmDeleteProps, ConfirmDeleteSta
   private deleteAccount = () => {
     const localAuthToken: string = this.props.authState.authToken;
     Models.UserAPI.destroy(localAuthToken)
-    .then((data: Models.UserReponseData) => {
+    .then((data: Models.UserResponseData) => {
       this.props.setAuthStateAction(localAuthToken);
     })
-    .catch((data: Models.UserReponseData) => {
+    .catch((data: Models.UserResponseData) => {
       alert(data.message);
       this.props.setAuthStateAction(localAuthToken);
     })

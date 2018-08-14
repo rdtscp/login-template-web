@@ -145,7 +145,7 @@ class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
   private register = () => {
     const { authToken } = this.props.authState;
     Models.UserAPI.create(authToken, this.state.username, this.state.password)
-    .then(({ error, warning, message, content}: Models.UserReponseData) => {
+    .then(({ error, warning, message, content}: Models.UserResponseData) => {
       if (error) {
         alert('Error: ' + message);
       }

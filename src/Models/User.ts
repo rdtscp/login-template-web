@@ -1,3 +1,4 @@
+import axios, { AxiosResponse }                       from 'axios';
 import network                                        from '../Resources/networkHelper';
 import { Device }                                     from './Device';
 
@@ -20,32 +21,28 @@ interface IUserResponseData {
   content:  User | null;
 }
 
-export type UserReponseData = IUserResponseData;
+export type UserResponseData = IUserResponseData;
 
 /* API */
 
-const headers = {
-  'Access-Control-Allow-Credentials': 'true',
-  'Content-Type': 'application/json',
-};
+// const headers = {
+//   'Access-Control-Allow-Credentials': 'true',
+//   'Content-Type': 'application/json',
+// };
 
 export const UserAPI = {
 
   get(authToken: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        fetch(process.env.REACT_APP_API_URL + '/user/get', {
-          body: JSON.stringify({
-            _csrf:    csrf,
-            authToken,
-          }),
-          credentials: "include",
-          headers,
-          method: 'POST',
-          mode: "cors"
+        axios.post(process.env.REACT_APP_API_URL + '/user/get', {
+          _csrf: csrf,
+          authToken,
+        },{
+          withCredentials: true,
         })
-        .then((response) => response.json())
-        .then((data: IUserResponseData) => {
+        .then((response: AxiosResponse) => {
+          const data: UserResponseData = response.data;
           return resolve(data);
         })
         .catch((error) => {
@@ -58,20 +55,16 @@ export const UserAPI = {
   create(authToken: string, username: string, password: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        fetch(process.env.REACT_APP_API_URL + '/user/create', {
-          body: JSON.stringify({
-            _csrf:    csrf,
-            authToken,
-            password,
-            username,
-          }),
-          credentials: "include",
-          headers,
-          method: 'POST',
-          mode: "cors"
+        axios.post(process.env.REACT_APP_API_URL + '/user/create', {
+          _csrf: csrf,
+          authToken,
+          password,
+          username,
+        },{
+          withCredentials: true,
         })
-        .then((response) => response.json())
-        .then((data: IUserResponseData) => {
+        .then((response: AxiosResponse) => {
+          const data: UserResponseData = response.data;
           return resolve(data);
         })
         .catch((error) => {
@@ -88,18 +81,14 @@ export const UserAPI = {
   destroy(authToken: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        fetch(process.env.REACT_APP_API_URL + '/user/destroy', {
-          body: JSON.stringify({
-            _csrf:    csrf,
-            authToken,
-          }),
-          credentials: "include",
-          headers,
-          method: 'POST',
-          mode: "cors"
+        axios.post(process.env.REACT_APP_API_URL + '/user/destroy', {
+          _csrf: csrf,
+          authToken,
+        },{
+          withCredentials: true,
         })
-        .then((response) => response.json())
-        .then((data: IUserResponseData) => {
+        .then((response: AxiosResponse) => {
+          const data: UserResponseData = response.data;
           return resolve(data);
         })
         .catch((error) => {

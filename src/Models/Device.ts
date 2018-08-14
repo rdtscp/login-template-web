@@ -1,3 +1,4 @@
+import axios, { AxiosResponse }                       from 'axios';
 import network                                        from '../Resources/networkHelper';
 
 interface IDeviceType {
@@ -28,28 +29,24 @@ export type DeviceResponseData = IDeviceResponseData;
 
 /* API */
 
-const headers = {
-  'Access-Control-Allow-Credentials': 'true',
-  'Content-Type': 'application/json',
-};
+// const headers = {
+//   'Access-Control-Allow-Credentials': 'true',
+//   'Content-Type': 'application/json',
+// };
 
 export const DeviceAPI = {
 
   get(authToken: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        fetch(process.env.REACT_APP_API_URL + '/device/get', {
-          body: JSON.stringify({
-            _csrf: csrf,
-            authToken,
-          }),
-          credentials: "include",
-          headers,
-          method: 'POST',
-          mode: "cors"
+        axios.post(process.env.REACT_APP_API_URL + '/device/get', {
+          _csrf: csrf,
+          authToken,
+        },{
+          withCredentials: true,
         })
-        .then((response) => response.json())
-        .then((data: IDeviceResponseData) => {
+        .then((response: AxiosResponse) => {
+          const data: DeviceResponseData = response.data;
           return resolve(data);
         })
         .catch((error) => {
@@ -62,25 +59,21 @@ export const DeviceAPI = {
   create(authToken: string, username: string, password: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        fetch(process.env.REACT_APP_API_URL + '/device/create', {
-          body: JSON.stringify({
-            _csrf: csrf,
-            authToken,
-            password,
-            username,
-          }),
-          credentials: "include",
-          headers,
-          method: 'POST',
-          mode: "cors"
+        axios.post(process.env.REACT_APP_API_URL + '/device/create', {
+          _csrf: csrf,
+          authToken,
+          password,
+          username,
+        },{
+          withCredentials: true,
         })
-        .then((response) => response.json())
-        .then((data: IDeviceResponseData) => {
+        .then((response: AxiosResponse) => {
+          const data: DeviceResponseData = response.data;
           return resolve(data);
         })
         .catch((error) => {
           return reject(error);
-        })
+        });
       });
     });
   },
@@ -88,20 +81,16 @@ export const DeviceAPI = {
   destroy(authToken: string, deviceID: string, deviceAuthToken: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        fetch(process.env.REACT_APP_API_URL + '/device/destroy', {
-          body: JSON.stringify({
-            _csrf:    csrf,
-            authToken,
-            deviceAuthToken,
+        axios.post(process.env.REACT_APP_API_URL + '/device/destroy', {
+          _csrf: csrf,
+          authToken,
+          deviceAuthToken,
             deviceID,
-          }),
-          credentials: "include",
-          headers,
-          method: 'POST',
-          mode: "cors"
+        },{
+          withCredentials: true,
         })
-        .then((response) => response.json())
-        .then((data: IDeviceResponseData) => {
+        .then((response: AxiosResponse) => {
+          const data: DeviceResponseData = response.data;
           return resolve(data);
         })
         .catch((error) => {

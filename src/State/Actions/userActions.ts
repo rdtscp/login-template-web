@@ -1,18 +1,18 @@
 /* Types */
 import { Dispatch }                                   from 'redux';
-import { UserAPI, UserReponseData }                   from '../../Models';
+import { UserAPI, UserResponseData }                   from '../../Models';
 import { SET_CURR_USER }                              from './actionTypes';
 
 const setCurrentUserAction = (authToken: string) => ((dispatch: Dispatch) => {
     UserAPI.get(authToken)
-    .then((data: UserReponseData) => {
+    .then((data: UserResponseData) => {
       // Received User Model.
       return dispatch({
         payload: data.content,
         type: SET_CURR_USER
       });
     })
-    .catch((data: UserReponseData) => {
+    .catch((data: UserResponseData) => {
       // Did not receive User Model.
       return dispatch({
         payload: undefined,

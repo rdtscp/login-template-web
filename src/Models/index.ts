@@ -1,5 +1,5 @@
 import { Device, DeviceAPI, DeviceResponseData }      from './Device';
-import { User, UserAPI, UserReponseData }             from './User';
+import { User, UserAPI, UserResponseData }            from './User';
 
 export {
   Device,
@@ -7,5 +7,5 @@ export {
   DeviceResponseData,
   User,
   UserAPI,
-  UserReponseData
+  UserResponseData
 };
