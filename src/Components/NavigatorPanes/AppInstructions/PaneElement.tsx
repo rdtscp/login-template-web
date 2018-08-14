@@ -1,6 +1,6 @@
 import * as React                                     from 'react';
 
-const paneJSX = (
+const paneJSX: JSX.Element = (
   <div>
     This is the pane for Example One.
   </div>
