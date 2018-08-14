@@ -4,7 +4,7 @@ import * as React                                     from 'react';
 
 const paneJSX: JSX.Element = (
   <div>
-    NavigatorPanes Structure and how to create NavigatorPanes quickly and easilly.
+    NavigatorPanes Structure and how to create NavigatorPanes quickly and easily.
   </div>
 );
 
