@@ -18,14 +18,12 @@ const loginFormClasses = (theme: Theme) => createStyles({
     width: theme.spacing.unit * 4,
   },
   formContainer: {
-    height:           '100vh',
     width:            227,
   },
   loginContainer: {
     alignItems:       'center',
     display:          'flex',
     justifyContent:   'center',
-    overflow:         'hidden',
     paddingTop:       100,
   },
 });
