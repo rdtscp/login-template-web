@@ -61,23 +61,19 @@ export const DeviceAPI = {
   create(authToken: string, username: string, password: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        axios.request({
-          data: {
-            _csrf:    csrf,
+        fetch(process.env.REACT_APP_API_URL + '/device/create', {
+          body: JSON.stringify({
+            _csrf: csrf,
             authToken,
             password,
             username,
-          },
+          }),
           headers: {
-            'Access-Control-Request-Headers': 'content-type',
-            'Access-Control-Request-Method': 'POST',
             'Content-Type': 'application/json'
           },
           method: 'POST',
-          url: process.env.REACT_APP_API_URL + '/device/create',
-          withCredentials: true,
         })
-        .then((response: IBackendResponse) => {
+        .then(res => (response: IBackendResponse) => {
           const data: IDeviceResponseData = response.data;
           return resolve(data);
         })
