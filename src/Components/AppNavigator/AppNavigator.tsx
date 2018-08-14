@@ -19,8 +19,7 @@ import SettingsRoundedIcon                            from '@material-ui/icons/S
 import navigatorPanes                                 from '../NavigatorPanes';
 import SettingsMenu                                   from '../SettingsMenu';
 
-/* Project Types */
-import { NavigatorPane }                              from '../NavigatorPanes/Types';
+import NavigatorPane                                  from "../NavigatorPanes/NavigatorPane";
 import { AppNavigatorProps, AppNavigatorState }       from './Types';
 
 class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState> {
@@ -62,7 +61,7 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
         <Divider />
         <List>
           <div>
-            {this.state.navigatorPanes.map((navigatorPane: NavigatorPane, index: number) => navigatorPane.drawerElement)}
+            {this.state.navigatorPanes.map((navigatorPane: NavigatorPane, index: number) => navigatorPane.getDrawer(index)) }
           </div>
         </List>
       </div>

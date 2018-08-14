@@ -5,7 +5,7 @@ import { Dispatch }                                   from 'redux';
 /* Project Types */
 import * as Models                                    from '../../Models';
 import { AuthStateType }                              from '../../State/Store/Types';
-import { NavigatorPane }                              from '../NavigatorPanes/Types';
+import NavigatorPane                                  from "../NavigatorPanes/NavigatorPane";
 import { IAppNavigatorStyle }                         from './Styles';
 
 
