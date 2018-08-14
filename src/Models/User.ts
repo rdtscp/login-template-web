@@ -1,5 +1,3 @@
-import axios                                          from 'axios';
-
 import network                                        from '../Resources/networkHelper';
 import { Device }                                     from './Device';
 
@@ -14,10 +12,6 @@ interface IUserType {
 export type User = IUserType;
 
 /* API Types */
-
-interface IBackendResponse {
-  data: IUserResponseData;
-}
 
 interface IUserResponseData {
   error:    boolean;
@@ -35,22 +29,25 @@ export const UserAPI = {
   get(authToken: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        axios.request({
-          data: {
+        fetch(process.env.REACT_APP_API_URL + '/device/destroy', {
+          body: JSON.stringify({
             _csrf:    csrf,
-            authToken
+            authToken,
+          }),
+          credentials: "include",
+          headers: {
+            'Content-Type': 'application/json'
           },
           method: 'POST',
-          url: process.env.REACT_APP_API_URL + '/user/get',
-          withCredentials: true,
+          mode: "cors"
         })
-        .then((response: IBackendResponse) => {
-          const data: IUserResponseData = response.data;
+        .then((response) => response.json())
+        .then((data: IUserResponseData) => {
           return resolve(data);
         })
         .catch((error) => {
           return reject(error);
-        })
+        });
       });
     });
   },
@@ -58,24 +55,27 @@ export const UserAPI = {
   create(authToken: string, username: string, password: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        axios.request({
-          data: {
+        fetch(process.env.REACT_APP_API_URL + '/device/destroy', {
+          body: JSON.stringify({
             _csrf:    csrf,
             authToken,
             password,
             username,
+          }),
+          credentials: "include",
+          headers: {
+            'Content-Type': 'application/json'
           },
           method: 'POST',
-          url: process.env.REACT_APP_API_URL + '/user/create',
-          withCredentials: true,
+          mode: "cors"
         })
-        .then((response: IBackendResponse) => {
-          const data: IUserResponseData = response.data;
+        .then((response) => response.json())
+        .then((data: IUserResponseData) => {
           return resolve(data);
         })
         .catch((error) => {
           return reject(error);
-        })
+        });
       });
     });
   },
@@ -87,22 +87,25 @@ export const UserAPI = {
   destroy(authToken: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        axios.request({
-          data: {
+        fetch(process.env.REACT_APP_API_URL + '/device/destroy', {
+          body: JSON.stringify({
             _csrf:    csrf,
-            authToken
+            authToken,
+          }),
+          credentials: "include",
+          headers: {
+            'Content-Type': 'application/json'
           },
           method: 'POST',
-          url: process.env.REACT_APP_API_URL + '/user/destroy',
-          withCredentials: true,
+          mode: "cors"
         })
-        .then((response: IBackendResponse) => {
-          const data: IUserResponseData = response.data;
+        .then((response) => response.json())
+        .then((data: IUserResponseData) => {
           return resolve(data);
         })
         .catch((error) => {
           return reject(error);
-        })
+        });
       });
     });
   },

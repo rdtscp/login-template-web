@@ -1,4 +1,3 @@
-import axios                                          from 'axios';
 import network                                        from '../Resources/networkHelper';
 
 interface IDeviceType {
@@ -15,10 +14,6 @@ interface IDeviceType {
 export type Device = IDeviceType;
 
 /* API Types */
-
-interface IBackendResponse {
-  data: IDeviceResponseData;
-}
 
 interface IDeviceResponseData {
   error:    boolean;
@@ -38,22 +33,25 @@ export const DeviceAPI = {
   get(authToken: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        axios.request({
-          data: {
-            _csrf:    csrf,
-            authToken
+        fetch(process.env.REACT_APP_API_URL + '/device/get', {
+          body: JSON.stringify({
+            _csrf: csrf,
+            authToken,
+          }),
+          credentials: "include",
+          headers: {
+            'Content-Type': 'application/json'
           },
           method: 'POST',
-          url: process.env.REACT_APP_API_URL + '/device/get',
-          withCredentials: true,
+          mode: "cors"
         })
-        .then((response: IBackendResponse) => {
-          const data: IDeviceResponseData = response.data;
+        .then((response) => response.json())
+        .then((data: IDeviceResponseData) => {
           return resolve(data);
         })
         .catch((error) => {
           return reject(error);
-        })
+        });
       });
     });
   },
@@ -75,17 +73,13 @@ export const DeviceAPI = {
           method: 'POST',
           mode: "cors"
         })
-        .then((response: Response) => {
-
-//
+        .then((response) => response.json())
+        .then((data: IDeviceResponseData) => {
+          return resolve(data);
         })
-        // .then(res => (response: IBackendResponse) => {
-        //   const data: IDeviceResponseData = response.data;
-        //   return resolve(data);
-        // })
-        // .catch((error) => {
-        //   return reject(error);
-        // })
+        .catch((error) => {
+          return reject(error);
+        })
       });
     });
   },
@@ -93,24 +87,27 @@ export const DeviceAPI = {
   destroy(authToken: string, deviceID: string, deviceAuthToken: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        axios.request({
-          data: {
+        fetch(process.env.REACT_APP_API_URL + '/device/destroy', {
+          body: JSON.stringify({
             _csrf:    csrf,
             authToken,
             deviceAuthToken,
             deviceID,
+          }),
+          credentials: "include",
+          headers: {
+            'Content-Type': 'application/json'
           },
           method: 'POST',
-          url: process.env.REACT_APP_API_URL + '/device/destroy',
-          withCredentials: true,
+          mode: "cors"
         })
-        .then((response: IBackendResponse) => {
-          const data: IDeviceResponseData = response.data;
+        .then((response) => response.json())
+        .then((data: IDeviceResponseData) => {
           return resolve(data);
         })
         .catch((error) => {
           return reject(error);
-        })
+        });
       });
     });
   },
