@@ -13,7 +13,7 @@ const drawerJSX: ((clickHandler: ClickHandlerFunc, uniqueID: string, key: number
     <ListItemIcon>
       <CodeIcon />
     </ListItemIcon>
-    <ListItemText primary="Example Two" />
+    <ListItemText primary="Component Example" />
   </ListItem>
 );
 

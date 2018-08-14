@@ -5,7 +5,7 @@ import paneJSX                                        from './PaneElement';
 
 
 /* Change your Pane Title */
-const paneTitle       = 'Example Pane';
+const paneTitle       = 'Component Example';
 
 /* Do NOT Change */
 const drawerElement   = drawerJSX;
