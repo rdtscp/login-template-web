@@ -1,5 +1,5 @@
 import axios, { AxiosResponse }                       from 'axios';
-import network                                        from '../Resources/networkHelper';
+import network                                        from 'src/Resources/networkHelper';
 import { Device }                                     from './Device';
 
 interface IUserType {

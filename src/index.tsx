@@ -6,8 +6,8 @@ import registerServiceWorker                          from './registerServiceWor
 
 /* Components/Redux */
 import { Provider }                                   from 'react-redux';
-import App                                            from './App';
-import store                                          from './State/Store';
+import App                                            from 'src/App';
+import store                                          from 'src/State/Store';
 
 /* Styles */
 import './styles.css';

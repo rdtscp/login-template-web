@@ -9,8 +9,8 @@ import LinearProgress                                 from '@material-ui/core/Li
 import { MuiThemeProvider }                           from '@material-ui/core/styles';
 
 /* Project Components */
-import AppNavigator                                   from '../Components/AppNavigator';
-import LoginForm                                      from '../Components/LoginForm';
+import AppNavigator                                   from 'src/Components/AppNavigator';
+import LoginForm                                      from 'src/Components/LoginForm';
 import { appTheme }                                   from './Theme';
 
 /* Project Types */

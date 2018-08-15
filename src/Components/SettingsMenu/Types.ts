@@ -2,12 +2,12 @@
 
 import { Dispatch }                                   from 'redux';
 import * as Models                                    from '../../Models';
-import { AuthStateType }                              from '../../State/Store/Types'
+import { IAuthStateType }                              from '../../State/Store/Types'
 import { ISettingsMenuStyle }                         from './Styles';
 
 interface ISettingsMenuProps {
   closeSettings:        () => void;
-  authState:            AuthStateType;
+  authState:            IAuthStateType;
   devices:              Models.Device[];
   setAuthStateAction:   (authToken: string) => ((dispatch: Dispatch) => void);
   setCurrentUserAction: (authToken: string) => ((dispatch: Dispatch) => void);

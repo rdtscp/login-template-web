@@ -10,12 +10,12 @@ import withStyles                                     from '@material-ui/core/st
 import App                                            from './App';
 
 /* Project Types */
-import { IStateType }                                 from '../State';
+import { IStateType }                                 from 'src/State';
 import { appClasses }                                 from './Styles';
 
 /* Project Methods */
-import { setAuthStateAction }                         from '../State/Actions/authActions';
-import { setCurrentUserAction }                       from '../State/Actions/userActions';
+import { setAuthStateAction }                         from 'src/State/Actions/authActions';
+import { setCurrentUserAction }                       from 'src/State/Actions/userActions';
 
 const mapStateToProps = (state: IStateType) => {
   return {

@@ -1,6 +1,6 @@
 /* Types */
 import { Dispatch }                                   from 'redux';
-import * as Models                                    from '../../Models';
+import * as Models                                    from 'src/Models';
 import { SET_AUTH, SET_CURR_USER }                    from './actionTypes';
 
 const setAuthStateAction = (localAuthToken: string) => ((dispatch: Dispatch) => {

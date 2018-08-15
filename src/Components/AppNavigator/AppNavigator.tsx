@@ -16,10 +16,10 @@ import MenuIcon                                       from '@material-ui/icons/M
 import SettingsRoundedIcon                            from '@material-ui/icons/SettingsRounded';
 
 /* Project Components */
-import navigatorPanes                                 from '../NavigatorPanes';
-import SettingsMenu                                   from '../SettingsMenu';
+import navigatorPanes                                 from 'src/Components/NavigatorPanes';
+import SettingsMenu                                   from 'src/Components/SettingsMenu';
 
-import NavigatorPane                                  from "../NavigatorPanes/NavigatorPane";
+import NavigatorPane                                  from "src/Components/NavigatorPanes/NavigatorPane";
 import { AppNavigatorProps, AppNavigatorState }       from './Types';
 
 class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState> {
