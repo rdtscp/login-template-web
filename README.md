@@ -4,63 +4,72 @@ Project Source Directory is as such:
 ```
 src
 ├── App
-│   ├── App.tsx
-│   ├── Styles.ts
-│   ├── Theme.ts
-│   ├── Types.ts
-│   └── index.ts
+│   ├── App.tsx
+│   ├── Styles.ts
+│   ├── Theme.ts
+│   ├── Types.ts
+│   └── index.ts
 ├── Components
-│   ├── AppNavigator
-│   │   ├── AppNavigator.tsx
-│   │   ├── Styles.ts
-│   │   ├── Types.ts
-│   │   └── index.ts
-│   ├── LoginForm
-│   │   ├── LoginForm.tsx
-│   │   ├── Styles.ts
-│   │   ├── Types.ts
-│   │   └── index.ts
-│   └── SettingsMenu
-│       ├── ConfirmDelete
-│       │   ├── ConfirmDelete.tsx
-│       │   ├── Styles.ts
-│       │   ├── Types.ts
-│       │   └── index.ts
-│       ├── Device
-│       │   ├── Device.tsx
-│       │   ├── Styles.ts
-│       │   ├── Types.ts
-│       │   └── index.ts
-│       ├── DeviceList
-│       │   ├── DeviceList.tsx
-│       │   ├── Styles.ts
-│       │   ├── Types.ts
-│       │   └── index.ts
-│       ├── SettingsMenu.tsx
-│       ├── Styles.ts
-│       ├── Types.ts
-│       └── index.ts
+│   ├── AppNavigator
+│   │   ├── AppNavigator.tsx
+│   │   ├── Styles.ts
+│   │   ├── Types.ts
+│   │   └── index.ts
+│   ├── LoginForm
+│   │   ├── LoginForm.tsx
+│   │   ├── Styles.ts
+│   │   ├── Types.ts
+│   │   └── index.ts
+│   ├── NavigatorPanes
+│   │   ├── AppInstructions
+│   │   │   ├── DrawerElement.tsx
+│   │   │   ├── PaneElement.tsx
+│   │   │   └── index.ts
+│   │   ├── ExamplePane
+│   │   │   ├── DrawerElement.tsx
+│   │   │   ├── PaneElement.tsx
+│   │   │   └── index.ts
+│   │   └── index.ts
+│   └── SettingsMenu
+│       ├── ConfirmDelete
+│       │   ├── ConfirmDelete.tsx
+│       │   ├── Styles.ts
+│       │   ├── Types.ts
+│       │   └── index.ts
+│       ├── Device
+│       │   ├── Device.tsx
+│       │   ├── Styles.ts
+│       │   ├── Types.ts
+│       │   └── index.ts
+│       ├── DeviceList
+│       │   ├── DeviceList.tsx
+│       │   ├── Styles.ts
+│       │   ├── Types.ts
+│       │   └── index.ts
+│       ├── SettingsMenu.tsx
+│       ├── Styles.ts
+│       ├── Types.ts
+│       └── index.ts
 ├── Models
-│   ├── Device.ts
-│   ├── User.ts
-│   └── index.ts
+│   ├── Device.ts
+│   ├── NavigatorPane.ts
+│   ├── State.ts
+│   ├── User.ts
+│   └── index.ts
 ├── Resources
-│   ├── networkHelper.ts
-│   └── utilitiesHelper.ts
+│   ├── Generics.ts
+│   ├── networkHelper.ts
+│   └── utilitiesHelper.ts
 ├── State
-│   ├── Actions
-│   │   ├── actionTypes.ts
-│   │   ├── authActions.ts
-│   │   └── userActions.ts
-│   ├── Reducers
-│   │   ├── authReducer.ts
-│   │   ├── index.ts
-│   │   └── userReducer.ts
-│   ├── Store
-│   │   ├── Store.ts
-│   │   ├── Types.ts
-│   │   └── index.ts
-│   └── index.ts
+│   ├── Actions
+│   │   ├── actionTypes.ts
+│   │   ├── authActions.ts
+│   │   └── userActions.ts
+│   ├── Reducers
+│   │   ├── authReducer.ts
+│   │   ├── index.ts
+│   │   └── userReducer.ts
+│   └── Store.ts
 ├── index.tsx
 ├── registerServiceWorker.ts
 └── styles.css
