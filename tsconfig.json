@@ -26,5 +26,12 @@
     "webpack",
     "jest",
     "src/setupTests.ts"
-  ]
+  ],
+  "baseUrl": "src",
+  // "paths": {
+  //     "App/*": [ "App/*" ],
+  //     "Components/*": [ "app/selectors/*" ],
+  //     "ui/*": [ "app/ui/*" ],
+  //     "logger": [ "util/logger" ],
+  // }
 }
