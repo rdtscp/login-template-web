@@ -1,13 +1,14 @@
 /* Components/SettingsMenu/Device/Device.tsx */
 
+/* React/Redux/Other */
 import * as React from 'react';
 
-/* Material-UI Components */
+/* Material-UI */
 import Button                                         from '@material-ui/core/Button';
 import Paper                                          from '@material-ui/core/Paper';
 import Typography                                     from '@material-ui/core/Typography';
 
-/* Project Components */
+/* This Component */
 import { DeviceProps, DeviceState }                   from './Types';
 
 class Device extends React.Component<DeviceProps, DeviceState> {

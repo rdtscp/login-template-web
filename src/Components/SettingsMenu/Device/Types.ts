@@ -1,5 +1,6 @@
 /* Components/SettingsMenu/Device/Types.ts */
 
+/* This Component */
 import { IDeviceStyle }                               from './Styles';
 
 interface IDeviceProps {

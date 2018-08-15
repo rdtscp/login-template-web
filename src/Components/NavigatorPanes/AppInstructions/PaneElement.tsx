@@ -1,3 +1,4 @@
+/* React/Redux/Other */
 import * as React                                     from 'react';
 
 /* Change the JSX that Represents your Pane here. */

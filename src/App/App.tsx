@@ -1,19 +1,20 @@
 /* App/App.tsx */
 
+/* React/Redux/Other */
 import * as React                                     from 'react';
 
-/* Material-UI Components */
+/* Material-UI */
 import CircularProgress                               from '@material-ui/core/CircularProgress';
 import CssBaseline                                    from '@material-ui/core/CssBaseline';
 import LinearProgress                                 from '@material-ui/core/LinearProgress';
 import { MuiThemeProvider }                           from '@material-ui/core/styles';
 
-/* Project Components */
+/* This Project */
 import AppNavigator                                   from 'src/Components/AppNavigator';
 import LoginForm                                      from 'src/Components/LoginForm';
-import { appTheme }                                   from './Theme';
 
-/* Project Types */
+/* This Component */
+import { appTheme }                                   from './Theme';
 import { AppProps }                                   from './Types';
 
 class App extends React.Component<AppProps> {

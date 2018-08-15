@@ -1,10 +1,12 @@
 /* Components/SettingsMenu/ConfirmDelete/Types.ts */
 
-/* Redux Types */
+/* React/Redux/Other */
 import { Dispatch }                                   from 'redux';
 
-/* Project Types */
+/* This Project */
 import * as Models                                    from 'src/Models'
+
+/* This Component */
 import { IConfirmDeleteStyle }                        from './Styles';
 
 interface IConfirmDeleteProps {

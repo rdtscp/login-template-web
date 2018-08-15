@@ -1,8 +1,13 @@
 /* Components/SettingsMenu/DeviceList/Types.ts */  //
-import { Dispatch }                                   from 'redux';
-import * as Models                                    from 'src/Models';
-import { IDeviceListStyle }                           from './Styles';
 
+/* React/Redux/Other */
+import { Dispatch }                                   from 'redux';
+
+/* This Project */
+import * as Models                                    from 'src/Models';
+
+/* This Component */
+import { IDeviceListStyle }                           from './Styles';
 
 interface IDeviceListProps {
   authState:            Models.AuthStateType;

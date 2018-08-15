@@ -1,9 +1,13 @@
 /* Components/LoginForm/Types.ts */
 
+/* React/Redux/Other */
 import { Dispatch }                                   from 'redux';
-import { ILoginFormStyle }                            from './Styles';
 
+/* This Project */
 import * as Models                                    from 'src/Models';
+
+/* This Component */
+import { ILoginFormStyle }                            from './Styles';
 
 interface ILoginFormProps {
   authState:                    Models.AuthStateType;

@@ -1,5 +1,7 @@
-import { NavigatorJSXGenerator }                      from '../Types';
+/* This Project */
+import * as Models                                    from 'src/Models';
 
+/* This Component */
 import drawerJSX                                      from './DrawerElement';
 import paneJSX                                        from './PaneElement';
 
@@ -13,7 +15,7 @@ const paneElement     = paneJSX;
 
 /* ONLY change the Variable Name of what you want your Pane to be called */
 
-export const ExamplePane: NavigatorJSXGenerator = {
+export const ExamplePane: Models.NavigatorJSXGenerator = {
   drawerElement,
   paneElement,
   paneTitle,

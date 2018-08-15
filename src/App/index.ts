@@ -1,21 +1,19 @@
 /* App/index.ts */
 
-/* Redux Methods */
+/* React/Redux/Other */
 import { connect }                                    from 'react-redux';
 
-/* Material-UI Components */
+/* Material-UI */
 import withStyles                                     from '@material-ui/core/styles/withStyles';
 
-/* Project Components */
-import App                                            from './App';
-
-/* Project Types */
+/* This Project */
 import * as Models                                    from 'src/Models';
-import { appClasses }                                 from './Styles';
-
-/* Project Methods */
 import { setAuthStateAction }                         from 'src/State/Actions/authActions';
 import { setCurrentUserAction }                       from 'src/State/Actions/userActions';
+
+/* This Component */
+import App                                            from './App';
+import { appClasses }                                 from './Styles';
 
 const mapStateToProps = (state: Models.StateType) => {
   return {

@@ -1,6 +1,14 @@
-import { ClickHandlerFunc, NavigatorJSXGenerator }    from "./Types";
+/* This Project */
+import { ClickHandlerFunc }                           from 'src/Resources/Generics';
 
-export default class NavigatorPane {
+interface INavigatorJSXGenerator {
+  drawerElement:  (clickHandler: ClickHandlerFunc, selectorID: string, key: number) => JSX.Element;
+  paneElement:    JSX.Element;
+  paneTitle:      string;
+}
+type NavigatorJSXGenerator   = INavigatorJSXGenerator; 
+
+class NavigatorPane {
   
   public  selectorID:     string;
   public drawerElement:  (clickHandler: ClickHandlerFunc, selectorID: string, key: number) => JSX.Element;;
@@ -22,4 +30,9 @@ export default class NavigatorPane {
     return this.drawerElement(this.clickHandler, this.selectorID, index);
   }
 
+}
+
+export {
+  NavigatorJSXGenerator,
+  NavigatorPane,
 }

@@ -1,8 +1,9 @@
 /* Components/SettingsMenu/ConfirmDelete.tsx */
 
+/* React/Redux/Other */
 import * as React                                     from 'react';
 
-/* Component Imports */
+/* Material-UI */
 import Button                                         from '@material-ui/core/Button';
 import Paper                                          from '@material-ui/core/Paper';
 import Step                                           from '@material-ui/core/Step';
@@ -11,29 +12,11 @@ import StepLabel                                      from '@material-ui/core/St
 import Stepper                                        from '@material-ui/core/Stepper';
 import Typography                                     from '@material-ui/core/Typography';
 
+/* This Project */
+import * as Models                                    from 'src/Models';
 
-/* Type Imports */
-import * as Models                                    from '../../../Models';
+/* This Component */
 import { ConfirmDeleteProps, ConfirmDeleteState }     from './Types';
-
-/* Functionality */
-function getSteps() {
-  return ['Begin Deleting Account', 'What You Will Lose', 'Final Chance'];
-}
-
-function getStepContent(step: number) {
-  switch (step) {
-    case 0:
-      return `Click 'Next' to begin deleting your account.`;
-    case 1:
-      return 'Are you sure you want to delete your account. Deleting your account is permanent, it cannot be undone. All your data will be deleted and unrecoverable.';
-    case 2:
-      return `Last Chance`;
-    default:
-      return 'Unknown step';
-  }
-}
-
 
 class ConfirmDelete extends React.Component<ConfirmDeleteProps, ConfirmDeleteState> {
 
@@ -47,7 +30,7 @@ class ConfirmDelete extends React.Component<ConfirmDeleteProps, ConfirmDeleteSta
   public render() {
 
     const { classes }     = this.props;
-    const steps           = getSteps();
+    const steps           = ['Begin Deleting Account', 'What You Will Lose', 'Final Chance'];
     const { activeStep }  = this.state;
 
     return (
@@ -58,7 +41,7 @@ class ConfirmDelete extends React.Component<ConfirmDeleteProps, ConfirmDeleteSta
               <Step key={label}>
                 <StepLabel>{label}</StepLabel>
                 <StepContent>
-                  <Typography>{getStepContent(index)}</Typography>
+                  <Typography>{this.getStepContent(index)}</Typography>
                   <div className={classes.actionsContainer}>
                     <div>
                       <Button
@@ -117,6 +100,19 @@ class ConfirmDelete extends React.Component<ConfirmDeleteProps, ConfirmDeleteSta
       activeStep: state.activeStep - 1,
     }));
   };
+
+  private getStepContent = (step: number) => {
+    switch (step) {
+      case 0:
+        return `Click 'Next' to begin deleting your account.`;
+      case 1:
+        return 'Are you sure you want to delete your account. Deleting your account is permanent, it cannot be undone. All your data will be deleted and unrecoverable.';
+      case 2:
+        return `Last Chance`;
+      default:
+        return 'Unknown step';
+    }
+  }
 
 }
 

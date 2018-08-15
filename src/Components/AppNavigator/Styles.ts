@@ -1,10 +1,8 @@
 /* Components/AppNavigator/Styles.ts */
 
-/* Material-UI Types */
-import { Theme }                                      from '@material-ui/core/styles';
-
-/* Material-UI Methods */
+/* Material-UI */
 import { createStyles }                               from '@material-ui/core';
+import { Theme }                                      from '@material-ui/core/styles';
 import { WithStyles }                                 from '@material-ui/core/styles/withStyles';
 
 const drawerWidth = 310;

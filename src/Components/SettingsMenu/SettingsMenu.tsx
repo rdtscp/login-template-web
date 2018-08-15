@@ -1,8 +1,9 @@
 /* Components/SettingsMenu/SettingsMenu.tsx */
 
+/* React/Redux/Other */
 import * as React                                     from 'react';
 
-/* Component Imports */
+/* Material-UI */
 import AppBar                                         from '@material-ui/core/AppBar';
 import Button                                         from '@material-ui/core/Button';
 import Dialog                                         from '@material-ui/core/Dialog';
@@ -19,12 +20,12 @@ import DeleteForeverIcon                              from '@material-ui/icons/D
 import ExpandMoreIcon                                 from '@material-ui/icons/ExpandMore';
 import SmartphoneIcon                                 from '@material-ui/icons/Smartphone';
 
-/* Project Components */
-import ConfirmDelete                                  from './ConfirmDelete';
-import DeviceList                                     from './DeviceList';
+/* This Project */
+import ConfirmDelete                                  from 'src/Components/SettingsMenu/ConfirmDelete';
+import DeviceList                                     from 'src/Components/SettingsMenu/DeviceList';
+import * as Models                                    from 'src/Models';
 
-/* Project Types */
-import * as Models                                    from '../../Models';
+/* This Component*/
 import { SettingsMenuProps, SettingsMenuState }       from './Types';
 
 class SettingsMenu extends React.Component<SettingsMenuProps, SettingsMenuState> {

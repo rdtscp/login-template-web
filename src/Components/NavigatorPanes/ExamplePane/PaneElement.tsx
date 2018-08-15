@@ -1,7 +1,8 @@
+/* React/Redux/Other */
 import * as React                                     from 'react';
 
-import Device                                         from '../../SettingsMenu/Device';
-
+/* This Project */
+import Device                                         from 'src/Components/SettingsMenu/Device';
 
 /* Change the JSX that Represents your Pane here. */
 const fakeDevice = 'fakedevice';

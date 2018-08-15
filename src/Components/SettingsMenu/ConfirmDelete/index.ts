@@ -1,20 +1,18 @@
 /* Components/SettingsMenu/ConfirmDelete/index.ts */
 
-/* Redux Methods */
+/* React/Redux/Other */
 import { connect }                                    from 'react-redux';
 
-/* Material-UI Components */
+/* Material-UI */
 import withStyles                                     from '@material-ui/core/styles/withStyles';
 
-/* Project Components */
-import ConfirmDelete                                  from './ConfirmDelete';
-
-/* Project Types */
+/* This Project */
 import * as Models                                    from 'src/Models';
-import { confirmDeleteClasses }                       from './Styles';
+import { setAuthStateAction }                         from 'src/State/Actions/authActions';
 
-/* Project Methods */
-import { setAuthStateAction }                         from '../../../State/Actions/authActions';
+/* This Component */
+import ConfirmDelete                                  from './ConfirmDelete';
+import { confirmDeleteClasses }                       from './Styles';
 
 const mapStateToProps = (state: Models.StateType) => {
   return {

@@ -1,5 +1,8 @@
+/* React/Redux/Other */
 import axios, { AxiosResponse }                       from 'axios';
 import axiosRetry                                     from 'axios-retry';
+
+/* This Project */
 import network                                        from 'src/Resources/networkHelper';
 
 interface IDeviceType {

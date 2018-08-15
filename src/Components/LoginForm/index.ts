@@ -1,22 +1,18 @@
 /* Components/LoginForm/index.ts */
 
-/* Redux Methods */
+/* React/Redux/Other */
 import { connect }                                    from 'react-redux';
 
-/* Project State Types */
-import * as Models                                    from 'src/Models';
-
-/* Project State Methods */
-import { setAuthStateAction }                         from '../../State/Actions/authActions';
-import { setCurrentUserAction }                       from '../../State/Actions/userActions';
-
-/* Material-UI Methods */
+/* Material-UI */
 import withStyles                                     from '@material-ui/core/styles/withStyles';
 
-/* Project Components */
-import LoginForm                                      from './LoginForm';
+/* This Project */
+import * as Models                                    from 'src/Models';
+import { setAuthStateAction }                         from 'src/State/Actions/authActions';
+import { setCurrentUserAction }                       from 'src/State/Actions/userActions';
 
-/* Project Types */
+/* This Component */
+import LoginForm                                      from './LoginForm';
 import { loginFormClasses }                           from './Styles';
 
 const mapStateToProps = (state: Models.StateType) => {

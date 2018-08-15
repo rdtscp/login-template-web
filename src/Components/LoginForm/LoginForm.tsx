@@ -1,8 +1,9 @@
 /* Components/LoginForm/LoginForm.tsx */
 
+/* React/Redux/Other */
 import * as React from 'react';
 
-/* Material-UI Components */
+/* Material-UI */
 import Button                                         from '@material-ui/core/Button';
 import Fade                                           from '@material-ui/core/Fade';
 import FormControl                                    from '@material-ui/core/FormControl';
@@ -15,8 +16,10 @@ import CloseIcon                                      from '@material-ui/icons/C
 import Visibility                                     from '@material-ui/icons/Visibility';
 import VisibilityOff                                  from '@material-ui/icons/VisibilityOff';
 
-/* Project Types */
-import * as Models                                    from '../../Models';
+/* This Project */
+import * as Models                                    from 'src/Models';
+
+/* This Component */
 import { LoginFormProps, LoginFormState }             from './Types';
 
 class LoginForm extends React.Component<LoginFormProps, LoginFormState> {

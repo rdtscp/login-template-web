@@ -1,12 +1,13 @@
 /* Components/AppNavigator/Types.ts */
 
+/* React/Redux/Other */
 import { Dispatch }                                   from 'redux';
 
-/* Project Types */
-import NavigatorPane                                  from "src/Components/NavigatorPanes/NavigatorPane";
+/* This Project */
 import * as Models                                    from 'src/Models';
-import { IAppNavigatorStyle }                         from './Styles';
 
+/* This Component */
+import { IAppNavigatorStyle }                         from './Styles';
 
 interface IAppNavigatorProps {
   authState:            Models.AuthStateType;
@@ -15,10 +16,10 @@ interface IAppNavigatorProps {
 }
 
 interface IAppNavigatorState {
-  activePane:       NavigatorPane;
+  activePane:       Models.NavigatorPane;
   mobileOpen:       boolean;
   mobileWasOpen:    boolean;
-  navigatorPanes:   NavigatorPane[];
+  navigatorPanes:   Models.NavigatorPane[];
   settingsOpen:     boolean;
 }
 

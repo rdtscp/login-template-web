@@ -1,9 +1,10 @@
 /* Components/SettingsMenu/DeviceList/DeviceList.tsx */
 
+/* React/Redux/Other */
 import * as React                                     from 'react';
 import { UAParser }                                   from 'ua-parser-js';
 
-/* Material-UI Components */
+/* Material-UI */
 import Button                                         from '@material-ui/core/Button';
 import Dialog                                         from '@material-ui/core/Dialog';
 import DialogActions                                  from '@material-ui/core/DialogActions';
@@ -15,10 +16,12 @@ import IconButton                                     from '@material-ui/core/Ic
 import Snackbar                                       from '@material-ui/core/Snackbar';
 import CloseIcon                                      from '@material-ui/icons/Close';
 
-/* Project Components */
-import * as Models                                    from '../../../Models';
-import utilities                                      from '../../../Resources/utilitiesHelper';
-import Device                                         from '../Device';
+/* This Project */
+import Device                                         from 'src/Components/SettingsMenu/Device';
+import * as Models                                    from 'src/Models';
+import utilities                                      from 'src/Resources/utilitiesHelper';
+
+/* This Component */
 import { DeviceListProps, DeviceListState }           from './Types';
 
 class DeviceList extends React.Component<DeviceListProps, DeviceListState> {

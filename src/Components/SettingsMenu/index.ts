@@ -1,15 +1,17 @@
 /* Components/SettingsMenu/index.ts */
 
-/* Redux Components */
+/* React/Redux/Other */
 import { connect }                                    from 'react-redux';
+
+/* Material-UI */
+import withStyles                                     from '@material-ui/core/styles/withStyles';
+
+/* This Project */
 import * as Models                                    from 'src/Models';
 import { setAuthStateAction }                         from 'src/State/Actions/authActions';
 import { setCurrentUserAction }                       from 'src/State/Actions/userActions';
 
-/* Material-UI Styling */
-import withStyles                                     from '@material-ui/core/styles/withStyles';
-
-/* Project Component */
+/* This Component */
 import SettingsMenu                                   from './SettingsMenu';
 import { settingsMenuClasses }                        from './Styles';
 

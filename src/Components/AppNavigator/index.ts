@@ -1,20 +1,18 @@
 /* Components/AppNavigator/index.ts */
 
-/* Redux Components */
+/* React/Redux/Other */
 import { connect }                                    from 'react-redux';
 
-/* Material-UI Components */
+/* Material-UI */
 import withStyles                                     from '@material-ui/core/styles/withStyles';
 
-/* Project Components */
-import AppNavigator                                   from './AppNavigator';
-
-/* Project Types */
+/* This Project */
 import * as Models                                    from 'src/Models';
-import { appNavigatorClasses }                        from './Styles';
+import { setCurrentUserAction }                       from 'src/State/Actions/userActions';
 
-/* Project Methods */
-import { setCurrentUserAction }                       from '../../State/Actions/userActions';
+/* This Component */
+import AppNavigator                                   from './AppNavigator';
+import { appNavigatorClasses }                        from './Styles';
 
 const mapStateToProps = (state: Models.StateType) => {
   return {

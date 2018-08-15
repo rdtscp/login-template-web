@@ -1,6 +1,9 @@
+/* React/Redux/Other */
 import axios, { AxiosResponse }                       from 'axios';
+
+/* This Project */
+import * as Models                                    from 'src/Models';
 import network                                        from 'src/Resources/networkHelper';
-import { Device }                                     from './Device';
 
 export {
   User,
@@ -9,7 +12,7 @@ export {
 };
 
 interface IUserType {
-  readonly devices:   Device[];
+  readonly devices:   Models.Device[];
   readonly createdAt: number;
   readonly updatedAt: number;
   readonly id:        string;
@@ -30,11 +33,6 @@ interface IUserResponseData {
 type UserResponseData = IUserResponseData;
 
 /* API */
-
-// const headers = {
-//   'Access-Control-Allow-Credentials': 'true',
-//   'Content-Type': 'application/json',
-// };
 
 const UserAPI = {
 

@@ -1,8 +1,9 @@
 /* Components/AppNavigator/AppNavigator.tsx */
 
+/* React/Redux/Other */
 import * as React                                     from 'react';
 
-/* Material-UI Comonents */
+/* Material-UI */
 import AppBar                                         from '@material-ui/core/AppBar';
 import Divider                                        from '@material-ui/core/Divider';
 import Drawer                                         from '@material-ui/core/Drawer';
@@ -15,18 +16,19 @@ import Typography                                     from '@material-ui/core/Ty
 import MenuIcon                                       from '@material-ui/icons/Menu';
 import SettingsRoundedIcon                            from '@material-ui/icons/SettingsRounded';
 
-/* Project Components */
-import navigatorPanes                                 from 'src/Components/NavigatorPanes';
+/* This Project */
+import generatePanes                                  from 'src/Components/NavigatorPanes';
 import SettingsMenu                                   from 'src/Components/SettingsMenu';
+import * as Models                                    from "src/Models";
 
-import NavigatorPane                                  from "src/Components/NavigatorPanes/NavigatorPane";
+/* This Component */
 import { AppNavigatorProps, AppNavigatorState }       from './Types';
 
 class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState> {
 
   constructor(props: AppNavigatorProps) {
     super(props);
-    const initNavigatorPanes = navigatorPanes(this.clickPane);
+    const initNavigatorPanes = generatePanes(this.clickPane);
     this.state = {
       activePane:       initNavigatorPanes[0],
       mobileOpen:       false,
@@ -61,7 +63,7 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
         <Divider />
         <List>
           <div>
-            {this.state.navigatorPanes.map((navigatorPane: NavigatorPane, index: number) => navigatorPane.getDrawer(index)) }
+            {this.state.navigatorPanes.map((navigatorPane: Models.NavigatorPane, index: number) => navigatorPane.getDrawer(index)) }
           </div>
         </List>
       </div>
@@ -159,7 +161,7 @@ class AppNavigator extends React.Component<AppNavigatorProps, AppNavigatorState>
 
   private clickPane = (event: React.MouseEvent<HTMLElement>) => {
     const paneClicked = event.currentTarget.id;
-    const activePane  = this.state.navigatorPanes.filter((pane: NavigatorPane) => pane.selectorID === paneClicked)[0];
+    const activePane  = this.state.navigatorPanes.filter((pane: Models.NavigatorPane) => pane.selectorID === paneClicked)[0];
     this.setState({
       activePane,
       mobileOpen:     false,

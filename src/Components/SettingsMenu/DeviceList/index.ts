@@ -1,21 +1,19 @@
 /* Components/SettingsMenu/DeviceList/index.ts */
 
-/* Redux Components */
+/* React/Redux/Other */
 import { connect }                                    from 'react-redux';
 
-/* Material-UI Components */
+/* Material-UI */
 import withStyles                                     from '@material-ui/core/styles/withStyles';
 
-/* Project Components */
-import DeviceList                                     from './DeviceList';
-
-/* Project Types */
+/* This Project */
 import * as Models                                    from 'src/Models';
-import { deviceListClasses }                          from './Styles';
+import { setAuthStateAction }                         from 'src/State/Actions/authActions';
+import { setCurrentUserAction }                       from 'src/State/Actions/userActions';
 
-/* Project Methods */
-import { setAuthStateAction }                         from '../../../State/Actions/authActions';
-import { setCurrentUserAction }                       from '../../../State/Actions/userActions';
+/* This Component */
+import DeviceList                                     from './DeviceList';
+import { deviceListClasses }                          from './Styles';
 
 const mapStateToProps = (state: Models.StateType) => {
   return {

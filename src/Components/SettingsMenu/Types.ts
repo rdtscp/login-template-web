@@ -1,7 +1,12 @@
 /* Componets/SettingsMenu/Types.ts */
 
+/* React/Redux/Other */
 import { Dispatch }                                   from 'redux';
+
+/* This Project */
 import * as Models                                    from 'src/Models';
+
+/* This Component */
 import { ISettingsMenuStyle }                         from './Styles';
 
 interface ISettingsMenuProps {

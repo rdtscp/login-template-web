@@ -1,10 +1,8 @@
 /* App/Theme.ts */
 
-/* Material-UI Components */
+/* Material-UI */
 import blue                                           from '@material-ui/core/colors/blue';
 import red                                            from '@material-ui/core/colors/red';
-
-/* Material-UI Methods */
 import { createMuiTheme }                             from '@material-ui/core/styles';
 
 const appTheme = createMuiTheme({
