@@ -4,7 +4,7 @@ const network = {
 
     // Gets a CSRF token from API, and returns it in a callback.
     getCSRF(cb: (csrfToken: string) => void) {
-      axios.get('http://login-template-web.herokuapp.com' + '/csrfToken', {
+      axios.get('https://login-template-web.herokuapp.com/csrfToken', {
         withCredentials: true,
       })
       .then((response) => {
