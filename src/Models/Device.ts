@@ -1,5 +1,6 @@
 import axios, { AxiosResponse }                       from 'axios';
-import network                                        from '../Resources/networkHelper';
+import axiosRetry                                     from 'axios-retry';
+import network                                        from 'src/Resources/networkHelper';
 
 interface IDeviceType {
   readonly createdAt:   number;
@@ -29,15 +30,11 @@ export type DeviceResponseData = IDeviceResponseData;
 
 /* API */
 
-// const headers = {
-//   'Access-Control-Allow-Credentials': 'true',
-//   'Content-Type': 'application/json',
-// };
-
 export const DeviceAPI = {
 
   get(authToken: string) {
     return new Promise((resolve, reject) => {
+      axiosRetry(axios, { retries: 10 });
       network.getCSRF((csrf: string) => {
         axios.post(process.env.REACT_APP_API_URL + '/device/get', {
           _csrf: csrf,
@@ -58,7 +55,9 @@ export const DeviceAPI = {
 
   create(authToken: string, username: string, password: string) {
     return new Promise((resolve, reject) => {
+      axiosRetry(axios, { retries: 10 });
       network.getCSRF((csrf: string) => {
+        axiosRetry(axios, { retries: 1 });
         axios.post(process.env.REACT_APP_API_URL + '/device/create', {
           _csrf: csrf,
           authToken,
@@ -80,7 +79,9 @@ export const DeviceAPI = {
 
   destroy(authToken: string, deviceID: string, deviceAuthToken: string) {
     return new Promise((resolve, reject) => {
+      axiosRetry(axios, { retries: 10 });
       network.getCSRF((csrf: string) => {
+        axiosRetry(axios, { retries: 1 });
         axios.post(process.env.REACT_APP_API_URL + '/device/destroy', {
           _csrf: csrf,
           authToken,
