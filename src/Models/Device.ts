@@ -39,7 +39,7 @@ export const DeviceAPI = {
   get(authToken: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        axios.post('https://login-template-web.herokuapp.com/device/get', {
+        axios.post(process.env.REACT_APP_API_URL + '/device/get', {
           _csrf: csrf,
           authToken,
         },{
@@ -59,7 +59,7 @@ export const DeviceAPI = {
   create(authToken: string, username: string, password: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        axios.post('https://login-template-web.herokuapp.com/device/create', {
+        axios.post(process.env.REACT_APP_API_URL + '/device/create', {
           _csrf: csrf,
           authToken,
           password,
@@ -81,7 +81,7 @@ export const DeviceAPI = {
   destroy(authToken: string, deviceID: string, deviceAuthToken: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        axios.post('https://login-template-web.herokuapp.com/device/destroy', {
+        axios.post(process.env.REACT_APP_API_URL + '/device/destroy', {
           _csrf: csrf,
           authToken,
           deviceAuthToken,
