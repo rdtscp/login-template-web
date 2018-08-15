@@ -8,13 +8,17 @@ import Device                                         from 'src/Components/Setti
 const fakeDevice = 'fakedevice';
 const fakeLogout = () => {/* */};
 
-const paneJSX = (
-  <div>
-    Example of a NavigatorPane that uses Components.
+export default class AppInstructionsPane extends React.Component {
+  
+  public render() {
+    return (
+      <div>
+        Example of a NavigatorPane that uses Components.
     <br/>
     <br/>
     <Device key={0}  id={fakeDevice} authToken={fakeDevice} lastUsed={'Forever, its fake'} logout={fakeLogout} thisDevice={true} userAgentStr={'Your Browser on your Device'} />
-  </div>
-);
+      </div>
+    );
+  }
 
-export default paneJSX;
+}
