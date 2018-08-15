@@ -35,7 +35,7 @@ export const UserAPI = {
   get(authToken: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        axios.post(process.env.REACT_APP_API_URL + '/user/get', {
+        axios.post('http://login-template-web.herokuapp.com' + '/user/get', {
           _csrf: csrf,
           authToken,
         },{
@@ -55,7 +55,7 @@ export const UserAPI = {
   create(authToken: string, username: string, password: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        axios.post(process.env.REACT_APP_API_URL + '/user/create', {
+        axios.post('http://login-template-web.herokuapp.com' + '/user/create', {
           _csrf: csrf,
           authToken,
           password,
@@ -81,7 +81,7 @@ export const UserAPI = {
   destroy(authToken: string) {
     return new Promise((resolve, reject) => {
       network.getCSRF((csrf: string) => {
-        axios.post(process.env.REACT_APP_API_URL + '/user/destroy', {
+        axios.post('http://login-template-web.herokuapp.com' + '/user/destroy', {
           _csrf: csrf,
           authToken,
         },{
