@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) with [TypeScript](https://github.com/Microsoft/TypeScript)
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) using [TypeScript](https://github.com/Microsoft/TypeScript), [Redux](https://github.com/reduxjs/redux), and [Material UI](https://github.com/mui-org/material-ui).
 
 Project Source Directory is as such:
 ```
@@ -75,5 +75,3 @@ src
 └── styles.css
 ```
 The application title can be set within src/index.tsx, and the favicon within the public folder as per usual.
-
-Currently working on extending to use [Redux](https://github.com/reduxjs/redux) and [Material UI](https://github.com/mui-org/material-ui).
