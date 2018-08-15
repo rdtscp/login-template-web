@@ -1,13 +1,12 @@
 /* Componets/SettingsMenu/Types.ts */
 
 import { Dispatch }                                   from 'redux';
-import * as Models                                    from '../../Models';
-import { IAuthStateType }                              from '../../State/Store/Types'
+import * as Models                                    from 'src/Models';
 import { ISettingsMenuStyle }                         from './Styles';
 
 interface ISettingsMenuProps {
   closeSettings:        () => void;
-  authState:            IAuthStateType;
+  authState:            Models.AuthStateType;
   devices:              Models.Device[];
   setAuthStateAction:   (authToken: string) => ((dispatch: Dispatch) => void);
   setCurrentUserAction: (authToken: string) => ((dispatch: Dispatch) => void);

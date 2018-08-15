@@ -3,9 +3,9 @@ import { combineReducers }                            from 'redux'
 import authReducer                                    from './authReducer';
 import userReducer                                    from './userReducer';
 
-import { IStateType } from '../Store/Types';
+import * as Models                                    from 'src/Models';
 
-export const rootReducer = combineReducers<IStateType>({
-  authState: authReducer,
-  currentUser: userReducer,
+export const rootReducer = combineReducers<Models.StateType>({
+  authState:    authReducer,
+  currentUser:  userReducer,
 });

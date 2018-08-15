@@ -4,11 +4,11 @@
 import { Dispatch }                                   from 'redux';
 
 /* Project Types */
-import { IAuthStateType }                              from '../../../State/Store/Types'
+import * as Models                                    from 'src/Models'
 import { IConfirmDeleteStyle }                        from './Styles';
 
 interface IConfirmDeleteProps {
-  authState:            IAuthStateType;
+  authState:            Models.AuthStateType;
   setAuthStateAction:   (authToken: string) => ((dispatch: Dispatch) => void);
 }
 

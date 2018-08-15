@@ -4,7 +4,7 @@
 import { connect }                                    from 'react-redux';
 
 /* Project State Types */
-import { IStateType }                                 from '../../State';
+import * as Models                                    from 'src/Models';
 
 /* Project State Methods */
 import { setAuthStateAction }                         from '../../State/Actions/authActions';
@@ -19,7 +19,7 @@ import LoginForm                                      from './LoginForm';
 /* Project Types */
 import { loginFormClasses }                           from './Styles';
 
-const mapStateToProps = (state: IStateType) => {
+const mapStateToProps = (state: Models.StateType) => {
   return {
     authState: state.authState,
   }

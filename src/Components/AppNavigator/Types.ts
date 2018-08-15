@@ -3,14 +3,13 @@
 import { Dispatch }                                   from 'redux';
 
 /* Project Types */
-import * as Models                                    from '../../Models';
-import { IAuthStateType }                              from '../../State/Store/Types';
-import NavigatorPane                                  from "../NavigatorPanes/NavigatorPane";
+import NavigatorPane                                  from "src/Components/NavigatorPanes/NavigatorPane";
+import * as Models                                    from 'src/Models';
 import { IAppNavigatorStyle }                         from './Styles';
 
 
 interface IAppNavigatorProps {
-  authState:            IAuthStateType;
+  authState:            Models.AuthStateType;
   currentUser:          Models.User;
   setCurrentUserAction: (authToken: string) => ((dispatch: Dispatch) => void);
 }

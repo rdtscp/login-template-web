@@ -2,9 +2,9 @@
 
 /* Redux Components */
 import { connect }                                    from 'react-redux';
-import { IStateType }                                 from '../../State';
-import { setAuthStateAction }                         from '../../State/Actions/authActions';
-import { setCurrentUserAction }                       from '../../State/Actions/userActions';
+import * as Models                                    from 'src/Models';
+import { setAuthStateAction }                         from 'src/State/Actions/authActions';
+import { setCurrentUserAction }                       from 'src/State/Actions/userActions';
 
 /* Material-UI Styling */
 import withStyles                                     from '@material-ui/core/styles/withStyles';
@@ -13,7 +13,7 @@ import withStyles                                     from '@material-ui/core/st
 import SettingsMenu                                   from './SettingsMenu';
 import { settingsMenuClasses }                        from './Styles';
 
-const mapStateToProps = (state: IStateType) => {
+const mapStateToProps = (state: Models.StateType) => {
   return {
     authState:  state.authState,
     devices:    state.currentUser.devices,

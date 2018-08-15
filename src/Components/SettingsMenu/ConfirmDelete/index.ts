@@ -10,13 +10,13 @@ import withStyles                                     from '@material-ui/core/st
 import ConfirmDelete                                  from './ConfirmDelete';
 
 /* Project Types */
-import { IStateType }                                 from '../../../State';
+import * as Models                                    from 'src/Models';
 import { confirmDeleteClasses }                       from './Styles';
 
 /* Project Methods */
 import { setAuthStateAction }                         from '../../../State/Actions/authActions';
 
-const mapStateToProps = (state: IStateType) => {
+const mapStateToProps = (state: Models.StateType) => {
   return {
     authState:  state.authState,
   }

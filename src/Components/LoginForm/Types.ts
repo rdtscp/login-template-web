@@ -3,10 +3,10 @@
 import { Dispatch }                                   from 'redux';
 import { ILoginFormStyle }                            from './Styles';
 
-import { IAuthStateType }                              from '../../State/Store/Types'
+import * as Models                                    from 'src/Models';
 
 interface ILoginFormProps {
-  authState:                    IAuthStateType;
+  authState:                    Models.AuthStateType;
   setAuthStateAction:           (authToken: string) => ((dispatch: Dispatch) => void);
   setCurrentUserAction:         (authToken: string) => ((dispatch: Dispatch) => void);
 }

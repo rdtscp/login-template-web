@@ -1,12 +1,11 @@
 /* Components/SettingsMenu/DeviceList/Types.ts */  //
 import { Dispatch }                                   from 'redux';
-import * as Models                                    from '../../../Models';
-import { IAuthStateType }                              from '../../../State/Store/Types'
+import * as Models                                    from 'src/Models';
 import { IDeviceListStyle }                           from './Styles';
 
 
 interface IDeviceListProps {
-  authState:            IAuthStateType;
+  authState:            Models.AuthStateType;
   devices:              Models.Device[];
   setAuthStateAction:   (authToken: string) => ((dispatch: Dispatch) => void);
   setCurrentUserAction: (authToken: string) => ((dispatch: Dispatch) => void);

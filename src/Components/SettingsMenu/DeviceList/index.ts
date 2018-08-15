@@ -10,14 +10,14 @@ import withStyles                                     from '@material-ui/core/st
 import DeviceList                                     from './DeviceList';
 
 /* Project Types */
-import { IStateType }                                 from '../../../State';
+import * as Models                                    from 'src/Models';
 import { deviceListClasses }                          from './Styles';
 
 /* Project Methods */
 import { setAuthStateAction }                         from '../../../State/Actions/authActions';
 import { setCurrentUserAction }                       from '../../../State/Actions/userActions';
 
-const mapStateToProps = (state: IStateType) => {
+const mapStateToProps = (state: Models.StateType) => {
   return {
     authState:  state.authState,
     devices:    state.currentUser.devices,

@@ -2,6 +2,12 @@ import axios, { AxiosResponse }                       from 'axios';
 import network                                        from 'src/Resources/networkHelper';
 import { Device }                                     from './Device';
 
+export {
+  User,
+  UserAPI,
+  UserResponseData,
+};
+
 interface IUserType {
   readonly devices:   Device[];
   readonly createdAt: number;
@@ -10,7 +16,7 @@ interface IUserType {
   readonly username:  string;
 }
 
-export type User = IUserType;
+type User = IUserType;
 
 /* API Types */
 
@@ -21,7 +27,7 @@ interface IUserResponseData {
   content:  User | null;
 }
 
-export type UserResponseData = IUserResponseData;
+type UserResponseData = IUserResponseData;
 
 /* API */
 
@@ -30,7 +36,7 @@ export type UserResponseData = IUserResponseData;
 //   'Content-Type': 'application/json',
 // };
 
-export const UserAPI = {
+const UserAPI = {
 
   get(authToken: string) {
     return new Promise((resolve, reject) => {
