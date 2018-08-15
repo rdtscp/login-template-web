@@ -12,6 +12,10 @@ import store                                          from './State/Store';
 /* Styles */
 import './styles.css';
 
+
+if (location.protocol !== process.env.REACT_APP_PROTOCOL) {
+  location.href = process.env.REACT_APP_PROTOCOL + window.location.href.substring(window.location.protocol.length);
+}
 document.title = "Login Template";
 
 ReactDOM.render(
